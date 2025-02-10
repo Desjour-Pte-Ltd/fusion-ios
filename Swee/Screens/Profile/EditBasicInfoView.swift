@@ -23,7 +23,7 @@ struct EditBasicInfoView: View {
     func row<Content: View>(title: String, showEdit: Bool = true, @ViewBuilder content: () -> Content, editAction: @escaping () -> Void = {}) -> some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
-                Text(title)
+                Text(title.i18n)
                     .font(.custom("Poppins-Medium", size: 14))
                     .foregroundStyle(Color.text.black80)
                 Spacer()
@@ -31,7 +31,7 @@ struct EditBasicInfoView: View {
                     Button {
                         editAction()
                     } label: {
-                        Text("Edit")
+                        Text("profile_info_edit_cta")
                             .font(.custom("Poppins-Medium", size: 14))
                             .foregroundStyle(Color.primary.brand)
                     }
@@ -48,7 +48,7 @@ struct EditBasicInfoView: View {
             CustomNavLink(isActive: $goToEditName, destination: EditNameView(name: api.user?.name ?? "")) {}
 //            CustomNavLink(isActive: $goToEditPhone, destination: EditPhoneView(phone: phone)) {}
             VStack(alignment: .leading) {
-                row(title: "Add photo") {
+                row(title: "profile_add_photo_cta") {
                     if let image = image {
                         Image(uiImage: image)
                             .resizable()
@@ -77,14 +77,14 @@ struct EditBasicInfoView: View {
                     showSelectionSheet = true
                 }
                 
-                row(title: "Your name") {
+                row(title: "profile_info_your_name") {
                     Text(api.user?.name ?? "")
                         .font(.custom("Poppins-SemiBold", size: 18))
                         .foregroundStyle(Color.text.black80)
                 } editAction: {
                     goToEditName = true
                 }
-                row(title: "Phone number", showEdit: false) {
+                row(title: "user_onboarding_phone_input_hint", showEdit: false) {
                     Text(api.user?.phone)
                         .font(.custom("Poppins-SemiBold", size: 18))
                         .foregroundStyle(Color.text.black80)
@@ -127,7 +127,7 @@ struct EditBasicInfoView: View {
         .sheet(isPresented: $showSheet) {
             ImagePicker(sourceType: sourceType, selectedImage: self.$image)
         }
-        .customNavigationTitle("Profile Info")
+        .customNavigationTitle("profile_info_title")
         .onAppear(perform: {
             if image == nil {
                 image = api.user?.uploadingImage

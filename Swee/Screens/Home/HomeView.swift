@@ -372,7 +372,7 @@ struct PackagesCarousel: View {
                 if model.packages.count > 2 {
                     CustomNavLink(destination: SeeAllView(sectionID: model.sectionID, title: model.title)) {
                         HStack(spacing: 4) {
-                            Text("See all")
+                            Text("cta_see_all")
                                 .font(.custom("Poppins-Regular", size: 14))
                                 .foregroundStyle(Color.text.black60)
                             Image("chevron-right")

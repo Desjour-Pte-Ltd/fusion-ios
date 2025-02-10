@@ -11,10 +11,10 @@ struct EditNameView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Full name")
+            Text("user_onboarding_full_name_input_subtitle")
                 .font(.custom("Poppins-Medium", size: 16))
                 .foregroundStyle(Color.text.black80)
-            TextField("Enter your full name", text: $name)
+            TextField("user_onboarding_full_name_input_hint", text: $name)
                 .padding([.top, .bottom], 17)
                 .padding([.leading, .trailing], 14)
                 .focused($isKeyboardShowing)
@@ -40,7 +40,7 @@ struct EditNameView: View {
             .buttonStyle(PrimaryButton())
         }
         .padding()
-        .customNavigationTitle("Name")
+        .customNavigationTitle("profile_info_name_title")
     }
 }
 

@@ -29,11 +29,11 @@ struct StateView: View {
         VStack {
             image.image
             if let title = title {
-                Text(title)
+                Text(title.i18n)
                     .font(.custom("Poppins-Medium", size: 24))
             }
             if let description = description {
-                Text(description)
+                Text(description.i18n)
                     .font(.custom("Poppins-Medium", size: 16))
                     .multilineTextAlignment(.center)
                     .foregroundStyle(Color.text.black40)
@@ -43,7 +43,7 @@ struct StateView: View {
                 await buttonAction()
             } label: {
                 HStack {
-                    Text(buttonTitle)
+                    Text(buttonTitle.i18n)
                         .font(.custom("Roboto-Bold", size: 16))
                 }
                 .frame(maxWidth: .infinity)
@@ -55,7 +55,7 @@ struct StateView: View {
 }
 
 extension StateView {
-    static func error(title: String = "Something went wrong", description: String = "We are unable to load the content, please try to reload the page", buttonTitle: String = "Reload", buttonAction: @escaping () async -> Void) -> StateView {
+    static func error(title: String = "error_generic", description: String = "error_generic_home", buttonTitle: String = "error_home_cta", buttonAction: @escaping () async -> Void) -> StateView {
         StateView(image: .error,
                   title: title,
                   description: description,

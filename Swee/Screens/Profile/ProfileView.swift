@@ -52,42 +52,42 @@ struct ProfileView: View {
     func setupSections() {
         sections = [
             [
-                .init(title: "Email ID", description: .text(api.user?.email ?? "Add email ID"), leadingIcon: Image("mail")) {
+                .init(title: "profile_settings_email_id", description: .text(api.user?.email ?? "profile_settings_email_id_empty_cta"), leadingIcon: Image("mail")) {
                     goToEmail = true
                 },
-                .init(title: "Date of birth", description: .text(api.user?.birthDayString ?? "Add date"), leadingIcon: Image("calendar")) {
+                .init(title: "profile_settings_date_of_birth", description: .text(api.user?.birthDayString ?? "profile_settings_date_of_birth_empty_cta"), leadingIcon: Image("calendar")) {
                     goToDOB = true
                 },
-                .init(title: "Gender", description: .text(api.user?.gender.toString ?? "Add gender"), leadingIcon: Image("gender")) {
+                .init(title: "profile_settings_gender", description: .text(api.user?.gender.toString ?? "profile_settings_gender_empty_cta"), leadingIcon: Image("gender")) {
                     goToGender = true
                 },
             ],
             [
-                .init(title: "Child", description: .request({
+                .init(title: "profile_add_child_title_not_empty", description: .request({
                     let children = try await api.children()
-                    return children.isEmpty ? "No info added" : children.map { $0.name }.joined(separator: ", ")
+                    return children.isEmpty ? "profile_settings_child_empty_cta" : children.map { $0.name }.joined(separator: ", ")
                 }), leadingIcon: Image("person-add")) {
                     goToChildren = true
                 },
             ],
             [
-                .init(title: "Help Center", leadingIcon: Image("help")) {
+                .init(title: "profile_help_center", leadingIcon: Image("help")) {
                     openURL(URL(string: Strings.helpLink)!)
                 },
-                .init(title: "Terms & Conditions", leadingIcon: Image("receipt")) {
+                .init(title: "tnc", leadingIcon: Image("receipt")) {
                     openURL(URL(string: Strings.tosLink)!)
                 },
-                .init(title: "Rate our app", leadingIcon: Image("raiting")) {
+                .init(title: "profile_rate_our_app", leadingIcon: Image("raiting")) {
                     openURL(URL(string: Strings.rateAppLink)!)
                 },
             ],
             [
-                .init(title: "Logout", trailingIcon: Image("logout")) {
+                .init(title: "profile_logout_cta", trailingIcon: Image("logout")) {
                     showAlert = true
-                    alertData = .init(title: "Logout?",
-                                      message: "Do you want to log out from the app, you ll have to sign in again",
-                                      buttonTitle: "Log out", 
-                                      cancelTitle: "Stay In",
+                    alertData = .init(title: "profile_logout_confirm_title",
+                                      message: "profile_logout_confirm_message",
+                                      buttonTitle: "profile_logout_confirm_proceed_cta",
+                                      cancelTitle: "profile_logout_confirm_cancel_cta",
                                       action: .init(closure: {
                         await api.signOut()
                         appRootManager.currentRoot = .authentication
@@ -95,12 +95,12 @@ struct ProfileView: View {
                 },
             ],
             [
-                .init(title: "Delete profile", trailingIcon: Image("delete"), tint: .red) {
+                .init(title: "profile_delete_cta", trailingIcon: Image("delete"), tint: .red) {
                     showAlert = true
-                    alertData = .init(title: "Delete?",
-                                      message: "All your data will be deleted including your purchases",
-                                      buttonTitle: "Delete",
-                                      cancelTitle: "Keep the data",
+                    alertData = .init(title: "profile_delete_confirm_title",
+                                      message: "profile_delete_confirm_message",
+                                      buttonTitle: "profile_delete_confirm_proceed_cta",
+                                      cancelTitle: "profile_delete_confirm_cancel_cta",
                                       action: .init(closure: {
                         do {
                             try await api.DEBUGdeleteAccount()
@@ -176,7 +176,7 @@ struct ProfileView: View {
                                 }
                                 CustomNavLink(destination: EditBasicInfoView()) {
                                     HStack(alignment: .center, spacing: 3) {
-                                        Text("Edit basic info")
+                                        Text("profile_edit_basic_info_cta")
                                             .font(.custom("Poppins-Medium", size: 14))
                                         Image("back")
                                             .resizable()
@@ -261,13 +261,13 @@ struct ProfileView: View {
                             .padding(.trailing, 10)
                     }
                     VStack(alignment: .leading) {
-                        Text(row.title)
+                        Text(row.title.i18n)
                             .font(.custom("Poppins-Medium", size: 14))
                             .foregroundStyle(row.tint != nil ? row.tint! : Color.text.black80)
                         if let description = row.description {
                             switch description {
                             case .text(let string):
-                                Text(string)
+                                Text(string.i18n)
                                     .font(.custom("Poppins-Medium", size: 12))
                                     .foregroundStyle(row.tint != nil ? row.tint! : Color.text.black40)
                             case .request(_):
@@ -277,7 +277,7 @@ struct ProfileView: View {
                                         .frame(width: 100, height: 10)
                                         .padding(.top, -4)
                                 } else {
-                                    Text(loadedDescription)
+                                    Text(loadedDescription.i18n)
                                         .font(.custom("Poppins-Medium", size: 12))
                                         .foregroundStyle(row.tint != nil ? row.tint! : Color.text.black40)
                                 }
@@ -336,10 +336,10 @@ struct CompleteProfileBanner: View {
             }
             Spacer()
             VStack(alignment: .leading) {
-                Text(profileProgress == 1 ? "Congratulations!" : "Complete your profile")
+                Text(profileProgress == 1 ? "completed_profile_title" : "complete_profile_title")
                     .font(.custom("Poppins-Medium", size: 16))
                     .foregroundStyle(.white)
-                Text(profileProgress == 1 ? "You have successfully completed your profile" : "Fill up a few missing steps to win exciting rewards")
+                Text(profileProgress == 1 ? "completed_profile_description" : "complete_profile_description")
                     .font(.custom("Poppins-Medium", size: 12))
                     .foregroundStyle(.white.opacity(0.55))
             }

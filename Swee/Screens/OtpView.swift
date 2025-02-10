@@ -31,17 +31,17 @@ struct OtpView: View {
                     CompleteProfileView()
                 } label: {}
                 Spacer()
-                Text("Enter your OTP")
+                Text("user_onboarding_verification_title")
                     .font(.custom("Poppins-SemiBold", size: 24))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.bottom, 8)
-                Text("We’ve sent an SMS with an OTP to your phone \(countryCode)-\(phoneNumber)")
+                Text("user_onboarding_verification_description".i18n(with: countryCode, phoneNumber))
                     .font(.custom("Poppins-Regular", size: 14))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundStyle(Color.text.black60)
                     .padding(.bottom, 32)
                 VStack {
-                    Text("Enter OTP")
+                    Text("user_onboarding_verification_subtitle")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.custom("Poppins-Medium", size: 16))
                     
@@ -71,7 +71,7 @@ struct OtpView: View {
                     }
                 }
                 HStack(spacing: 0) {
-                    Text(showError ? errorMessage : "")
+                    Text(showError ? errorMessage.i18n : "")
                         .font(.custom("Poppins-Regular", size: 12))
                         .foregroundStyle(.red)
                         .padding(.leading, 15)
@@ -103,20 +103,20 @@ struct OtpView: View {
                         }
                         print("phone auth error ======", error)
                         guard let phoneError = error as? PhoneError else {
-                            errorMessage = "Something went wrong"
+                            errorMessage = "error_generic"
                             return
                         }
                         
                         if case .wrongCode = phoneError {
-                            errorMessage = "Wrong code, please try again"
+                            errorMessage = "user_onboarding_verification_otp_error_invalid"
                         } else if case .numberIsTaken = phoneError {
                             errorMessage = "This phone number is registered to another account"
                         } else {
-                            errorMessage = "Something went wrong. Please try again"
+                            errorMessage = "error_generic"
                         }
                     }
                 } label: {
-                    Text("Login")
+                    Text("user_onboarding_verification_cta_from_phone_login")
                         .frame(maxWidth: .infinity)
                         .font(.custom("Roboto-Bold", size: 16))
                 }
@@ -133,7 +133,7 @@ struct OtpView: View {
                 ToolbarItemGroup(placement: .keyboard) {
                     HStack {
                         Spacer()
-                        Button("Done") {
+                        Button("cta_done") {
                             isKeyboardShowing = false
                         }
                         .foregroundStyle(Color.primary.brand)
@@ -159,7 +159,7 @@ struct OtpView: View {
                                     print("verificationID ====", verificationId)
                                 case .failure(let error):
                                     print(error.localizedDescription)
-                                    errorMessage = "Something went wrong. Please try again"
+                                    errorMessage = "error_generic"
                                     showError = true
                                 }
                             }
@@ -167,7 +167,7 @@ struct OtpView: View {
                         }
                     } label: {
                         if timeRemaining == 0 {
-                            Text("Resend OTP")
+                            Text("user_onboarding_verification_menu_item_resend_otp")
                                 .frame(maxWidth: .infinity)
                                 .font(.custom("Poppins-Bold", size: 16))
                                 .foregroundStyle(
@@ -178,7 +178,7 @@ struct OtpView: View {
                                     )
                                 )
                         } else {
-                            Text("Resend OTP again in 0:\(timeRemaining >= 10 ? "" : "0")\(timeRemaining)")
+                            Text("user_onboarding_verification_menu_item_resend_otp_again".i18n + "user_onboarding_verification_menu_item_resend_otp_timer".i18n(with: timeRemaining))
                                 .frame(maxWidth: .infinity)
                                 .font(.custom("Poppins-Bold", size: 16))
                                 .foregroundStyle(Color.text.black60)

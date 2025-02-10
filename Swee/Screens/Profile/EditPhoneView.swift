@@ -17,7 +17,7 @@ struct EditPhoneView: View {
     var body: some View {
         VStack {
             CustomNavLink(isActive: $goToOTP, destination: EditOtpView(verificationID: verificationID), label: {})
-            Text("Your Phone number")
+            Text("user_onboarding_phone_input_subtitle")
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .font(.custom("Poppins-Medium", size: 16))
             HStack {
@@ -33,7 +33,7 @@ struct EditPhoneView: View {
                 .overlay(RoundedRectangle(cornerRadius: 12)
                     .stroke(codeFieldActive ? Color.text.black100 : Color(hex: "#E7EAEB"),
                             lineWidth: 1))
-                TextField("Phone number", text: $phone) {
+                TextField("user_onboarding_phone_input_hint", text: $phone) {
                     UIApplication.shared.endEditing()
                 }
                 .keyboardType(.numberPad)
@@ -48,7 +48,7 @@ struct EditPhoneView: View {
                     ToolbarItemGroup(placement: .keyboard) {
                         HStack {
                             Spacer()
-                            Button("Done") {
+                            Button("cta_done") {
                                 isPhoneFocused = false
                             }
                             .foregroundStyle(Color.primary.brand)
@@ -71,7 +71,7 @@ struct EditPhoneView: View {
                     // @todo handle error
                 }
             } label: {
-                Text("Verify")
+                Text("user_onboarding_phone_input_cta")
                     .frame(maxWidth: .infinity)
                     .font(.custom("Roboto-Bold", size: 16))
                 
@@ -80,7 +80,7 @@ struct EditPhoneView: View {
             .buttonStyle(PrimaryButton())
         }
         .padding()
-        .customNavigationTitle("Phone Number")
+        .customNavigationTitle("user_onboarding_phone_input_hint")
     }
 }
 

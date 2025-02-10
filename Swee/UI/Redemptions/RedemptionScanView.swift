@@ -18,7 +18,7 @@ struct RedemptionScanView: View {
     
     var body: some View {
         VStack {
-            Text(model.header)
+            Text(model.header.i18n)
                 .font(.custom("Poppins-SemiBold", size: 24))
                 .foregroundStyle(Color.text.black100)
             if model.showCurrentTime {
@@ -29,10 +29,10 @@ struct RedemptionScanView: View {
             }
             model.qr
                 .padding(.bottom, 8)
-            Text(model.title)
+            Text(model.title.i18n)
                 .font(.custom("Poppins-SemiBold", size: 20))
                 .foregroundStyle(Color.text.black100)
-            Text(model.description)
+            Text(model.description.i18n)
                 .font(.custom("Poppins-Medium", size: 12))
                 .multilineTextAlignment(.center)
                 .foregroundStyle(Color.text.black60)
@@ -42,7 +42,7 @@ struct RedemptionScanView: View {
             } label: {
                 HStack {
                     Spacer()
-                    Text(model.actionTitle)
+                    Text(model.actionTitle.i18n)
                         .font(.custom("Roboto-Bold", size: 16))
                     Spacer()
                 }

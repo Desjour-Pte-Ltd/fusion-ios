@@ -52,7 +52,7 @@ struct CheckoutView: View {
         VStack(spacing: 0) {
             ScrollView {
                 HStack {
-                    Text("\(viewModel.quantity) Items")
+                    Text("checkout_items_counts".i18n(with: viewModel.quantity.toString))
                         .font(.custom("Poppins-Bold", size: 20))
                     Spacer()
                 }
@@ -81,7 +81,7 @@ struct CheckoutView: View {
                                 Text(element.packageDetails?.productSummary)
                                     .foregroundStyle(Color.text.black80)
                                     .font(.custom("Poppins-Medium", size: 12))
-                                Text("1 Unit - \(element.pricePerItemString(currencyCode: cart.currencyCode))")
+                                Text("checkout_item_unit_price".i18n(with: element.pricePerItemString(currencyCode: cart.currencyCode)))
                                     .foregroundStyle(Color.text.black80)
                                     .font(.custom("Poppins-Medium", size: 12))
                                 Spacer()
@@ -141,7 +141,7 @@ struct CheckoutView: View {
                 .padding(.horizontal, 16)
                 .padding(.bottom, 16)
                 VStack(alignment: .leading) {
-                    Text("Order summary")
+                    Text("checkout_order_summary_title".i18n)
                         .font(.custom("Poppins-Bold", size: 16))
                         .padding(.bottom, 16)
                     //                    HStack {
@@ -168,7 +168,7 @@ struct CheckoutView: View {
                     //                        )
                     //                    }
                     //                    .padding(.bottom, 24)
-                    SummaryRow(title: "Subtotal", price: viewModel.cartTotal, currency: cart.currencyCode, blinking: cart.inProgress)
+                    SummaryRow(title: "checkout_order_summary_price_before_fees", price: viewModel.cartTotal, currency: cart.currencyCode, blinking: cart.inProgress)
                         .padding(.bottom, 4)
                     if let fees = cart.fees {
                         ForEach(fees.indices, id: \.self) { index in
@@ -184,7 +184,7 @@ struct CheckoutView: View {
                         .fill(.black.opacity(0.05))
                         .frame(height: 1)
                         .padding(.bottom, 8)
-                    SummaryRow(title: "Total",
+                    SummaryRow(title: "checkout_order_summary_total_price",
                                price: viewModel.finalTotal,
                                allBold: true,
                                currency: cart.currencyCode,
@@ -204,7 +204,7 @@ struct CheckoutView: View {
                         showPaymentSheet = true
                     } label: {
                         HStack {
-                            Text("Proceed to payment")
+                            Text("checkout_proceed_cta".i18n)
                                 .font(.custom("Roboto-Bold", size: 16))
                         }
                         .foregroundStyle(Color.background.white)
@@ -219,7 +219,7 @@ struct CheckoutView: View {
                 } else {
                     Button {} label: {
                         HStack {
-                            Text("Proceed to payment")
+                            Text("checkout_proceed_cta".i18n)
                                 .font(.custom("Roboto-Bold", size: 16))
                         }
                         .foregroundStyle(Color.background.white)
@@ -239,9 +239,9 @@ struct CheckoutView: View {
     
     var successUI: some View {
         StateView(image: .success,
-                  title: "Payment success",
-                  description: "Items have been added to your purchases",
-                  buttonTitle: "View my purchases") {
+                  title: "checkout_success_title",
+                  description: "checkout_success_message",
+                  buttonTitle: "checkout_success_cta") {
             cart.reset()
             dismiss()
             selectedTab.wrappedValue = .myWallet
@@ -250,9 +250,9 @@ struct CheckoutView: View {
     
     var emptyUI: some View {
         StateView(image: .success,
-                  title: "Your cart is empty",
-                  description: "Your cart is currently empty. Add a package to see the items here",
-                  buttonTitle: "Explore packages") {
+                  title: "checkout_empty_title",
+                  description: "checkout_empty_message",
+                  buttonTitle: "checkout_empty_cta") {
             if selectedTab.wrappedValue == .home {
                 navView.wrappedValue?.popToRootViewController(animated: true)
             } else {
@@ -270,9 +270,9 @@ struct CheckoutView: View {
     
     var failedPaymentUI: some View {
         StateView(image: .custom("cart-error"),
-                  title: "Transaction failed",
-                  description: "We are unable to complete the transaction, please try again.",
-                  buttonTitle: "Retry payment") {
+                  title: "checkout_failed_title",
+                  description: "checkout_failed_message",
+                  buttonTitle: "checkout_failed_cta") {
             try? await viewModel.prepareForPayment()
         }
     }
@@ -292,7 +292,7 @@ struct CheckoutView: View {
                 failedPaymentUI
             }
         }
-        .customNavigationTitle("Checkout")
+        .customNavigationTitle("checkout_title")
         .customNavigationBackButtonHidden(true)
         .customNavLeadingItem {
             Button {
@@ -341,7 +341,7 @@ struct SummaryRow: View {
     
     var body: some View {
         HStack {
-            Text(title)
+            Text(title.i18n)
                 .font(allBold ? .custom("Poppins-SemiBold", size: 18) : .custom("Poppins-Medium", size: 16))
                 .foregroundStyle(allBold ? Color.text.black100 : Color.text.black60)
             Spacer()
@@ -368,12 +368,5 @@ struct SummaryRow: View {
 #Preview {
     CustomNavView {
         CheckoutView()
-    }
-}
-
-
-extension Double {
-    func toPrice() -> String {
-        return "S$ \(self)"
     }
 }

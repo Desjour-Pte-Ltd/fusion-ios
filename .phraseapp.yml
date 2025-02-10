@@ -3,11 +3,14 @@ phraseapp:
   project_id: 48a73cde48ea57918dcf1414bf513822
   push:
     sources:
-    - file: ./<locale_code>.lproj/Localizable.strings
+    - file: ./Swee/Resources/en.lproj/Localizable.strings
       params:
         file_format: strings
+        locale_id: en-US
   pull:
     targets:
-    - file: ./<locale_code>.lproj/Localizable.strings
+    - file: ./Swee/Resources/en.lproj/Localizable.strings
       params:
         file_format: strings
+        locale_id: en-US
+        format_options: { convert_placeholder: true }

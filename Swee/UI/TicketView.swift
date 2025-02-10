@@ -53,10 +53,10 @@ struct TicketView: View {
                     }
                     .addInnerShadow()
                     VStack {
-                        Text("Valid until  ")
+                        Text("purchased_valid_until")
                             .font(.custom("Poppins-SemiBold", size: 12))
                             .foregroundColor(.white.opacity(0.5)) +
-                        Text("\(ticket.expirationDate.formatted(date: .abbreviated, time: .omitted))")
+                        Text("  \(ticket.expirationDate.formatted(date: .abbreviated, time: .omitted))")
                             .font(.custom("Poppins-SemiBold", size: 12))
                             .foregroundColor(.white.opacity(0.86))
                     }

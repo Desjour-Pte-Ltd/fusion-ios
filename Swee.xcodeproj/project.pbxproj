@@ -133,6 +133,8 @@
 		AF8423C42CB7C7400087497A /* ChildCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8423C32CB7C7400087497A /* ChildCard.swift */; };
 		AF8423C62CB8D4160087497A /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8423C52CB8D4160087497A /* Session.swift */; };
 		AF8B1E182C8729B600B44D75 /* ZoomoovRedemptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8B1E172C8729B600B44D75 /* ZoomoovRedemptionView.swift */; };
+		AF8C6F3A2D537B1D002A1A3A /* Localizable.strings in Sources */ = {isa = PBXBuildFile; fileRef = AF8C6F392D537B1D002A1A3A /* Localizable.strings */; };
+		AF8C6F3B2D537B1D002A1A3A /* Localizable.strings in Sources */ = {isa = PBXBuildFile; fileRef = AF8C6F392D537B1D002A1A3A /* Localizable.strings */; };
 		AF8FB96E2CBE50A900B3B21C /* EditEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8FB96D2CBE50A900B3B21C /* EditEmailView.swift */; };
 		AF8FB9702CBE5C5F00B3B21C /* EditDOBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8FB96F2CBE5C5F00B3B21C /* EditDOBView.swift */; };
 		AF8FB9722CBE61DB00B3B21C /* EditGenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8FB9712CBE61DB00B3B21C /* EditGenderView.swift */; };
@@ -319,6 +321,8 @@
 		AFD6F0812CB4D3F0004424E5 /* RedemptionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD6F0802CB4D3F0004424E5 /* RedemptionDetail.swift */; };
 		AFD6F5C52D36757F0015B536 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = AFD6F5C42D36757F0015B536 /* FirebaseAnalytics */; };
 		AFDB2B522C9131AC00BA75DA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDB2B512C9131AC00BA75DA /* ProfileView.swift */; };
+		AFDB567D2D575C230094985B /* Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDB567C2D575C230094985B /* Numeric.swift */; };
+		AFDB567E2D575C230094985B /* Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDB567C2D575C230094985B /* Numeric.swift */; };
 		AFDB90452C8EA256008931DB /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDB90442C8EA256008931DB /* TimeInterval.swift */; };
 		AFDB90482C8EDE43008931DB /* CustomNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDB90472C8EDE42008931DB /* CustomNavBarView.swift */; };
 		AFDB904A2C8EE077008931DB /* CustomNavBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDB90492C8EE077008931DB /* CustomNavBarContainerView.swift */; };
@@ -456,6 +460,10 @@
 		AF8423C32CB7C7400087497A /* ChildCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCard.swift; sourceTree = "<group>"; };
 		AF8423C52CB8D4160087497A /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		AF8B1E172C8729B600B44D75 /* ZoomoovRedemptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomoovRedemptionView.swift; sourceTree = "<group>"; };
+		AF8C6F2F2D5379C1002A1A3A /* fil-PH */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fil-PH"; path = "fil-PH.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		AF8C6F312D5379CB002A1A3A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		AF8C6F382D537B1D002A1A3A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AF8C6F3C2D537B1E002A1A3A /* fil-PH */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fil-PH"; path = "fil-PH.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		AF8FB96D2CBE50A900B3B21C /* EditEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEmailView.swift; sourceTree = "<group>"; };
 		AF8FB96F2CBE5C5F00B3B21C /* EditDOBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDOBView.swift; sourceTree = "<group>"; };
 		AF8FB9712CBE61DB00B3B21C /* EditGenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGenderView.swift; sourceTree = "<group>"; };
@@ -481,6 +489,7 @@
 		AFD6F07E2CB4D3DE004424E5 /* RedemptionDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedemptionDetailModel.swift; sourceTree = "<group>"; };
 		AFD6F0802CB4D3F0004424E5 /* RedemptionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedemptionDetail.swift; sourceTree = "<group>"; };
 		AFDB2B512C9131AC00BA75DA /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		AFDB567C2D575C230094985B /* Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numeric.swift; sourceTree = "<group>"; };
 		AFDB90442C8EA256008931DB /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		AFDB90472C8EDE42008931DB /* CustomNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarView.swift; sourceTree = "<group>"; };
 		AFDB90492C8EE077008931DB /* CustomNavBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarContainerView.swift; sourceTree = "<group>"; };
@@ -805,6 +814,7 @@
 				AFCEC5B92C7ACEB000D157BE /* UIApplication.swift */,
 				AFDF67FA2C7F576B00489D0C /* ObservableWrapper.swift */,
 				AF82A4622C819B8500E0DD4C /* String.swift */,
+				AFDB567C2D575C230094985B /* Numeric.swift */,
 				AFDB90442C8EA256008931DB /* TimeInterval.swift */,
 			);
 			path = Helpers;
@@ -813,6 +823,7 @@
 		AF8022302C785E61001274FA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AF8C6F392D537B1D002A1A3A /* Localizable.strings */,
 				AF8022312C785E6A001274FA /* Fonts */,
 			);
 			path = Resources;
@@ -1047,6 +1058,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"fil-PH",
 			);
 			mainGroup = AF170AF42C71C02900544970;
 			packageReferences = (
@@ -1266,6 +1278,7 @@
 				AF501F312C96B56D00637042 /* SplashView.swift in Sources */,
 				AFDF67FB2C7F576C00489D0C /* ObservableWrapper.swift in Sources */,
 				AF9AC5682C894D5700B16186 /* JollyfieldRedemptionView.swift in Sources */,
+				AFDB567E2D575C230094985B /* Numeric.swift in Sources */,
 				AF7DF73B2C79F2B100C3F347 /* TestView.swift in Sources */,
 				AF13C8572CAF98EF00496B0C /* ZoomoovBottomSheet.swift in Sources */,
 				AF8B1E182C8729B600B44D75 /* ZoomoovRedemptionView.swift in Sources */,
@@ -1334,6 +1347,7 @@
 				AF13C85F2CAFCB2900496B0C /* WalletMerchant.swift in Sources */,
 				AF557FC82C79AAC700AD99A5 /* SweeApp.swift in Sources */,
 				AF69BC082CB649B400E87E2B /* SessionModel.swift in Sources */,
+				AF8C6F3A2D537B1D002A1A3A /* Localizable.strings in Sources */,
 				AFD6F07F2CB4D3DE004424E5 /* RedemptionDetailModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1391,6 +1405,7 @@
 				AFB830822D0057FE00DB94C2 /* SplashView.swift in Sources */,
 				AFB830832D0057FE00DB94C2 /* ObservableWrapper.swift in Sources */,
 				AFB830842D0057FE00DB94C2 /* JollyfieldRedemptionView.swift in Sources */,
+				AFDB567D2D575C230094985B /* Numeric.swift in Sources */,
 				AFB830852D0057FE00DB94C2 /* TestView.swift in Sources */,
 				AFB830862D0057FE00DB94C2 /* ZoomoovBottomSheet.swift in Sources */,
 				AFB830872D0057FE00DB94C2 /* ZoomoovRedemptionView.swift in Sources */,
@@ -1459,6 +1474,7 @@
 				AFB830C62D0057FE00DB94C2 /* WalletMerchant.swift in Sources */,
 				AFB830C72D0057FE00DB94C2 /* SweeApp.swift in Sources */,
 				AFB830C82D0057FE00DB94C2 /* SessionModel.swift in Sources */,
+				AF8C6F3B2D537B1D002A1A3A /* Localizable.strings in Sources */,
 				AFB830C92D0057FE00DB94C2 /* RedemptionDetailModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1470,8 +1486,19 @@
 			isa = PBXVariantGroup;
 			children = (
 				AF170B0C2C71C02B00544970 /* Base */,
+				AF8C6F2F2D5379C1002A1A3A /* fil-PH */,
+				AF8C6F312D5379CB002A1A3A /* en */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		AF8C6F392D537B1D002A1A3A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF8C6F382D537B1D002A1A3A /* en */,
+				AF8C6F3C2D537B1E002A1A3A /* fil-PH */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1482,6 +1509,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1536,6 +1564,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1545,6 +1574,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1592,6 +1622,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

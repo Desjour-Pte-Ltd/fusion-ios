@@ -17,7 +17,7 @@ struct ChildCard: View {
             } label: {
                 HStack {
                     Spacer()
-                    Text(isSelected ? "Time \(sessionOngoing ? "remaining" : "alotted") : \(alottedTime.toString()) Hr" : "Select child")
+                    Text(isSelected ? "Time \(sessionOngoing ? "remaining" : "alotted") : \(alottedTime.toString()) Hr" : "redemption_select_child_cta")
                         .font(.custom("Poppins-SemiBold", size: 16))
                         .foregroundStyle(isSelected ? Color.primary.dark : Color.text.black100)
                     Spacer()

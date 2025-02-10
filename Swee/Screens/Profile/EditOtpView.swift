@@ -11,7 +11,7 @@ struct EditOtpView: View {
     var body: some View {
         VStack {
             VStack {
-                Text("Enter OTP")
+                Text("user_onboarding_verification_subtitle")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.custom("Poppins-Medium", size: 16))
                 
@@ -74,7 +74,7 @@ struct EditOtpView: View {
             .buttonStyle(PrimaryButton())
         }
         .padding()
-        .customNavigationTitle("Verification")
+        .customNavigationTitle("profile_info_verification_title")
     }
 }
 

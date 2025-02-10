@@ -49,7 +49,7 @@ struct ZoomoovRedemptionSetupView: View {
             Text("\(model.merchant) \(model.type)")
                 .font(.custom("Poppins-SemiBold", size: 24))
             HStack {
-                Text("\(model.type.capitalized) quantity")
+                Text("redemption_coupon_set_qty".i18n(with: model.type.capitalized))
                     .font(.custom("Poppins-Medium", size: 16))
                     .foregroundStyle(Color.text.black60)
                 Spacer()
@@ -90,7 +90,7 @@ struct ZoomoovRedemptionSetupView: View {
                 .foregroundStyle(Color.background.pale))
             
             VStack(alignment: .leading) {
-                Text("Note:")
+                Text("redemption_set_qty_note_title")
                     .font(.custom("Poppins-Bold", size: 18))
                     .foregroundStyle(Color.text.black100)
                 if let disclaimer = model.disclaimer {
@@ -108,7 +108,7 @@ struct ZoomoovRedemptionSetupView: View {
                 try? await closure()
             } label: {
                 HStack {
-                    Text("Redeem now")
+                    Text("redemption_set_qty_cta")
                         .font(.custom("Roboto-Bold", size: 16))
                 }
             }

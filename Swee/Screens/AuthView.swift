@@ -66,17 +66,17 @@ struct AuthView: View {
                         PhoneLinkingView()
                     } label: { }
                     Spacer()
-                    Text("Enter your phone number")
+                    Text("user_onboarding_phone_input_title")
                         .font(.custom("Poppins-SemiBold", size: 24))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.bottom, 8)
-                    Text("Logging in with an unregistered phone number will automatically create a new Green account.")
+                    Text("user_onboarding_phone_input_description")
                         .font(.custom("Poppins-Regular", size: 14))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundStyle(Color.text.black60)
                         .padding(.bottom, 32)
                     VStack {
-                        Text("Your Phone number")
+                        Text("user_onboarding_phone_input_subtitle")
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .font(.custom("Poppins-Medium", size: 16))
                             .foregroundStyle(errorMessage != nil ? .red : Color.text.black100)
@@ -93,7 +93,7 @@ struct AuthView: View {
                             .overlay(RoundedRectangle(cornerRadius: 12)
                                 .stroke(codeFieldActive ? Color.text.black100 : Color(hex: "#E7EAEB"),
                                         lineWidth: 1))
-                            TextField("Phone number", text: $phone) {
+                            TextField("profile_info_phone_number", text: $phone) {
                                 UIApplication.shared.endEditing()
                             }
                             .keyboardType(.numberPad)
@@ -112,7 +112,7 @@ struct AuthView: View {
                                 ToolbarItemGroup(placement: .keyboard) {
                                     HStack {
                                         Spacer()
-                                        Button("Done") {
+                                        Button("cta_done") {
                                             isPhoneFocused = false
                                         }
                                         .foregroundStyle(Color.primary.brand)
@@ -122,7 +122,7 @@ struct AuthView: View {
                             }
                         }
                         if errorMessage != nil {
-                            Text(errorMessage)
+                            Text(errorMessage?.i18n ?? "")
                                 .font(.custom("Poppins-Regular", size: 12))
                                 .foregroundStyle(.red)
                         }
@@ -140,15 +140,15 @@ struct AuthView: View {
                             print("verificationID ====", verificationId)
                         case .failure(let error):
                             if case .incorrectPhone = error {
-                                errorMessage = "Check your phone number"
+                                errorMessage = "user_onboarding_verification_otp_user_invalid"
                             } else {
                                  track(error)
-                                errorMessage = "Something went wrong. Please try again"
+                                errorMessage = "error_generic"
                             }
                             print(error.localizedDescription)
                         }
                     } label: {
-                        Text("Verify")
+                        Text("user_onboarding_phone_input_cta")
                             .frame(maxWidth: .infinity)
                             .font(.custom("Roboto-Bold", size: 16))
                         
@@ -161,7 +161,7 @@ struct AuthView: View {
                         Rectangle()
                             .fill(Color.text.black20)
                             .frame(height: 1)
-                        Text("Or continue with")
+                        Text("user_onboarding_social_login_divider_message")
                             .foregroundStyle(Color.black.opacity(0.7))
                             .font(.custom("Poppins-Regular", size: 14))
                             .layoutPriority(1)
@@ -247,7 +247,7 @@ struct AuthView: View {
                         } label: {
                             HStack {
                                 Image("google")
-                                Text("Google")
+                                Text("user_onboarding_social_login_cta")
                             }
                             .frame(maxWidth: .infinity)
                         }

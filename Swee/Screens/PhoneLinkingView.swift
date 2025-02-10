@@ -55,17 +55,17 @@ struct PhoneLinkingView: View {
                         
                     }
                     Spacer()
-                    Text("Enter your phone number")
+                    Text("user_onboarding_phone_input_title")
                         .font(.custom("Poppins-SemiBold", size: 24))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.bottom, 8)
-                    Text("Logging in with an unregistered phone number will automatically create a new Green account.")
+                    Text("user_onboarding_phone_input_description")
                         .font(.custom("Poppins-Regular", size: 14))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundStyle(Color.text.black60)
                         .padding(.bottom, 32)
                     VStack {
-                        Text("Your Phone number")
+                        Text("user_onboarding_phone_input_subtitle")
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .font(.custom("Poppins-Medium", size: 16))
                             .foregroundStyle(errorMessage != nil ? .red : Color.text.black100)
@@ -82,7 +82,7 @@ struct PhoneLinkingView: View {
                             .overlay(RoundedRectangle(cornerRadius: 12)
                                 .stroke(codeFieldActive ? Color.text.black100 : Color(hex: "#E7EAEB"),
                                         lineWidth: 1))
-                            TextField("Phone number", text: $phone) {
+                            TextField("user_onboarding_phone_input_hint", text: $phone) {
                                 UIApplication.shared.endEditing()
                             }
                             .keyboardType(.numberPad)
@@ -111,7 +111,7 @@ struct PhoneLinkingView: View {
                                 ToolbarItemGroup(placement: .keyboard) {
                                     HStack {
                                         Spacer()
-                                        Button("Done") {
+                                        Button("cta_done") {
                                             isPhoneFocused = false
                                         }
                                         .foregroundStyle(Color.primary.brand)
@@ -121,7 +121,7 @@ struct PhoneLinkingView: View {
                             }
                         }
                         if errorMessage != nil {
-                            Text(errorMessage)
+                            Text(errorMessage?.i18n ?? "")
                                 .font(.custom("Poppins-Regular", size: 12))
                                 .foregroundStyle(.red)
                         }
@@ -137,9 +137,9 @@ struct PhoneLinkingView: View {
                             print("verificationID ====", verificationId)
                         case .failure(let error):
                             if case .incorrectPhone = error {
-                                errorMessage = "Check your phone number"
+                                errorMessage = "user_onboarding_verification_otp_user_invalid"
                             } else {
-                                errorMessage = "Something went wrong. Please try again"
+                                errorMessage = "error_generic"
                             }
                             print(error.localizedDescription)
                         }

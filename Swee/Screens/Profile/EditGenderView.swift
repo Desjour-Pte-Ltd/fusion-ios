@@ -8,7 +8,7 @@ struct EditGenderView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Gender")
+            Text("profile_settings_gender")
                 .font(.custom("Poppins-Medium", size: 16))
                 .foregroundStyle(Color.text.black80)
             Menu {
@@ -21,7 +21,7 @@ struct EditGenderView: View {
                 }
             } label: {
                 HStack {
-                    Text(gender != nil ? "\(gender!.toString)" : "Select")
+                    Text(gender != nil ? "\(gender!.toString)" : "select")
                         .font(.custom("Poppins-Medium", size: gender != nil ? 16 : 14))
                         .foregroundStyle(gender != nil ? Color.text.black80 : Color.text.black60)
                     Spacer()
@@ -53,7 +53,7 @@ struct EditGenderView: View {
             .buttonStyle(PrimaryButton())
         }
         .padding()
-        .customNavigationTitle("Gender")
+        .customNavigationTitle("profile_settings_gender")
         .onAppear(perform: {
             tabIsShown.wrappedValue = false
         })

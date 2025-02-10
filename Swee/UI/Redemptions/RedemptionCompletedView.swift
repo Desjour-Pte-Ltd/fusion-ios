@@ -13,7 +13,7 @@ struct RedemptionCompletedView: View {
     
     var body: some View {
         VStack {
-            Text(model.header)
+            Text(model.header.i18n)
                 .font(.custom("Poppins-SemiBold", size: 24))
                 .foregroundStyle(Color.text.black100)
                 .padding(.bottom, 32)
@@ -21,17 +21,22 @@ struct RedemptionCompletedView: View {
                 .resizable()
                 .scaledToFill()
                 .frame(width: 164, height: 136)
-            Text(model.title)
+            Text(model.title.i18n)
                 .font(.custom("Poppins-SemiBold", size: 20))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 39)
                 .foregroundStyle(Color.text.black100)
+            Text(model.description.i18n)
+                .font(.custom("Poppins-SemiBold", size: 16))
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 39)
+                .foregroundStyle(Color.text.black60)
             Button {
                 closure?()
             } label: {
                 HStack {
                     Spacer()
-                    Text(model.actionTitle)
+                    Text(model.actionTitle.i18n)
                         .font(.custom("Roboto-Bold", size: 16))
                     Spacer()
                 }

@@ -46,13 +46,13 @@ struct ActivityView: View {
         VStack(spacing: 0) {
             Spacer()
             Image("empty-activity")
-            Text("It's empty here")
+            Text("my_activity_empty_title")
                 .font(.custom("Poppins-SemiBold", size: 24))
                 .padding(.horizontal, 44)
                 .foregroundStyle(Color.text.black100)
                 .multilineTextAlignment(.center)
                 .padding(.top, 24)
-            Text(description)
+            Text(description.i18n)
                 .font(.custom("Poppins-Regular", size: 14))
                 .padding(.horizontal, 44)
                 .foregroundStyle(Color.text.black60)
@@ -63,7 +63,7 @@ struct ActivityView: View {
                 currentTab.wrappedValue = .home
             } label: {
                 HStack {
-                    Text("Start Exploring")
+                    Text("my_activity_empty_cta")
                         .font(.custom("Roboto-Bold", size: 16))
                 }
                 .foregroundStyle(Color.background.white)
@@ -103,7 +103,7 @@ struct ActivityView: View {
                         Button {
                             tab = .Purchased
                         } label: {
-                            Text("Purchased")
+                            Text("my_activity_tab_purchased")
                                 .frame(maxWidth: .infinity)
                                 .font(.custom(tab == .Purchased ? "Poppins-Bold" : "Poppins-Medium", size: 14))
                                 .foregroundStyle(.white)
@@ -113,7 +113,7 @@ struct ActivityView: View {
                         Button {
                             tab = .Redeemed
                         } label: {
-                            Text("Redeemed")
+                            Text("my_activity_tab_redeemed")
                                 .frame(maxWidth: .infinity)
                                 .font(.custom(tab == .Redeemed ? "Poppins-Bold" : "Poppins-Medium", size: 14))
                                 .foregroundStyle(.white)
@@ -186,7 +186,7 @@ struct ActivityView: View {
                 Rectangle()
                     .fill(Color.text.black10)
                     .frame(height: 1)
-                Text("End of Actvity".uppercased())
+                Text("my_activity_tab_end_divider")
                     .font(.custom("Poppins-Medium", size: 10))
                     .foregroundStyle(Color.text.black40)
                 Rectangle()
@@ -209,7 +209,7 @@ struct ActivityView: View {
             } else if !noData {
               mainUI
             } else {
-               emptyUI(description: "You have not made any actions yet")
+                emptyUI(description: "my_activity_empty_description")
             }
         }
         .onAppear(perform: {
@@ -219,7 +219,7 @@ struct ActivityView: View {
             }
             tabIsShown.wrappedValue = false
         })
-        .customNavigationTitle("My Activity")
+        .customNavigationTitle("my_activity_title")
         .customNavTrailingItem {
             if noData {
                 CartButton()
@@ -274,17 +274,17 @@ enum DateFilter: Int, CaseIterable {
     func toString() -> String {
         switch self {
         case .Anytime:
-            return "Anytime"
+            return "my_activity_filter_anytime"
         case .ThisWeek:
-            return "This Week"
+            return "my_activity_filter_this_week"
         case .Past30Days:
-            return "Past 30 days"
+            return "my_activity_filter_past_30_days"
         case .Past90Days:
-            return "Past 90 days"
+            return "my_activity_filter_past_90_days"
         case .Past6Months:
-            return "Past 6 months"
+            return "my_activity_filter_past_6_months"
         case .PastYear:
-            return "Past year"
+            return "my_activity_filter_past_year"
         }
     }
     
@@ -314,13 +314,13 @@ struct FiltersView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Filter")
+                Text("my_activity_filter_title")
                     .font(.custom("Poppins-SemiBold", size: 24))
                 Spacer()
                 Button {
                     onFiltersChange(dateFilter)
                 } label: {
-                    Text("Apply")
+                    Text("cta_apply")
                         .font(.custom("Poppins-Medium", size: 16))
                         .foregroundStyle(Color.primary.brand)
                 }
@@ -333,7 +333,7 @@ struct FiltersView: View {
                 .padding(.bottom)
                 .padding([.leading, .trailing], -20)
             VStack(spacing: 8) {
-                Text("By Date")
+                Text("my_activity_filter_by_date")
                     .font(.custom("Poppins-SemiBold", size: 16))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 VStack(spacing: 2) {
@@ -359,7 +359,7 @@ struct FilterRow: View {
             onTapClosure()
         } label: {
             HStack {
-                Text(title)
+                Text(title.i18n)
                     .font(.custom("Poppins-Medium", size: 14))
                     .foregroundStyle(selected ? Color.primary.brand : Color.text.black60)
                 Spacer()
@@ -421,9 +421,9 @@ struct PurchaseRow: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(purchase.merchantName)
                         .font(.custom("Poppins-SemiBold", size: 14))
-                    Text("\(purchase.quantity) items")
+                    Text("my_activity_number_of_items".i18n(with: purchase.quantity.toString))
                         .font(.custom("Poppins-SemiBold", size: 12))
-                    Text("\(purchase.type.toString) | \(purchase.createdAt.formatted(date: .omitted, time: .shortened))")
+                    Text("\(purchase.type.toString.i18n) | \(purchase.createdAt.formatted(date: .omitted, time: .shortened))")
                         .font(.custom("Poppins-SemiBold", size: 10))
                         .foregroundStyle(Color.text.black40)
                 }
@@ -469,9 +469,9 @@ extension OrderType {
     var toString: String {
         switch self {
         case .online:
-            return "Online"
+            return "my_activity_mode_of_purchase_online"
         case .otc:
-            return "Over the counter"
+            return "my_activity_mode_of_purchase_counter"
         }
     }
 }

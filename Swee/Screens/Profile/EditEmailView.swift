@@ -13,10 +13,10 @@ struct EditEmailView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Enter Email ID")
+            Text("profile_settings_email_id_hint")
                 .font(.custom("Poppins-Medium", size: 16))
                 .foregroundStyle(Color.text.black80)
-            TextField("Enter Email ID", text: $email)
+            TextField("profile_settings_email_id_hint", text: $email)
                 .padding([.top, .bottom], 17)
                 .padding([.leading, .trailing], 14)
                 .focused($isKeyboardShowing)
