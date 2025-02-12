@@ -359,7 +359,7 @@ struct JollyfieldBottomSheet: View {
                     }
                 case .sessionEnded:
                     let remainingTime = session?.remainingTime ?? ""
-                    RedemptionCompletedView(model: .init(header: "", title: "redemption_scan_qr_to_end_session_success_message", description: "Remaining time left \(remainingTime) hr", actionTitle: "cta_okay")) {
+                    RedemptionCompletedView(model: .init(header: "", title: "redemption_scan_qr_to_end_session_success_message", description: "redemption_scan_qr_to_end_session_success_description".i18n(with: remainingTime), actionTitle: "cta_okay")) {
                         onComplete()
                         step = .qrStart
                     }

@@ -66,7 +66,7 @@ struct EditOtpView: View {
 //                    }
 //                }
             } label: {
-                Text("Confirm")
+                Text("cta_confirm")
                     .frame(maxWidth: .infinity)
                     .font(.custom("Roboto-Bold", size: 16))
             }

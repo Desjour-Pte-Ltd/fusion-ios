@@ -28,7 +28,7 @@ struct EditEmailView: View {
                     .stroke(emailFieldActive ? Color.primary.brand : Color(hex: "#E7EAEB"),
                             lineWidth: emailFieldActive ? 2 : 1))
             if showError {
-                Text("Check your email format")
+                Text("profile_settings_email_invalid")
                     .font(.custom("Poppins-Regular", size: 12))
                     .foregroundStyle(.red)
             }

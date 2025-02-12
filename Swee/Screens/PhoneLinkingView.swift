@@ -156,7 +156,7 @@ struct PhoneLinkingView: View {
                     Spacer()
                     Spacer()
                     HStack {
-                        Text(tosText("By continuing, you accept Green App's \n") + tosLink("Terms and Condition"))
+                        Text(tosText("ios_user_onboarding_tnc_1".i18n) + "\n" + tosLink("ios_user_onboarding_tnc_2".i18n))
                     }
                     .multilineTextAlignment(.center)
                     

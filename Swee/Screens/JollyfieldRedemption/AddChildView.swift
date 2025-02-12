@@ -61,7 +61,7 @@ struct AddChildView: View {
                             Button {
                                 viewModel.children.append(.init(name: ""))
                             } label: {
-                                Text("Add another child")
+                                Text("profile_add_another_child")
                                     .font(.custom("Roboto-Bold", size: 16))
                                     .foregroundStyle(LinearGradient(colors: Color.gradient.primary, startPoint: .topLeading, endPoint: .bottomTrailing))
                                     .frame(maxWidth: .infinity)

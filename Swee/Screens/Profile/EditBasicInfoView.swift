@@ -93,12 +93,12 @@ struct EditBasicInfoView: View {
             .padding()
         }
         .confirmationDialog("", isPresented: $showSelectionSheet, titleVisibility: .hidden) {
-            Button("Photo Album") {
+            Button("profile_add_photo_album") {
                 sourceType = .photoLibrary
                 showSheet = true
             }
             
-            Button("Camera") {
+            Button("profile_add_photo_camera") {
                 sourceType = .camera
                 showSheet = true
             }

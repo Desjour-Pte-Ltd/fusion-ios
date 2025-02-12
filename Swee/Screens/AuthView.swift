@@ -258,7 +258,7 @@ struct AuthView: View {
                     Spacer()
                     Spacer()
                     HStack {
-                        Text(tosText("By continuing, you accept Green App's \n") + tosLink("Terms and Condition"))
+                        Text(tosText("ios_user_onboarding_tnc_1".i18n) + "\n" + tosLink("ios_user_onboarding_tnc_2".i18n))
                     }
                     .multilineTextAlignment(.center)
                     
@@ -267,9 +267,9 @@ struct AuthView: View {
                 .ignoresSafeArea(.keyboard)
                 .navigationBarBackButtonHidden(true)
                 .alert(isPresented: $showAlert) {
-                    Alert(title: Text("Social login failed"), 
-                          message: Text("Please try again"),
-                          dismissButton: .default(Text("OK")))
+                    Alert(title: Text("user_onboarding_social_login_failed_title"),
+                          message: Text("user_onboarding_social_login_failed_message"),
+                          dismissButton: .default(Text("cta_okay")))
                         }
             }
             .navigationBarTitle("")

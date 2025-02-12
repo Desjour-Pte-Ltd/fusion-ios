@@ -104,7 +104,7 @@ struct MerchantPageView: View {
                                         Button(action: {
                                             isExpanded.toggle()
                                         }) {
-                                            Text(isExpanded ? "see less".underline(font: .custom("Roboto-Medium", size: 16), color: Color.primary.brand) : "see_more".i18n.underline(font: .custom("Roboto-Medium", size: 16), color: Color.primary.brand))
+                                            Text(isExpanded ? "see_less".i18n.underline(font: .custom("Roboto-Medium", size: 16), color: Color.primary.brand) : "see_more".i18n.underline(font: .custom("Roboto-Medium", size: 16), color: Color.primary.brand))
                                                 .padding(.leading, 8.0)
                                                 .shadow(color: Color.background.pale, radius: 4, x: -8)
                                         }

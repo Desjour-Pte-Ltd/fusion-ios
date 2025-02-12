@@ -34,7 +34,7 @@ class API: ObservableObject {
                     let token = try await Authentication().reauthenticate()
                     return try await self.signIn(with: token)
                 } catch {
-                    throw LocalError(message: "Failed to reauthenticate")
+                    throw LocalError(message: "api_error_reauthentication".i18n)
                 }
             }
             

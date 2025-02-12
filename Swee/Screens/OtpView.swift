@@ -110,7 +110,7 @@ struct OtpView: View {
                         if case .wrongCode = phoneError {
                             errorMessage = "user_onboarding_verification_otp_error_invalid"
                         } else if case .numberIsTaken = phoneError {
-                            errorMessage = "This phone number is registered to another account"
+                            errorMessage = "user_onboarding_verification_otp_phone_taken"
                         } else {
                             errorMessage = "error_generic"
                         }

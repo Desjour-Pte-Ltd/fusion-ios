@@ -6,13 +6,13 @@ struct ContentErrorView: View {
     var body: some View {
         VStack {
             Image("refresh")
-            Text("Unable to load content")
+            Text("api_error_loading_content_failed")
                 .font(.custom("Poppins-SemiBold", size: 16))
                 .foregroundStyle(Color.text.black80)
             AsyncButton(progressTint: .black) {
                 await retry()
             } label: {
-                Text("Retry")
+                Text("cta_retry")
                     .font(.custom("Poppins-Bold", size: 16))
                     .foregroundStyle(Color.primary.brand)
             }

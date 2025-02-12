@@ -7,9 +7,9 @@ enum ActivityTab {
     var emptyDescription: String {
         switch self {
         case .Purchased:
-            "You have not made any purchases yet"
+            "my_activity_empty_purchases_description"
         case .Redeemed:
-            "You have not redeemed anything yet"
+            "my_activity_empty_redemptions_description"
         }
     }
 }
