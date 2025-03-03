@@ -1,7 +1,461 @@
-//
-//  Localizable.swift
-//  Swee
-//
-//  Created by Serghei on 05.02.2025.
-//
+"add_to_cart_cta" = "Add to cart";
 
+"alerts_empty_description" = "Your notifications will show up as you use the app. Watch this space!";
+
+"alerts_empty_title" = "No Alerts Yet";
+
+"alerts_mark_all_as_read_cta" = "Mark all as read";
+
+/* Alerts */
+"alerts_title" = "Alerts";
+
+"all_activities_cta" = "All activity PHIL";
+
+"app_name" = "Green";
+
+"app_onboarding_edu_description_1" = "Pay less and get more when buying ZOOMOOV products through Green App";
+
+"app_onboarding_edu_description_2" = "Easily monitor your purchases and balance, all in one place";
+
+"app_onboarding_edu_description_3" = "Get one free ride when referring a friend to download Green App (T&C's apply)";
+
+"app_onboarding_edu_title_1" = "Cheaper rides";
+
+"app_onboarding_edu_title_2" = "Track Playtime";
+
+"app_onboarding_edu_title_3" = "Refer to get rewarded";
+
+"bottom_nav_active_session_label" = "In Progress";
+
+"bottom_nav_active_session_total_package_left" = "Total package left:";
+
+"bottom_nav_active_session_total_package_passed" = "%@ passed";
+
+"bottom_nav_alerts" = "Alerts";
+
+/* Logged in (Main) */
+"bottom_nav_home" = "Home";
+
+"bottom_nav_profile" = "Profile";
+
+"bottom_nav_wallet" = "My Wallet";
+
+"checkout_empty_cta" = "Explore packages";
+
+"checkout_empty_message" = "Your cart is currently empty. Add a package to see the items here";
+
+"checkout_empty_title" = "Your cart is empty";
+
+"checkout_failed_cta" = "Retry payment";
+
+"checkout_failed_message" = "We are unable to complete the transaction, please try again.";
+
+"checkout_failed_title" = "Transaction failed";
+
+"checkout_item_unit_price" = "1 unit - %@";
+
+"checkout_items_counts" = "%@ Items";
+
+"checkout_order_coupon_code_hint" = "Enter coupon code";
+
+"checkout_order_summary_price_before_fees" = "Total amount";
+
+"checkout_order_summary_title" = "Order Summary";
+
+"checkout_order_summary_total_price" = "Total";
+
+"checkout_proceed_cta" = "Proceed to payment";
+
+"checkout_success_cta" = "View my purchases";
+
+"checkout_success_message" = "Items have been added to your purchases";
+
+"checkout_success_title" = "Payment successful";
+
+/* Checkout */
+"checkout_title" = "Checkout";
+
+"complete_profile_description" = "Fill up a few missing steps to win exciting rewards";
+
+/* Profile */
+"complete_profile_title" = "Complete your profile";
+
+"completed_profile_description" = "You have successfully completed your profile";
+
+"completed_profile_title" = "Congratulations!";
+
+"cta_apply" = "Apply";
+
+"cta_retry" = "Retry";
+
+/* CTA Buttons */
+"cta_complete" = "Complete";
+
+"cta_done" = "Done";
+
+/* App Onboarding */
+"cta_get_started" = "Get started";
+
+"cta_help" = "Help";
+
+"cta_next" = "Next";
+
+"cta_okay" = "Okay";
+
+"cta_prev" = "Prev";
+
+"cta_refresh" = "Refresh";
+
+"cta_save" = "Save";
+
+"cta_see_all" = "See all";
+
+/* Components */
+"cta_share" = "Share";
+
+"cta_skip" = "Skip";
+
+"cta_confirm" = "Confirm";
+
+"error_cta" = "Try again";
+
+/* Error State */
+"error_generic" = "Something went wrong";
+
+"error_generic_description" = "Sorry, We can't find the page you're looking for";
+
+"error_generic_home" = "We are unable to load the content, please try to reload the page";
+
+"error_home_cta" = "Reload";
+
+"error_network" = "No internet!";
+
+"error_network_description" = "Couldn't connect to internet, please check your network settings connect to internet, please check your network settings";
+
+"hide" = "hide";
+
+"merchant_nearby_locations_title" = "Nearby location";
+
+/* Merchant Details */
+"merchant_packages_title" = "Package just for you";
+
+"merchant_store_locations_title" = "%@ location(s)";
+
+"my_activity_empty_cta" = "Start exploring";
+
+"my_activity_empty_cta_reset_filters" = "Reset filters";
+
+"my_activity_empty_purchases_description" = "You have not made any purchases yet";
+
+"my_activity_empty_redemptions_description" = "You have not redeemed anything yet";
+
+"my_activity_empty_description" = "You have not made any purchases or redemptions yet";
+
+"my_activity_empty_purchases_description_filter" = "No purchases to show for the date range selected";
+
+"my_activity_empty_redemptions_description_filter" = "No redemptions to show for the date range selected";
+
+"my_activity_empty_title" = "It's empty here";
+
+"my_activity_filter_anytime" = "Anytime";
+
+"my_activity_filter_by_date" = "By date";
+
+"my_activity_filter_past_30_days" = "Past 30 days";
+
+"my_activity_filter_past_6_months" = "Past 6 months";
+
+"my_activity_filter_past_90_days" = "Past 90 days";
+
+"my_activity_filter_past_year" = "Past year";
+
+"my_activity_filter_this_week" = "This week";
+
+"my_activity_filter_title" = "Filter";
+
+"my_activity_mode_of_purchase_counter" = "Over the counter";
+
+"my_activity_mode_of_purchase_online" = "Online";
+
+"my_activity_number_of_items" = "%@ items";
+
+"my_activity_tab_end_divider" = "END OF ACTIVITY";
+
+"my_activity_tab_purchased" = "Purchased";
+
+"my_activity_tab_redeemed" = "Redeemed";
+
+"my_activity_title" = "My Activity";
+
+"my_purchase_empty_cta" = "Explore packages";
+
+"my_purchase_empty_message" = "Browse packages and save your coupons in your wallet here";
+
+"my_purchase_empty_title" = "No coupons found";
+
+/* My Wallets */
+"my_purchase_title" = "My purchases";
+
+"notification_permission_dialog_context_1" = "Limited time only promotional alerts";
+
+"notification_permission_dialog_context_2" = "Expiry dates of coupons";
+
+"notification_permission_dialog_context_3" = "Child pick up alert messages";
+
+"notification_permission_dialog_context_title" = "If you allow notifications, you'll receive";
+
+"notification_permission_dialog_cta_allow" = "Allow notifications";
+
+"notification_permission_dialog_cta_later" = "Not now";
+
+"notification_permission_dialog_description" = "Ensure a seamless experience by allowing notification - it's the easiest way to keep track of your coupons";
+
+/* Permission Request: Notification */
+"notification_permission_dialog_title" = "Stay up to date";
+
+"product_details_by_merchant_stores_title" = "See all %@ location(s)";
+
+/* Product Details */
+"product_details_by_merchant_title" = "By %@";
+
+"profile_add_child_name" = "Name of the child";
+
+"profile_add_child_name_hint" = "Add name";
+
+"profile_add_child_title" = "Add child";
+
+"profile_add_another_child" = "Add another child";
+
+"profile_add_child_title_not_empty" = "Children";
+
+"profile_add_photo_cta" = "Add Photo";
+
+"profile_add_photo_album" = "Photo Album";
+
+"profile_add_photo_camera" = "Camera";
+
+"profile_child_age" = "Age";
+
+"profile_child_count" = "Child %@";
+
+"profile_delete_confirm_cancel_cta" = "Keep the data";
+
+"profile_delete_confirm_message" = "All your data will be deleted including your purchases";
+
+"profile_delete_confirm_proceed_cta" = "Delete";
+
+"profile_delete_confirm_title" = "Delete?";
+
+"profile_delete_cta" = "Delete profile";
+
+"profile_edit_basic_info_cta" = "Edit basic info";
+
+"profile_help_center" = "Help Center";
+
+"profile_info_add_cta" = "Add";
+
+"profile_info_edit_cta" = "Edit";
+
+"profile_info_name_title" = "Name";
+
+"profile_info_phone_number" = "Phone number";
+
+"profile_info_title" = "Profile Info";
+
+"profile_info_verification_title" = "Verification";
+
+"profile_info_your_name" = "Your name";
+
+"profile_logout_confirm_cancel_cta" = "Stay in";
+
+"profile_logout_confirm_message" = "Do you want to log out from the app, you'll have to sign in again";
+
+"profile_logout_confirm_proceed_cta" = "Log out";
+
+"profile_logout_confirm_title" = "Logout?";
+
+"profile_logout_cta" = "Logout";
+
+"profile_payment_digital_payment" = "Digital Payment";
+
+"profile_payment_online_banking" = "Online Banking";
+
+/* Profile: Payment Options */
+"profile_payment_option" = "Payment option";
+
+"profile_payment_option_card" = "Credit / Debit card";
+
+"profile_rate_our_app" = "Rate our app";
+
+"profile_settings_child" = "Child";
+
+"profile_settings_child_empty_cta" = "No info added";
+
+"profile_settings_date_of_birth" = "Date of birth";
+
+"profile_settings_date_of_birth_empty_cta" = "Add date";
+
+"profile_settings_date_of_birth_hint" = "DD/MM/YYYY";
+
+"profile_settings_email_id" = "Email ID";
+
+"profile_settings_email_id_empty_cta" = "Add email ID";
+
+"profile_settings_email_id_hint" = "Enter email ID";
+
+"profile_settings_email_invalid" = "Check your email format";
+
+"profile_settings_gender" = "Gender";
+
+"profile_settings_gender_empty_cta" = "Add gender";
+
+"profile_settings_language" = "Language";
+
+"profile_settings_location" = "Location";
+
+"profile_settings_payment" = "Payment";
+
+"profile_settings_payment_empty_cta" = "Add payment";
+
+"purchased_total_time" = "Total Time";
+
+"purchased_valid_until" = "Valid until";
+
+"redemption_add_child_empty_state_cta" = "Add child";
+
+"redemption_add_child_empty_state_description" = "Add children details to continue using the coupons";
+
+"redemption_add_child_empty_state_title" = "No children found";
+
+"redemption_child_remaining_time" = "Allotted time: %@ %@";
+
+"redemption_coupon_set_qty" = "%@ quantity";
+
+"redemption_coupon_set_qty_note_description" = "%@ cannot be refunded, or anything that the parent should be aware of will take up this space.";
+
+"redemption_end_timer_cta" = "End session";
+
+"redemption_hint" = "*Select child to start the session";
+
+"redemption_scan_qr_cta" = "Next QR";
+
+"redemption_scan_qr_cta_retry" = "Re-scan";
+
+"redemption_scan_qr_error_description" = "There is some connectivity error, Please try to re-scan again.";
+
+"redemption_scan_qr_error_message" = "Error scanning";
+
+/* Redemption */
+"redemption_scan_qr_error_title" = "Scan QR";
+
+"redemption_scan_qr_to_end_session_description" = "Show this QR code at the counter, our staff will scan this QR to end your session";
+
+"redemption_scan_qr_to_end_session_success_message" = "Session ended!";
+
+"redemption_scan_qr_to_end_session_success_description" = "Remaining time left %@ hr";
+
+"redemption_scan_qr_to_end_session_title" = "Check-out";
+
+"redemption_scan_qr_to_redeem_coupon_description" = "Show this QR code at the counter to redeem your purchase from our staff";
+
+"redemption_scan_qr_to_redeem_coupon_success_message" = "%@ %@ redeemed successfully!";
+
+"redemption_scan_qr_to_redeem_coupon_title" = "Scan QR to redeem";
+
+"redemption_scan_qr_to_start_session_description" = "Show this QR code at the counter, our staff will scan this QR to mark your presence";
+
+"redemption_scan_qr_to_start_session_success_message" = "Session started!";
+
+"redemption_scan_qr_to_start_session_title" = "Check-in";
+
+"redemption_scan_to_end_session" = "End session";
+
+"redemption_scan_to_start_session" = "Start session";
+
+"redemption_select_child_cta" = "Select child";
+
+"redemption_time_allotted" = "Time allotted: %@ hr";
+
+"redemption_time_remaining" = "Time remaining: %@ hr";
+
+"redemption_set_qty_cta" = "Redeem now";
+
+/* Redemption: QR */
+"redemption_set_qty_note_title" = "Note:";
+
+"redemption_start_timer_cta" = "Start timer";
+
+/* Redemption: Time-base */
+"redemption_validity" = "Valid until";
+
+"see_more" = "see more";
+
+"see_less" = "see less";
+
+"select" = "Select";
+
+"tnc" = "Terms & Condition";
+
+"user_onboarding_full_name_input_description" = "Please provide your name so we can personalise your experience";
+
+"user_onboarding_full_name_input_hint" = "Enter your full name";
+
+"user_onboarding_full_name_input_subtitle" = "Full name";
+
+/* User Onboarding, Full Name Input */
+"user_onboarding_full_name_input_title" = "Almost there!";
+
+"user_onboarding_phone_input_cta" = "Verify";
+
+"user_onboarding_phone_input_description" = "Logging in with an unregistered phone number will automatically create a new Green account.";
+
+"user_onboarding_phone_input_hint" = "Phone number";
+
+"user_onboarding_phone_input_subtitle" = "Your Phone number";
+
+/* User Onboarding, Phone Input */
+"user_onboarding_phone_input_title" = "Enter your phone number";
+
+"user_onboarding_social_login_cta" = "Google";
+
+"user_onboarding_social_login_divider_message" = "Or continue with";
+
+"user_onboarding_tnc" = "By continuing, you accept Green App <br/><u><a href=\"https://www.greenyourday.app/privacy-policy\">Terms and condition</a></u>";
+
+"ios_user_onboarding_tnc_1" = "By continuing, you accept Green App's";
+
+"ios_user_onboarding_tnc_2" = "Terms and Conditions";
+
+"user_onboarding_verification_cta_from_phone_login" = "Login";
+
+"user_onboarding_verification_cta_from_social_login" = "Verify";
+
+"user_onboarding_verification_description" = "We've sent an SMS with an OTP to your phone %@-%@";
+
+"user_onboarding_verification_menu_item_resend_otp" = "Resend OTP";
+
+"user_onboarding_verification_menu_item_resend_otp_again" = "Resend OTP again ";
+
+"user_onboarding_verification_menu_item_resend_otp_timer" = "in 00:%02d";
+
+"user_onboarding_verification_otp_error_invalid" = "Wrong code. Please try again";
+
+"user_onboarding_verification_otp_error_limit_exceeded" = "Maximum limit exceeded. Please try after sometime";
+
+"user_onboarding_verification_otp_user_invalid" = "Check your phone number";
+
+"user_onboarding_social_login_failed_title" = "Social login failed";
+
+"user_onboarding_social_login_failed_message" = "Please try again";
+
+"user_onboarding_verification_otp_phone_taken" = "This phone number is registered to another account";
+
+"user_onboarding_verification_subtitle" = "Enter OTP";
+
+/* User Onboarding, OTP */
+"user_onboarding_verification_title" = "Enter your OTP";
+
+/* API errors */
+"api_error_reauthentication" = "Failed to reauthenticate";
+
+"api_error_loading_content_failed" = "Unable to load content";

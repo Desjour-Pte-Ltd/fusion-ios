@@ -44,6 +44,22 @@ struct ProfileView: View {
                                                            buttonTitle: "",
                                                            cancelTitle: "",
                                                            action: .init(closure: {}))
+    private var currentLanguageName: String {
+        let languageCode = Locale.current.languageCode ?? "en"
+        let languageName = Locale.current.localizedString(forLanguageCode: languageCode) ?? "Unknown"
+
+        return languageName
+
+    }
+    
+    private var emailDescription: String {
+        if let email = api.user?.email?.trimmingCharacters(in: .whitespaces), !email.isEmpty {
+            email
+        } else {
+            "profile_settings_email_id_empty_cta"
+        }
+    }
+    
     @State private var goToChildren: Bool = false
     @State private var goToEmail: Bool = false
     @State private var goToDOB: Bool = false
@@ -52,7 +68,12 @@ struct ProfileView: View {
     func setupSections() {
         sections = [
             [
-                .init(title: "profile_settings_email_id", description: .text(api.user?.email ?? "profile_settings_email_id_empty_cta"), leadingIcon: Image("mail")) {
+                .init(title: "profile_settings_language", description: .text(currentLanguageName), leadingIcon: Image("globe")) {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        UIApplication.shared.open(url)
+                    }
+                },
+                .init(title: "profile_settings_email_id", description: .text(emailDescription), leadingIcon: Image("mail")) {
                     goToEmail = true
                 },
                 .init(title: "profile_settings_date_of_birth", description: .text(api.user?.birthDayString ?? "profile_settings_date_of_birth_empty_cta"), leadingIcon: Image("calendar")) {
