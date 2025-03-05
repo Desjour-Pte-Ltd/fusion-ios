@@ -2,6 +2,29 @@ import SwiftUI
 import UniformTypeIdentifiers
 import SDWebImageSwiftUI
 
+enum Location: CaseIterable {
+    case Singapore
+    case Indonesia
+    case Philippines
+    
+    var flagEmoji: String {
+        switch self {
+        case .Singapore: return "🇸🇬"
+        case .Indonesia: return "🇮🇩"
+        case .Philippines: return "🇵🇭"
+        }
+    }
+    
+    var name: String {
+        // @todo localize
+        switch self {
+        case .Singapore: return "Singapore"
+        case .Indonesia: return "Indonesia"
+        case .Philippines: return "Philippines"
+        }
+    }
+}
+
 struct ProfileView: View {
     struct RowData {
         enum Description {
@@ -9,14 +32,19 @@ struct ProfileView: View {
             case text(String)
             case request(Request)
         }
+        enum TapAction {
+            typealias Action = () -> Void
+            case action(Action)
+            case menu(Menu<AnyView, AnyView>)
+        }
         let title: String
         let description: Description?
         let leadingIcon: Image?
         let trailingIcon: Image?
-        let action: () -> Void
         let tint: Color?
+        let action: TapAction
 
-        init(title: String, description: Description? = nil, leadingIcon: Image? = nil, trailingIcon: Image = Image("forward"), tint: Color? = nil, action: @escaping () -> Void) {
+        init(title: String, description: Description? = nil, leadingIcon: Image? = nil, trailingIcon: Image = Image("forward"), tint: Color? = nil, action: TapAction) {
             self.title = title
             self.description = description
             self.leadingIcon = leadingIcon
@@ -44,6 +72,7 @@ struct ProfileView: View {
                                                            buttonTitle: "",
                                                            cancelTitle: "",
                                                            action: .init(closure: {}))
+
     private var currentLanguageName: String {
         let languageCode = Locale.current.languageCode ?? "en"
         let languageName = Locale.current.localizedString(forLanguageCode: languageCode) ?? "Unknown"
@@ -60,10 +89,15 @@ struct ProfileView: View {
         }
     }
     
+    @State private var location: Location = .Singapore
     @State private var goToChildren: Bool = false
     @State private var goToEmail: Bool = false
     @State private var goToDOB: Bool = false
     @State private var goToGender: Bool = false
+    
+    private func isLocationSelected(_ location: Location) -> Bool {
+        self.location == location
+    }
     
     func setupSections() {
         sections = [
@@ -80,8 +114,35 @@ struct ProfileView: View {
                     goToDOB = true
                 },
                 .init(title: "profile_settings_gender", description: .text(api.user?.gender.toString ?? "profile_settings_gender_empty_cta"), leadingIcon: Image("gender")) {
+=======
+                .init(title: "Location", description: .text(location.name), leadingIcon: Image("location"), action: .menu(
+                    Menu {
+                        ForEach(Location.allCases, id: \.self) { location in
+                            Button {
+                                self.location = location
+                                setupSections()
+                            } label: {
+                                Label("\(location.flagEmoji) \(location.name)", systemImage: "")
+                            }
+                        }
+                        .anyView
+                    } label: {
+                        Label("testing", systemImage: "ellipsis.circle")
+                            .blendMode(.destinationOver)
+                            .frame(width: UIScreen.main.bounds.width, height: 50)
+                            .anyView
+                    }
+                )),
+                .init(title: "Email ID", description: .text(api.user?.email ?? "Add email ID"), leadingIcon: Image("mail"), action: .action {
+                    goToEmail = true
+                }),
+                .init(title: "Date of birth", description: .text(api.user?.birthDayString ?? "Add date"), leadingIcon: Image("calendar"), action: .action {
+                    goToDOB = true
+                }),
+                .init(title: "Gender", description: .text(api.user?.gender.toString ?? "Add gender"), leadingIcon: Image("gender"), action: .action {
+>>>>>>> 75ee8aa (add country selection menu in profile screen)
                     goToGender = true
-                },
+                }),
             ],
             [
                 .init(title: "profile_add_child_title_not_empty", description: .request({
@@ -89,7 +150,7 @@ struct ProfileView: View {
                     return children.isEmpty ? "profile_settings_child_empty_cta" : children.map { $0.name }.joined(separator: ", ")
                 }), leadingIcon: Image("person-add")) {
                     goToChildren = true
-                },
+                }),
             ],
             [
                 .init(title: "profile_help_center", leadingIcon: Image("help")) {
@@ -100,7 +161,7 @@ struct ProfileView: View {
                 },
                 .init(title: "profile_rate_our_app", leadingIcon: Image("raiting")) {
                     openURL(URL(string: Strings.rateAppLink)!)
-                },
+                }),
             ],
             [
                 .init(title: "profile_logout_cta", trailingIcon: Image("logout")) {
@@ -113,7 +174,7 @@ struct ProfileView: View {
                         await api.signOut()
                         appRootManager.currentRoot = .authentication
                     }))
-                },
+                }),
             ],
             [
                 .init(title: "profile_delete_cta", trailingIcon: Image("delete"), tint: .red) {
@@ -130,7 +191,7 @@ struct ProfileView: View {
                             print("Error deleting user: \(error)")
                         }
                     }))
-                }
+                })
             ]
             
         ]
@@ -138,10 +199,10 @@ struct ProfileView: View {
         if let token = fcmToken.wrappedValue {
             sections.append(
                 [
-                    .init(title: "Copy push token", trailingIcon: Image("forward")) {
+                    .init(title: "Copy push token", trailingIcon: Image("forward"), action: .action {
                         UIPasteboard.general.setValue(token,
                                                       forPasteboardType: UTType.plainText.identifier)
-                    },
+                    }),
                 ]
             )
         }
@@ -335,9 +396,16 @@ struct ProfileView: View {
                 }
                 .padding()
             }
+            .overlay {
+                if case .menu(let menu) = row.action {
+                    menu
+                }
+            }
             .contentShape(Rectangle())
             .onTapGesture {
-                row.action()
+                if case .action(let action) = row.action {
+                    action()
+                }
             }
         }
     }
