@@ -4,11 +4,14 @@ import FirebaseAuth
 
 struct PhoneLinkingView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.country) private var country
     @EnvironmentObject private var api: API
     @EnvironmentObject private var appRootManager: AppRootManager
     
     @State private var phone: String = ""
-    @State private var code: String = "🇸🇬 +65"
+    private var code: String {
+        return "\(country.wrappedValue.flagEmoji) \(country.wrappedValue.phoneCode)"
+    }
     @FocusState var isPhoneFocused: Bool
     @State private var goToOTP: Bool = false
     @State private var verificationID: String = ""
@@ -50,7 +53,8 @@ struct PhoneLinkingView: View {
             NavigationView {
                 VStack {
                     NavigationLink(isActive: $goToOTP) {
-                        OtpView(countryCode:"+65", phoneNumber: phone, verificationID: verificationID)
+                        OtpView(phoneNumber: phone,
+                                verificationID: verificationID)
                     } label: {
                         
                     }
@@ -70,18 +74,19 @@ struct PhoneLinkingView: View {
                             .font(.custom("Poppins-Medium", size: 16))
                             .foregroundStyle(errorMessage != nil ? .red : Color.text.black100)
                         HStack {
-                            TextField("", text: $code) {
-                                UIApplication.shared.endEditing()
-                            }
+                            Text(code)
                             .padding([.top, .bottom], 17)
                             .padding([.leading, .trailing], 10)
                             .frame(width: 82)
-                            .disabled(true)
-                            .focused($isPhoneFocused)
                             .font(.custom("Poppins-Regular", size: 14))
                             .overlay(RoundedRectangle(cornerRadius: 12)
                                 .stroke(codeFieldActive ? Color.text.black100 : Color(hex: "#E7EAEB"),
                                         lineWidth: 1))
+                            .overlay {
+                                selectCountryMenu(size: .init(width: 82, height: 50)) { country in
+                                    self.country.wrappedValue = country
+                                }
+                            }
                             TextField("user_onboarding_phone_input_hint", text: $phone) {
                                 UIApplication.shared.endEditing()
                             }
@@ -128,7 +133,7 @@ struct PhoneLinkingView: View {
                     }
                     .padding(.bottom, 32)
                     AsyncButton(progressWidth: .infinity) {
-                        let result = await Authentication().verify(phone: "+65" + phone)
+                        let result = await Authentication().verify(phone: country.wrappedValue.phoneCode + phone)
                         switch result {
                         case .success(let verificationId):
                             UserDefaults.standard.set(verificationId, forKey: Keys.authVerificationID)

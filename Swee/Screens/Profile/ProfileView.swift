@@ -2,29 +2,6 @@ import SwiftUI
 import UniformTypeIdentifiers
 import SDWebImageSwiftUI
 
-enum Location: CaseIterable {
-    case Singapore
-    case Indonesia
-    case Philippines
-    
-    var flagEmoji: String {
-        switch self {
-        case .Singapore: return "🇸🇬"
-        case .Indonesia: return "🇮🇩"
-        case .Philippines: return "🇵🇭"
-        }
-    }
-    
-    var name: String {
-        // @todo localize
-        switch self {
-        case .Singapore: return "Singapore"
-        case .Indonesia: return "Indonesia"
-        case .Philippines: return "Philippines"
-        }
-    }
-}
-
 struct ProfileView: View {
     struct RowData {
         enum Description {
@@ -43,7 +20,7 @@ struct ProfileView: View {
         let trailingIcon: Image?
         let tint: Color?
         let action: TapAction
-
+        
         init(title: String, description: Description? = nil, leadingIcon: Image? = nil, trailingIcon: Image = Image("forward"), tint: Color? = nil, action: TapAction) {
             self.title = title
             self.description = description
@@ -60,7 +37,7 @@ struct ProfileView: View {
     @Environment(\.fcmToken) private var fcmToken
     @Environment(\.openURL) var openURL
     @EnvironmentObject private var activeSession: ActiveSession
-
+    
     
     @State private var profileProgress: Double = 0.6
     @State private var sections: [[RowData]] = []
@@ -88,15 +65,14 @@ struct ProfileView: View {
             "profile_settings_email_id_empty_cta"
         }
     }
-    
-    @State private var location: Location = .Singapore
+    @State private var country: Country = .Singapore
     @State private var goToChildren: Bool = false
     @State private var goToEmail: Bool = false
     @State private var goToDOB: Bool = false
     @State private var goToGender: Bool = false
     
-    private func isLocationSelected(_ location: Location) -> Bool {
-        self.location == location
+    private func isLocationSelected(_ location: Country) -> Bool {
+        self.country == location
     }
     
     func setupSections() {
@@ -434,30 +410,30 @@ struct CompleteProfileBanner: View {
                     .foregroundStyle(.white.opacity(0.55))
             }
             Spacer()
-//            if profileProgress == 1 {
-//                Text("Close")
-//                    .font(.custom("Poppins-Medium", size: 14))
-//                    .foregroundStyle(.white)
-//                    .padding(.vertical, 4)
-//                    .padding(.horizontal, 12)
-//                    .background {
-//                        Capsule()
-//                            .fill(.white.opacity(0.1))
-//                            .clipShape(RoundedRectangle(cornerRadius: 8))
-//                    }
-//                    .onTapGesture {
-//                        onClose()
-//                    }
-//            } else {
-//                Image("arrow-right")
-//                    .padding(4)
-//                    .background {
-//                        Circle()
-//                            .fill(.white.opacity(0.1))
-//                            .clipShape(RoundedRectangle(cornerRadius: 8))
-//                    }
-//                    .foregroundStyle(.white)
-//            }
+            //            if profileProgress == 1 {
+            //                Text("Close")
+            //                    .font(.custom("Poppins-Medium", size: 14))
+            //                    .foregroundStyle(.white)
+            //                    .padding(.vertical, 4)
+            //                    .padding(.horizontal, 12)
+            //                    .background {
+            //                        Capsule()
+            //                            .fill(.white.opacity(0.1))
+            //                            .clipShape(RoundedRectangle(cornerRadius: 8))
+            //                    }
+            //                    .onTapGesture {
+            //                        onClose()
+            //                    }
+            //            } else {
+            //                Image("arrow-right")
+            //                    .padding(4)
+            //                    .background {
+            //                        Circle()
+            //                            .fill(.white.opacity(0.1))
+            //                            .clipShape(RoundedRectangle(cornerRadius: 8))
+            //                    }
+            //                    .foregroundStyle(.white)
+            //            }
         }
         .frame(maxWidth: .infinity)
         .padding(16)

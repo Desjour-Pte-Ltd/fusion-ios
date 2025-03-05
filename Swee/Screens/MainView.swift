@@ -11,7 +11,6 @@ enum Tabs: Int, CaseIterable, Identifiable {
     
     @ViewBuilder
     var screen: some View {
-//        VStack {}
         switch self {
         case .home:
             HomeView()

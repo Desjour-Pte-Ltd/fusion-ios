@@ -9,10 +9,10 @@ let numberOfCharsInOTP = 6
 
 struct OtpView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.country) private var country
     @EnvironmentObject var api: API
     @EnvironmentObject private var appRootManager: AppRootManager
     
-    @State var countryCode: String
     @State var phoneNumber: String
     @State var verificationID: String
     
@@ -35,7 +35,7 @@ struct OtpView: View {
                     .font(.custom("Poppins-SemiBold", size: 24))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.bottom, 8)
-                Text("user_onboarding_verification_description".i18n(with: countryCode, phoneNumber))
+                Text("user_onboarding_verification_description".i18n(with: country.wrappedValue.phoneCode, phoneNumber))
                     .font(.custom("Poppins-Regular", size: 14))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundStyle(Color.text.black60)
@@ -151,7 +151,7 @@ struct OtpView: View {
                     Button {
                         if timeRemaining == 0 {
                             Task {
-                                let result = await Authentication().verify(phone: countryCode + phoneNumber)
+                                let result = await Authentication().verify(phone: country.wrappedValue.phoneCode + phoneNumber)
                                 switch result {
                                 case .success(let verificationId):
                                     UserDefaults.standard.set(verificationId, forKey: Keys.authVerificationID)
@@ -265,6 +265,7 @@ extension Binding where Value == String {
 }
 
 #Preview {
-    OtpView(countryCode: "+65", phoneNumber: "86446585", verificationID: "fakeID")
+    OtpView(phoneNumber: "86446585", verificationID: "fakeID")
+        .environment(\.country, .constant(.Singapore))
         .environmentObject(AppRootManager())
 }

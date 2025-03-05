@@ -6,6 +6,39 @@ import GoogleSignIn
 import StripePaymentSheet
 import Mixpanel
 
+enum Country: CaseIterable, Identifiable {
+    case Singapore
+    case Indonesia
+    case Philippines
+    
+    var flagEmoji: String {
+        switch self {
+        case .Singapore: return "🇸🇬"
+        case .Indonesia: return "🇮🇩"
+        case .Philippines: return "🇵🇭"
+        }
+    }
+    
+    var name: String {
+        // @todo localize
+        switch self {
+        case .Singapore: return "Singapore"
+        case .Indonesia: return "Indonesia"
+        case .Philippines: return "Philippines"
+        }
+    }
+    
+    var phoneCode: String {
+        switch self {
+        case .Singapore: return "+65"
+        case .Indonesia: return "+62"
+        case .Philippines: return "+63"
+        }
+    }
+    
+    var id: Country { self }
+}
+
 final class AppRootManager: ObservableObject {
     
     @Published var currentRoot: AppRoots = .splash
@@ -41,6 +74,7 @@ struct SweeApp: App {
     @State private var delayedRoute: Route?
     @State var fcmToken: String?
     @State var deeplink: String?
+    @State var location: Country = .Singapore
     
     func handleURL(_ url: URL) {
         let stripeHandled = StripeAPI.handleURLCallback(with: url)
@@ -143,6 +177,7 @@ struct SweeApp: App {
             .environment(\.route, $route)
             .environment(\.deeplink, $deeplink)
             .environment(\.fcmToken, $fcmToken)
+            .environment(\.country, $location)
             .environmentObject(appRootManager)
             .environmentObject(api)
             .environmentObject(cart)

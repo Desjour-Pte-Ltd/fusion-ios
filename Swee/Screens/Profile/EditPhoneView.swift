@@ -1,8 +1,11 @@
 import SwiftUI
 
 struct EditPhoneView: View {
+    @Environment(\.country) private var country
     @State var phone: String = ""
-    @State var code: String = "🇸🇬 +65"
+    private var code: String {
+        return "\(country.wrappedValue.flagEmoji) \(country.wrappedValue.phoneCode)"
+    }
     @FocusState var isPhoneFocused: Bool
     @State private var goToOTP: Bool = false
     @State private var verificationID: String = ""
@@ -21,18 +24,19 @@ struct EditPhoneView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .font(.custom("Poppins-Medium", size: 16))
             HStack {
-                TextField("", text: $code) {
-                    UIApplication.shared.endEditing()
-                }
+                Text(code)
                 .padding([.top, .bottom], 17)
                 .padding([.leading, .trailing], 10)
                 .frame(width: 82)
-                .disabled(true)
-                .focused($isPhoneFocused)
                 .font(.custom("Poppins-Regular", size: 14))
                 .overlay(RoundedRectangle(cornerRadius: 12)
                     .stroke(codeFieldActive ? Color.text.black100 : Color(hex: "#E7EAEB"),
                             lineWidth: 1))
+                .overlay {
+                    selectCountryMenu(size: .init(width: 82, height: 50)) { country in
+                        self.country.wrappedValue = country
+                    }
+                }
                 TextField("user_onboarding_phone_input_hint", text: $phone) {
                     UIApplication.shared.endEditing()
                 }
@@ -59,7 +63,7 @@ struct EditPhoneView: View {
             }
             Spacer()
             AsyncButton(progressWidth: .infinity) {
-                let result = await Authentication().verify(phone: "+65" + phone)
+                let result = await Authentication().verify(phone: country.wrappedValue.phoneCode + phone)
                 switch result {
                 case .success(let verificationId):
                     UserDefaults.standard.set(verificationId, forKey: Keys.authVerificationID)
@@ -86,6 +90,6 @@ struct EditPhoneView: View {
 
 #Preview {
     CustomNavView {
-        EditPhoneView(phone: "12345671", code: "🇸🇬 +65")
+        EditPhoneView(phone: "12345671")
     }
 }
