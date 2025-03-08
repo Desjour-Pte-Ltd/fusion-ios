@@ -32,6 +32,10 @@
 		AF1A26D22D4B1FA3003949BC /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1A26D02D4B1FA3003949BC /* ShareSheet.swift */; };
 		AF1A26DF2D4F2303003949BC /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AF1A26DE2D4F2303003949BC /* ConfettiSwiftUI */; };
 		AF1A26E12D4F2310003949BC /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AF1A26E02D4F2310003949BC /* ConfettiSwiftUI */; };
+		AF1B6A7E2D7A9B9E00F1F355 /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = AF1B6A7D2D7A9B9E00F1F355 /* Mixpanel */; };
+		AF1B6A802D7A9BA800F1F355 /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = AF1B6A7F2D7A9BA800F1F355 /* Mixpanel */; };
+		AF1B6A822D7BEFD100F1F355 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1B6A812D7BEFD100F1F355 /* Analytics.swift */; };
+		AF1B6A832D7BEFD100F1F355 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1B6A812D7BEFD100F1F355 /* Analytics.swift */; };
 		AF1C31F42CB946A8001DD7EE /* AddChildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C31F32CB946A8001DD7EE /* AddChildViewModel.swift */; };
 		AF1FAC472C79B0E100654FB7 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1FAC462C79B0E100654FB7 /* AuthView.swift */; };
 		AF1FAC492C79B12A00654FB7 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1FAC482C79B12A00654FB7 /* View.swift */; };
@@ -366,6 +370,7 @@
 		AF170B0E2C71C02B00544970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF1A26CD2D4A3AA8003949BC /* UserReferralCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReferralCodeModel.swift; sourceTree = "<group>"; };
 		AF1A26D02D4B1FA3003949BC /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		AF1B6A812D7BEFD100F1F355 /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		AF1C31F32CB946A8001DD7EE /* AddChildViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChildViewModel.swift; sourceTree = "<group>"; };
 		AF1FAC462C79B0E100654FB7 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		AF1FAC482C79B12A00654FB7 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -515,6 +520,7 @@
 			files = (
 				AF3813EF2CC5F59C0028FD02 /* SwiftUIIntrospect in Frameworks */,
 				AF662A392CC5F28D00613E45 /* GoogleSignIn in Frameworks */,
+				AF1B6A802D7A9BA800F1F355 /* Mixpanel in Frameworks */,
 				AFCFB0382D09BDCA00A92B50 /* FirebaseAnalytics in Frameworks */,
 				AF662A362CC5F20C00613E45 /* SDWebImageSwiftUI in Frameworks */,
 				AFD6F5C52D36757F0015B536 /* FirebaseAnalytics in Frameworks */,
@@ -543,6 +549,7 @@
 				AFB830D02D0057FE00DB94C2 /* StripeApplePay in Frameworks */,
 				AFB830D12D0057FE00DB94C2 /* FirebaseCrashlytics in Frameworks */,
 				AFB830D22D0057FE00DB94C2 /* FirebaseAuth in Frameworks */,
+				AF1B6A7E2D7A9B9E00F1F355 /* Mixpanel in Frameworks */,
 				AFB830D32D0057FE00DB94C2 /* StripePaymentSheet in Frameworks */,
 				AFB830D42D0057FE00DB94C2 /* FirebaseMessaging in Frameworks */,
 				AFB830D52D0057FE00DB94C2 /* MarkdownUI in Frameworks */,
@@ -717,6 +724,7 @@
 				AF3022CC2CA5584E006DBCAD /* LocationManager.swift */,
 				AF8FB9752CBF7B8000B3B21C /* ActiveSession.swift */,
 				AF9D1B642CE611FF00234963 /* RemoteNotificationsManager.swift */,
+				AF1B6A812D7BEFD100F1F355 /* Analytics.swift */,
 			);
 			path = Singletons;
 			sourceTree = "<group>";
@@ -1000,6 +1008,7 @@
 				AFCFB0372D09BDCA00A92B50 /* FirebaseAnalytics */,
 				AFD6F5C42D36757F0015B536 /* FirebaseAnalytics */,
 				AF1A26DE2D4F2303003949BC /* ConfettiSwiftUI */,
+				AF1B6A7F2D7A9BA800F1F355 /* Mixpanel */,
 			);
 			productName = Swee;
 			productReference = AF170AFD2C71C02900544970 /* Swee.app */;
@@ -1033,6 +1042,7 @@
 				AFB830542D0057FE00DB94C2 /* FirebaseMessaging */,
 				AFCFB0392D09C14C00A92B50 /* FirebaseAnalytics */,
 				AF1A26E02D4F2310003949BC /* ConfettiSwiftUI */,
+				AF1B6A7D2D7A9B9E00F1F355 /* Mixpanel */,
 			);
 			productName = Swee;
 			productReference = AFB830FB2D0057FE00DB94C2 /* Swee-Beta.app */;
@@ -1073,6 +1083,7 @@
 				AF3813ED2CC5F59C0028FD02 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 				AF3813F02CC601180028FD02 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */,
 				AF1A26DD2D4F2302003949BC /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+				AF1B6A7C2D7A9B9E00F1F355 /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
 			);
 			productRefGroup = AF170AFE2C71C02900544970 /* Products */;
 			projectDirPath = "";
@@ -1288,6 +1299,7 @@
 				AF501F332C97EB4A00637042 /* HomeViewModel.swift in Sources */,
 				AF16A0F82C8567190093CD99 /* CheckoutView.swift in Sources */,
 				AF82A4632C819B8500E0DD4C /* String.swift in Sources */,
+				AF1B6A822D7BEFD100F1F355 /* Analytics.swift in Sources */,
 				AF8FB96E2CBE50A900B3B21C /* EditEmailView.swift in Sources */,
 				AF2F85DB2C9C467B004B0B31 /* Merchant.swift in Sources */,
 				AF2F85CE2C9C138B004B0B31 /* MockProductsURLProtocol.swift in Sources */,
@@ -1415,6 +1427,7 @@
 				AFB830882D0057FE00DB94C2 /* HomeViewModel.swift in Sources */,
 				AFB830892D0057FE00DB94C2 /* CheckoutView.swift in Sources */,
 				AFB8308A2D0057FE00DB94C2 /* String.swift in Sources */,
+				AF1B6A832D7BEFD100F1F355 /* Analytics.swift in Sources */,
 				AFB8308B2D0057FE00DB94C2 /* EditEmailView.swift in Sources */,
 				AFB8308C2D0057FE00DB94C2 /* Merchant.swift in Sources */,
 				AFB8308D2D0057FE00DB94C2 /* MockProductsURLProtocol.swift in Sources */,
@@ -1832,6 +1845,12 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.2;
+		AF1B6A7C2D7A9B9E00F1F355 /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mixpanel/mixpanel-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
 			};
 		};
 		AF3813ED2CC5F59C0028FD02 /* XCRemoteSwiftPackageReference "swiftui-introspect" */ = {
@@ -1958,6 +1977,15 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AF1A26DD2D4F2302003949BC /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
 			productName = ConfettiSwiftUI;
+		AF1B6A7D2D7A9B9E00F1F355 /* Mixpanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF1B6A7C2D7A9B9E00F1F355 /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
+			productName = Mixpanel;
+		};
+		AF1B6A7F2D7A9BA800F1F355 /* Mixpanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF1B6A7C2D7A9B9E00F1F355 /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
+			productName = Mixpanel;
 		};
 		AF3733972CC8A35D00AE6A45 /* StripeApplePay */ = {
 			isa = XCSwiftPackageProductDependency;

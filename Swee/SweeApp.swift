@@ -4,6 +4,7 @@ import FirebaseAuth
 import FirebaseMessaging
 import GoogleSignIn
 import StripePaymentSheet
+import Mixpanel
 
 final class AppRootManager: ObservableObject {
     
@@ -84,7 +85,7 @@ struct SweeApp: App {
     
     private func process(deeplink: String?) {
         if let deeplink = deeplink,
-            let url = URL(string: deeplink) {
+           let url = URL(string: deeplink) {
             DispatchQueue.main.async {
                 handleURL(url)
             }
@@ -162,8 +163,15 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         
         Messaging.messaging().delegate = self
         UNUserNotificationCenter.current().delegate = self
-
+        
         application.registerForRemoteNotifications()
+        
+        Mixpanel.initialize(token: "dd3b2c6a03e7b61e65b44a48ab3bf756", trackAutomaticEvents: false)
+        
+#if BETA
+        Mixpanel.mainInstance().loggingEnabled = true
+#endif
+        
         return true
     }
     
@@ -189,7 +197,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-      return GIDSignIn.sharedInstance.handle(url)
+        return GIDSignIn.sharedInstance.handle(url)
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
