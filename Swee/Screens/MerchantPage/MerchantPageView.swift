@@ -188,6 +188,7 @@ struct MerchantPageView: View {
                 try? await viewModel.fetch(with: merchant.id.uuidString)
             }
             tabIsShown.wrappedValue = false
+            Analytics.capture(.merchantScreen(.init(id: merchant.id.uuidString, name: merchant.name)))
         })
         .onFirstAppear {
             isExpanded = !viewModel.longDescription

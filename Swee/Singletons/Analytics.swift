@@ -95,9 +95,9 @@ enum Analytics {
         }
     }
 
-    func capture() {
-        Mixpanel.mainInstance().track(event: eventName,
-                                      properties: properties)
+    static func capture(_ event: Self) {
+        Mixpanel.mainInstance().track(event: event.eventName,
+                                      properties: event.properties)
     }
 }
 

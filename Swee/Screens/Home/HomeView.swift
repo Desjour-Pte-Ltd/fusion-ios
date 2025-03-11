@@ -137,6 +137,8 @@ struct HomeView: View {
                         }
                     }
                     locationManager.checkLocationAuthorization()
+                    // @todo set region
+                    Analytics.capture(.homeScreen(.init(region: .Singapore)))
                 })
                 .sheet(isPresented: $showShareSheet, content: {
                     ShareSheet(text: shareSheetText)

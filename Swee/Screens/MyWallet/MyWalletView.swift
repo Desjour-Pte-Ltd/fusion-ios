@@ -117,6 +117,7 @@ struct MyWalletView: View {
                         try? await viewModel.fetch()
                     }
                     tabIsShown.wrappedValue = true
+                    Analytics.capture(.walletScreen)
                 })
                 .customNavigationBackButtonHidden(true)
                 .customNavLeadingItem {

@@ -312,6 +312,7 @@ struct CheckoutView: View {
                 try? await viewModel.prepareForPayment()
             }
             tabIsShown.wrappedValue = false
+            Analytics.capture(.cartScreen)
         })
     }
 }
