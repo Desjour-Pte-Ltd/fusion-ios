@@ -4,6 +4,7 @@ import FirebaseAuth
 import FirebaseMessaging
 import GoogleSignIn
 import StripePaymentSheet
+import Mixpanel
 
 final class AppRootManager: ObservableObject {
     
@@ -164,6 +165,11 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         UNUserNotificationCenter.current().delegate = self
 
         application.registerForRemoteNotifications()
+        
+        Mixpanel.initialize(token: "dd3b2c6a03e7b61e65b44a48ab3bf756", trackAutomaticEvents: false)
+#if BETA
+        Mixpanel.mainInstance().loggingEnabled = true
+#endif
         return true
     }
     

@@ -200,6 +200,7 @@ struct PackageDetailView: View {
             Task {
                 try? await viewModel.fetch()
             }
+            Analytics.capture(.productScreen(.init(id: package.id.uuidString, name: package.title)))
         })
     }
 }

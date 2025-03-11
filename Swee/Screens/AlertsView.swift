@@ -190,6 +190,7 @@ struct AlertsView: View {
                 Task {
                     try await viewModel.fetch()
                 }
+                Analytics.capture(.alertsScreen)
             }
             .customNavigationBackButtonHidden(true)
             .customNavLeadingItem {

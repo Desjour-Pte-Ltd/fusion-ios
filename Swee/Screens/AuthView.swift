@@ -1,7 +1,6 @@
 import SwiftUI
 import AuthenticationServices
 import FirebaseAuth
-import FirebaseAnalytics
 
 struct AuthView: View {
     @Environment(\.dismiss) private var dismiss

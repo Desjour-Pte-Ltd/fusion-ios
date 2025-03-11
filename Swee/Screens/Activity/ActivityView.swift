@@ -218,6 +218,7 @@ struct ActivityView: View {
                 try? await viewModel.fetch(with: filter)
             }
             tabIsShown.wrappedValue = false
+            Analytics.capture(.activityScreen)
         })
         .customNavigationTitle("my_activity_title")
         .customNavTrailingItem {

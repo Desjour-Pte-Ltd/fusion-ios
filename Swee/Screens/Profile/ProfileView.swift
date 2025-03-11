@@ -253,7 +253,8 @@ struct ProfileView: View {
                     profileProgress = Double(progress) / 100
                     showCompleteProfileBanner = profileProgress != 1
                 }
-//                testShowAlert = true
+
+                Analytics.capture(.profileScreen)
             })
             
         }
