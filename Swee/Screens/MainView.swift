@@ -141,6 +141,8 @@ struct MainView: View {
             self.route.wrappedValue = nil
         case .myActivity:
             selectedTab = .myWallet
+        case .referral:
+            selectedTab = .home
         case .activeSession:
             selectedTab = .myWallet
             if activeSession.sessionIsActive {

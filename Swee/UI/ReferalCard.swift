@@ -4,6 +4,7 @@ import SDWebImageSwiftUI
 struct ReferalCard: View {
     @State var banner: Banner
     @State private var show = false
+    @Environment(\.deeplink) var deeplink
 
     var background: any View {
         switch banner.background {
@@ -51,20 +52,24 @@ struct ReferalCard: View {
                                 })
                             Spacer()
                             ZStack {
-                                HStack {
-                                    Image("share")
-                                        .foregroundStyle(Color.primary.brand)
-                                    Text(banner.buttonTitle)
-                                        .font(.custom("Roboto-Bold", size: 14))
-                                        .foregroundStyle(Color.primary.brand)
+                                Button {
+                                    deeplink.wrappedValue = banner.linkURL?.absoluteString
+                                } label: {
+                                    HStack {
+                                        Image("share")
+                                            .foregroundStyle(Color.primary.brand)
+                                        Text(banner.buttonTitle)
+                                            .font(.custom("Roboto-Bold", size: 14))
+                                            .foregroundStyle(Color.primary.brand)
+                                    }
+                                    .padding([.top, .bottom], 8)
+                                    .padding(.leading, 8)
+                                    .padding(.trailing, 14)
+                                    .background(
+                                        Capsule()
+                                            .fill(.white.opacity(0.65))
+                                            .frame(alignment: .center))
                                 }
-                                .padding([.top, .bottom], 8)
-                                .padding(.leading, 8)
-                                .padding(.trailing, 14)
-                                .background(
-                                    Capsule()
-                                        .fill(.white.opacity(0.65))
-                                        .frame(alignment: .center))
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding([.bottom], 24)

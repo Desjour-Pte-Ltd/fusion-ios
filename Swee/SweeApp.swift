@@ -22,6 +22,7 @@ enum Route: Hashable {
     case alerts
     case wallet
     case myActivity
+    case referral
     case package(UUID)
     case merchant(UUID)
     case activeSession
@@ -57,6 +58,8 @@ struct SweeApp: App {
                 newRoute = .wallet
             case "activity":
                 newRoute = .myActivity
+            case "referral":
+                newRoute = .referral
             case "activesession":
                 newRoute = .activeSession
             case "product":

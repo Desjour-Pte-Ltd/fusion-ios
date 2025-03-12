@@ -19,6 +19,18 @@ struct HomeView: View {
     @State private var goToMerchant = false
     @State private var deepLinkPackage: Package?
     @State private var deepLinkMerchantId: UUID?
+    @State private var showShareSheet: Bool = false
+    @State private var shareSheetText: String = ""
+    @State private var showAlert = false
+    @State private var alertData: CustomAlert.Data = .init(title: "Congratulations!",
+                                                           message: "You have received a free ZOOMOOV ride as a sign-up gift",
+                                                           buttonTitle: "Yay!",
+                                                           showConfetti: true,
+                                                           style: .defaultStyle(width: 260,
+                                                                                mainButtonColor: Color.primary.brand,
+                                                                                cornerRadius: 12,
+                                                                                image: Image("star")),
+                                                           action: .init(closure: {}))
     
     func section(at index: Int) -> any View {
         let section = viewModel.sections[index]
@@ -35,7 +47,7 @@ struct HomeView: View {
                 return EmptyView()
             }
             return ReferalCard(banner: banners[0])
-                    .padding(.horizontal, 16)
+                .padding(.horizontal, 16)
         }
     }
     
@@ -62,9 +74,9 @@ struct HomeView: View {
     var mainUI: some View {
         ScrollView {
             VStack(spacing: 16) {
-//                Button("Crash") {
-//                  fatalError("Crash was triggered")
-//                }
+                //                Button("Crash") {
+                //                  fatalError("Crash was triggered")
+                //                }
                 ForEach(viewModel.sections.indices, id: \.self) { index in
                     section(at: index).equatable.view
                 }
@@ -116,7 +128,18 @@ struct HomeView: View {
                         try? await viewModel.fetch()
                     }
                     tabIsShown.wrappedValue = true
+                    if let freshReferral = api.user?.freshReferral, freshReferral {
+                        Task {
+                            await MainActor.run() {
+                                showAlert = true
+                                api.user?.freshReferral = false
+                            }
+                        }
+                    }
                     locationManager.checkLocationAuthorization()
+                })
+                .sheet(isPresented: $showShareSheet, content: {
+                    ShareSheet(text: shareSheetText)
                 })
                 .customNavigationBackButtonHidden(true)
                 .customNavLeadingItem {
@@ -128,8 +151,12 @@ struct HomeView: View {
                 .customBottomSheet(hidden: $hideBottomSheet) {
                     NotificationUpsell(hide: $hideBottomSheet)
                 }
+                .customAlert(isActive: $showAlert, data: alertData)
             }
         }
+        .onChange(of: showAlert, perform: { newValue in
+            tabIsShown.wrappedValue = !showAlert
+        })
         .onChange(of: route) { newValue in
             guard let route = route.wrappedValue else {
                 return
@@ -153,6 +180,26 @@ struct HomeView: View {
             case .merchant(let merchantId):
                 deepLinkMerchantId = merchantId
                 goToMerchant = true
+            case .referral:
+                Task {
+                    do {
+                        let referralCode = try await viewModel.getReferralCode().referralCode
+                        
+                        shareSheetText = """
+Join me on Green and get a free ZOOMOOV ride when downloading the Green Your Day app for the first time! Terms and conditions apply. Download the app and use my referral code.
+
+Referral code : \(referralCode)
+
+https://green.onelink.me/\(referralCode)
+"""
+                        
+                        await MainActor.run {
+                            showShareSheet = true
+                        }
+                    } catch {
+                        // fail silently
+                    }
+                }
             default:
                 return
             }

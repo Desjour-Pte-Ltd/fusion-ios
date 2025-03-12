@@ -79,6 +79,10 @@ class HomeViewModel: ObservableObject {
             return try await api.packageDetails(for: id).toLocal()
         }
     }
+    
+    func getReferralCode() async throws -> UserReferralCodeModel {
+        try await api.referralCode()
+    }
 }
 
 extension Optional where Wrapped: Collection, Wrapped.Element: RawModelConvertable {

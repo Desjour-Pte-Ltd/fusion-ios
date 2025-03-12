@@ -26,6 +26,12 @@
 		AF16A0FB2C86B96F0093CD99 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF16A0FA2C86B96F0093CD99 /* Keys.swift */; };
 		AF16A0FD2C86C43A0093CD99 /* MyWalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF16A0FC2C86C43A0093CD99 /* MyWalletView.swift */; };
 		AF170B0D2C71C02B00544970 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = AF170B0C2C71C02B00544970 /* Base */; };
+		AF1A26CE2D4A3AA8003949BC /* UserReferralCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1A26CD2D4A3AA8003949BC /* UserReferralCodeModel.swift */; };
+		AF1A26CF2D4A3AA8003949BC /* UserReferralCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1A26CD2D4A3AA8003949BC /* UserReferralCodeModel.swift */; };
+		AF1A26D12D4B1FA3003949BC /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1A26D02D4B1FA3003949BC /* ShareSheet.swift */; };
+		AF1A26D22D4B1FA3003949BC /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1A26D02D4B1FA3003949BC /* ShareSheet.swift */; };
+		AF1A26DF2D4F2303003949BC /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AF1A26DE2D4F2303003949BC /* ConfettiSwiftUI */; };
+		AF1A26E12D4F2310003949BC /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AF1A26E02D4F2310003949BC /* ConfettiSwiftUI */; };
 		AF1C31F42CB946A8001DD7EE /* AddChildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C31F32CB946A8001DD7EE /* AddChildViewModel.swift */; };
 		AF1FAC472C79B0E100654FB7 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1FAC462C79B0E100654FB7 /* AuthView.swift */; };
 		AF1FAC492C79B12A00654FB7 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1FAC482C79B12A00654FB7 /* View.swift */; };
@@ -354,6 +360,8 @@
 		AF170B092C71C02B00544970 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF170B0C2C71C02B00544970 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF170B0E2C71C02B00544970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF1A26CD2D4A3AA8003949BC /* UserReferralCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReferralCodeModel.swift; sourceTree = "<group>"; };
+		AF1A26D02D4B1FA3003949BC /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		AF1C31F32CB946A8001DD7EE /* AddChildViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChildViewModel.swift; sourceTree = "<group>"; };
 		AF1FAC462C79B0E100654FB7 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		AF1FAC482C79B12A00654FB7 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -500,6 +508,7 @@
 				AF662A362CC5F20C00613E45 /* SDWebImageSwiftUI in Frameworks */,
 				AFD6F5C52D36757F0015B536 /* FirebaseAnalytics in Frameworks */,
 				AF662A3B2CC5F28D00613E45 /* GoogleSignInSwift in Frameworks */,
+				AF1A26DF2D4F2303003949BC /* ConfettiSwiftUI in Frameworks */,
 				AF662A332CC5F1AF00613E45 /* SkeletonUI in Frameworks */,
 				AF3733982CC8A35D00AE6A45 /* StripeApplePay in Frameworks */,
 				AF662A402CC5F44400613E45 /* FirebaseCrashlytics in Frameworks */,
@@ -526,6 +535,7 @@
 				AFB830D32D0057FE00DB94C2 /* StripePaymentSheet in Frameworks */,
 				AFB830D42D0057FE00DB94C2 /* FirebaseMessaging in Frameworks */,
 				AFB830D52D0057FE00DB94C2 /* MarkdownUI in Frameworks */,
+				AF1A26E12D4F2310003949BC /* ConfettiSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,6 +664,7 @@
 				AF3022D62CAA48D7006DBCAD /* OrderItemSnapshotModel.swift */,
 				AF0558362CABA1F000ABEBA3 /* WalletMerchantModel.swift */,
 				AF13C8502CABB99000496B0C /* PurchaseModel.swift */,
+				AF1A26CD2D4A3AA8003949BC /* UserReferralCodeModel.swift */,
 				AF13C8522CAC10C800496B0C /* RedemptionModel.swift */,
 				AF69BBFF2CB52CF800E87E2B /* ChildModel.swift */,
 				AFD6F07E2CB4D3DE004424E5 /* RedemptionDetailModel.swift */,
@@ -865,6 +876,7 @@
 				AF3022D02CA9850D006DBCAD /* ContentErrorView.swift */,
 				AF2F85E12C9C5310004B0B31 /* Skeletonable.swift */,
 				AFDD173F2CA1846E00DC8DB8 /* StoresView.swift */,
+				AF1A26D02D4B1FA3003949BC /* ShareSheet.swift */,
 				AF3022C72CA2B51B006DBCAD /* CartButton.swift */,
 				AF13C8542CAF980300496B0C /* TicketView.swift */,
 				AF3022CE2CA66CC6006DBCAD /* StateView.swift */,
@@ -974,6 +986,7 @@
 				AFB4E83E2CD4A247002273C4 /* FirebaseMessaging */,
 				AFCFB0372D09BDCA00A92B50 /* FirebaseAnalytics */,
 				AFD6F5C42D36757F0015B536 /* FirebaseAnalytics */,
+				AF1A26DE2D4F2303003949BC /* ConfettiSwiftUI */,
 			);
 			productName = Swee;
 			productReference = AF170AFD2C71C02900544970 /* Swee.app */;
@@ -1006,6 +1019,7 @@
 				AFB830532D0057FE00DB94C2 /* StripeApplePay */,
 				AFB830542D0057FE00DB94C2 /* FirebaseMessaging */,
 				AFCFB0392D09C14C00A92B50 /* FirebaseAnalytics */,
+				AF1A26E02D4F2310003949BC /* ConfettiSwiftUI */,
 			);
 			productName = Swee;
 			productReference = AFB830FB2D0057FE00DB94C2 /* Swee-Beta.app */;
@@ -1043,6 +1057,7 @@
 				AF662A3C2CC5F44400613E45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				AF3813ED2CC5F59C0028FD02 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 				AF3813F02CC601180028FD02 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */,
+				AF1A26DD2D4F2302003949BC /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 			);
 			productRefGroup = AF170AFE2C71C02900544970 /* Products */;
 			projectDirPath = "";
@@ -1227,6 +1242,7 @@
 				AF2F85C22C9AA26D004B0B31 /* BannerModel.swift in Sources */,
 				AF2F85E62C9C5354004B0B31 /* ReferalCard.swift in Sources */,
 				AF9D1B652CE611FF00234963 /* RemoteNotificationsManager.swift in Sources */,
+				AF1A26D22D4B1FA3003949BC /* ShareSheet.swift in Sources */,
 				AF16A0FB2C86B96F0093CD99 /* Keys.swift in Sources */,
 				AFDF67FD2C7F5A6C00489D0C /* SeeAllView.swift in Sources */,
 				AFCEC5BA2C7ACEB000D157BE /* UIApplication.swift in Sources */,
@@ -1238,6 +1254,7 @@
 				AFDF67F72C7E38FB00489D0C /* TextStyles.swift in Sources */,
 				AF2F85CC2C9BB7F1004B0B31 /* LogoNavItem.swift in Sources */,
 				AF3022CF2CA66CC6006DBCAD /* StateView.swift in Sources */,
+				AF1A26CE2D4A3AA8003949BC /* UserReferralCodeModel.swift in Sources */,
 				AF6D42442CB4D12C0050C2B8 /* OrderDetail.swift in Sources */,
 				AF13C8552CAF980300496B0C /* TicketView.swift in Sources */,
 				AFDB904A2C8EE077008931DB /* CustomNavBarContainerView.swift in Sources */,
@@ -1350,6 +1367,7 @@
 				AFB8306C2D0057FE00DB94C2 /* BannerModel.swift in Sources */,
 				AFB8306D2D0057FE00DB94C2 /* ReferalCard.swift in Sources */,
 				AFB8306E2D0057FE00DB94C2 /* RemoteNotificationsManager.swift in Sources */,
+				AF1A26D12D4B1FA3003949BC /* ShareSheet.swift in Sources */,
 				AFB8306F2D0057FE00DB94C2 /* Keys.swift in Sources */,
 				AFB830702D0057FE00DB94C2 /* SeeAllView.swift in Sources */,
 				AFB830712D0057FE00DB94C2 /* UIApplication.swift in Sources */,
@@ -1361,6 +1379,7 @@
 				AFB830772D0057FE00DB94C2 /* TextStyles.swift in Sources */,
 				AFB830782D0057FE00DB94C2 /* LogoNavItem.swift in Sources */,
 				AFB830792D0057FE00DB94C2 /* StateView.swift in Sources */,
+				AF1A26CF2D4A3AA8003949BC /* UserReferralCodeModel.swift in Sources */,
 				AFB8307A2D0057FE00DB94C2 /* OrderDetail.swift in Sources */,
 				AFB8307B2D0057FE00DB94C2 /* TicketView.swift in Sources */,
 				AFB8307C2D0057FE00DB94C2 /* CustomNavBarContainerView.swift in Sources */,
@@ -1584,7 +1603,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Swee/Swee.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = RS7P22YXAS;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -1604,7 +1623,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zoomoov.green;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1625,7 +1644,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Swee/Swee.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RS7P22YXAS;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1644,7 +1663,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zoomoov.green;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1771,6 +1790,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AF1A26DD2D4F2302003949BC /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.2;
+			};
+		};
 		AF3813ED2CC5F59C0028FD02 /* XCRemoteSwiftPackageReference "swiftui-introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/swiftui-introspect";
@@ -1886,6 +1913,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AF1A26DE2D4F2303003949BC /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF1A26DD2D4F2302003949BC /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
+		};
+		AF1A26E02D4F2310003949BC /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF1A26DD2D4F2302003949BC /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
+		};
 		AF3733972CC8A35D00AE6A45 /* StripeApplePay */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AF3813F02CC601180028FD02 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;

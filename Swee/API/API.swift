@@ -60,16 +60,25 @@ class API: ObservableObject {
         try? await Authentication().logout()
     }
     
-    func completeUser(with name: String) async throws {
+    func completeUser(with name: String, and referralCode: String? = nil) async throws {
         guard let token = UserDefaults.standard.string(forKey: Keys.authToken) else {
             throw APIError.tokenNotFound
         }
         
         let url = "/users?token=" + token
-        let jsonData = try JSONEncoder().encode(["name": name])
+        var dataDict = ["name": name]
+        if !referralCode.isEmpty {
+            dataDict["referral_code"] = referralCode
+        }
+        let jsonData = try JSONEncoder().encode(dataDict)
         
         
         try await request(with: url, method: .POST(jsonData)) { data, response in
+            
+            if response.statusCode == 400 {
+                throw APIError.incorrectBody
+            }
+            
             guard response.statusCode == 201 else {
                 throw APIError.wrongCode
             }
@@ -78,6 +87,9 @@ class API: ObservableObject {
                 let user = try JSONDecoder().decode(User.self, from: data)
                 await MainActor.run {
                     self.user = user
+                    if !referralCode.isEmpty {
+                        self.user?.freshReferral = true
+                    }
                 }
             } catch {
                 throw APIError.decodingError
@@ -185,6 +197,12 @@ class API: ObservableObject {
   
         // This is not necessary since the BE deletes the Firebase account.
 //        try await Authentication().deleteUser()
+    }
+    
+    func referralCode() async throws -> UserReferralCodeModel {
+        let url = "/referral_code"
+        
+        return try await request(with: url, mockProtocol: nil)
     }
     
     func homeSections() async throws -> [HomeSectionModel] {
@@ -626,6 +644,7 @@ extension API {
 
 enum APIError: Error {
     case wrongCode
+    case incorrectBody
     case notFound
     case decodingError
     case invalidResponse

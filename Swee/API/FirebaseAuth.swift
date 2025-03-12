@@ -21,6 +21,10 @@ enum SocialSignInResult {
 struct Authentication {
     private var appleSignIn = AppleSignIn()
     
+    var name: String? {
+        Auth.auth().currentUser?.displayName
+    }
+    
     func verify(phone: String) async -> Result<String, PhoneError> {
         await withCheckedContinuation { continuation in
             PhoneAuthProvider.provider()

@@ -30,6 +30,7 @@ struct User: Identifiable, Codable {
     let photoURL: String?
     var uploadingImage: UIImage? = nil
     let profileCompleteness: Int?
+    var freshReferral: Bool = false
     @DecodableDayDate var dob: Date?
     
     var birthDayString: String? {

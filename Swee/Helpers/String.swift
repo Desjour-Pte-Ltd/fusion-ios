@@ -23,3 +23,13 @@ extension String {
         return mutableName.replacingOccurrences(of: "(s)", with: "")
     }
 }
+
+extension Optional where Wrapped == String {
+    var isEmpty: Bool {
+        if let string = self {
+            return string.isEmpty
+        }
+        
+        return true
+    }
+}
