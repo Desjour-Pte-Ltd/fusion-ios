@@ -56,10 +56,10 @@ struct CompleteProfileView: View {
                             .font(.custom("Poppins-Regular", size: 12))
                             .foregroundStyle(.red)
                     }
-                    Text("Referral Code")
+                    Text("user_onboarding_referral_code_input_subtitle")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.custom("Poppins-Medium", size: 16))
-                    TextField("Enter the referral code", text: $referralCode) {
+                    TextField("user_onboarding_referral_code_input_hint", text: $referralCode) {
                         UIApplication.shared.endEditing()
                     }
                     .padding([.top, .bottom], 17)
@@ -91,7 +91,7 @@ struct CompleteProfileView: View {
                         print("complete profile error =====", error)
                         if let apiError = error as? APIError {
                             if case .incorrectBody = apiError {
-                                referralErrorMessage = "Invalid referral code" @todo add localization
+                                referralErrorMessage = "user_onboarding_referral_error"
                             } else {
                                 errorMessage = "error_generic"
                             }

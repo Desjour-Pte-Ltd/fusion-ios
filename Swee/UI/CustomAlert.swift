@@ -76,7 +76,7 @@ struct CustomAlert: View {
                     Button {
                         close()
                     } label: {
-                        Text(data.cancelTitle.i18n)
+                        Text(data.cancelTitle?.i18n)
                             .font(.custom("Poppins-SemiBold", size: 16))
                             .foregroundStyle(Color.text.black60)
                             .multilineTextAlignment(.center)
