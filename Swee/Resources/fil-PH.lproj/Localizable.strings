@@ -78,6 +78,8 @@
 "complete_profile_description" = "Fill up a few missing steps to win exciting rewards";
 
 /* Profile */
+"complete_profile_description" = "Fill up a few missing steps to win exciting rewards";
+
 "complete_profile_title" = "Complete your profile";
 
 "completed_profile_description" = "You have successfully completed your profile";
@@ -413,6 +415,12 @@
 
 "user_onboarding_phone_input_subtitle" = "Your Phone number";
 
+"user_onboarding_referral_code_input_hint" = "Enter the referral code";
+
+"user_onboarding_referral_code_input_subtitle" = "Referral Code";
+
+"user_onboarding_referral_error" = "Invalid referral code";
+
 /* User Onboarding, Phone Input */
 "user_onboarding_phone_input_title" = "Enter your phone number";
 
@@ -459,3 +467,12 @@
 "api_error_reauthentication" = "Failed to reauthenticate";
 
 "api_error_loading_content_failed" = "Unable to load content";
+
+/* Referral */
+"referral_alert_success_title" = "Congratulations!";
+
+"referral_alert_success_message" = "You have received a free ZOOMOOV ride as a sign-up gift";
+
+"referral_alert_success_cta" = "Yay!";
+
+"referral_share_sheet_text" = "Join me on Green and get a free ZOOMOOV ride when downloading the Green Your Day app for the first time! Terms and conditions apply. Download the app and use my referral code.\n\nReferral code : %@\n\nhttps://green.onelink.me/%@";
