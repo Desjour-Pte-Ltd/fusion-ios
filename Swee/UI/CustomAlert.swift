@@ -51,33 +51,15 @@ struct CustomAlert: View {
                         close()
                     }
                     .transition(.opacity)
-                VStack {
-                    Text(data.title.i18n)
-                        .font(dataStyle.titleFont)
-                        .foregroundStyle(Color.text.black100)
-                        .padding()
-                    
-                    Text(data.message.i18n)
-                        .font(dataStyle.messageFont)
-                        .foregroundStyle(Color.text.black60)
-                        .multilineTextAlignment(.center)
-                    
-                    AsyncButton(progressWidth: .infinity) {
-                        try? await data.action.closure()
-                        close()
-                    } label: {
-                        Text(data.buttonTitle.i18n)
-                            .font(.custom("Poppins-Bold", size: 16))
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                    }
-                    .padding()
-                    .buttonStyle(PrimaryButton(backgroundColor: .error))
-                    Button {
-                        close()
-                    } label: {
-                        Text(data.cancelTitle?.i18n)
-                            .font(.custom("Poppins-SemiBold", size: 16))
+                ZStack(alignment: .top) {
+                    VStack {
+                        Text(data.title.i18n)
+                            .font(dataStyle.titleFont)
+                            .foregroundStyle(Color.text.black100)
+                            .padding()
+                        
+                        Text(data.message.i18n)
+                            .font(dataStyle.messageFont)
                             .foregroundStyle(Color.text.black60)
                             .multilineTextAlignment(.center)
                         
@@ -85,14 +67,14 @@ struct CustomAlert: View {
                             try? await data.action.closure()
                             close()
                         } label: {
-                            Text(data.buttonTitle)
+                            Text(data.buttonTitle.i18n)
                                 .font(.custom("Poppins-Bold", size: 16))
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity)
                         }
                         .padding()
                         .buttonStyle(PrimaryButton(backgroundColor: dataStyle.mainButtonColor))
-                        if let cancelTitle = data.cancelTitle {
+                        if let cancelTitle = data.cancelTitle?.i18n {
                             Button {
                                 close()
                             } label: {

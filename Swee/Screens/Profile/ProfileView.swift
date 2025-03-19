@@ -78,24 +78,11 @@ struct ProfileView: View {
     func setupSections() {
         sections = [
             [
-                .init(title: "profile_settings_language", description: .text(currentLanguageName), leadingIcon: Image("globe")) {
-                    if let url = URL(string: UIApplication.openSettingsURLString) {
-                        UIApplication.shared.open(url)
-                    }
-                },
-                .init(title: "profile_settings_email_id", description: .text(emailDescription), leadingIcon: Image("mail")) {
-                    goToEmail = true
-                },
-                .init(title: "profile_settings_date_of_birth", description: .text(api.user?.birthDayString ?? "profile_settings_date_of_birth_empty_cta"), leadingIcon: Image("calendar")) {
-                    goToDOB = true
-                },
-                .init(title: "profile_settings_gender", description: .text(api.user?.gender.toString ?? "profile_settings_gender_empty_cta"), leadingIcon: Image("gender")) {
-=======
-                .init(title: "Location", description: .text(location.name), leadingIcon: Image("location"), action: .menu(
+                .init(title: "profile_settings_location", description: .text(country.name), leadingIcon: Image("location"), action: .menu(
                     Menu {
-                        ForEach(Location.allCases, id: \.self) { location in
+                        ForEach(Country.allCases, id: \.self) { location in
                             Button {
-                                self.location = location
+                                self.country = location
                                 setupSections()
                             } label: {
                                 Label("\(location.flagEmoji) \(location.name)", systemImage: "")
@@ -109,14 +96,18 @@ struct ProfileView: View {
                             .anyView
                     }
                 )),
-                .init(title: "Email ID", description: .text(api.user?.email ?? "Add email ID"), leadingIcon: Image("mail"), action: .action {
+                .init(title: "profile_settings_language", description: .text(currentLanguageName), leadingIcon: Image("globe"), action: .action {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        UIApplication.shared.open(url)
+                    }
+                }),
+                .init(title: "profile_settings_email_id", description: .text(emailDescription), leadingIcon: Image("mail"), action: .action {
                     goToEmail = true
                 }),
-                .init(title: "Date of birth", description: .text(api.user?.birthDayString ?? "Add date"), leadingIcon: Image("calendar"), action: .action {
+                .init(title: "profile_settings_date_of_birth", description: .text(api.user?.birthDayString ?? "profile_settings_date_of_birth_empty_cta"), leadingIcon: Image("calendar"), action: .action {
                     goToDOB = true
                 }),
-                .init(title: "Gender", description: .text(api.user?.gender.toString ?? "Add gender"), leadingIcon: Image("gender"), action: .action {
->>>>>>> 75ee8aa (add country selection menu in profile screen)
+                .init(title: "profile_settings_gender", description: .text(api.user?.gender.toString ?? "profile_settings_gender_empty_cta"), leadingIcon: Image("gender"), action: .action {
                     goToGender = true
                 }),
             ],
@@ -124,23 +115,23 @@ struct ProfileView: View {
                 .init(title: "profile_add_child_title_not_empty", description: .request({
                     let children = try await api.children()
                     return children.isEmpty ? "profile_settings_child_empty_cta" : children.map { $0.name }.joined(separator: ", ")
-                }), leadingIcon: Image("person-add")) {
+                }), leadingIcon: Image("person-add"), action: .action {
                     goToChildren = true
                 }),
             ],
             [
-                .init(title: "profile_help_center", leadingIcon: Image("help")) {
+                .init(title: "profile_help_center", leadingIcon: Image("help"), action: .action {
                     openURL(URL(string: Strings.helpLink)!)
-                },
-                .init(title: "tnc", leadingIcon: Image("receipt")) {
+                }),
+                .init(title: "tnc", leadingIcon: Image("receipt"), action: .action {
                     openURL(URL(string: Strings.tosLink)!)
-                },
-                .init(title: "profile_rate_our_app", leadingIcon: Image("raiting")) {
+                }),
+                .init(title: "profile_rate_our_app", leadingIcon: Image("raiting"), action: .action {
                     openURL(URL(string: Strings.rateAppLink)!)
                 }),
             ],
             [
-                .init(title: "profile_logout_cta", trailingIcon: Image("logout")) {
+                .init(title: "profile_logout_cta", trailingIcon: Image("logout"), action: .action {
                     showAlert = true
                     alertData = .init(title: "profile_logout_confirm_title",
                                       message: "profile_logout_confirm_message",
@@ -153,7 +144,7 @@ struct ProfileView: View {
                 }),
             ],
             [
-                .init(title: "profile_delete_cta", trailingIcon: Image("delete"), tint: .red) {
+                .init(title: "profile_delete_cta", trailingIcon: Image("delete"), tint: .red, action: .action {
                     showAlert = true
                     alertData = .init(title: "profile_delete_confirm_title",
                                       message: "profile_delete_confirm_message",
