@@ -22,9 +22,9 @@ struct HomeView: View {
     @State private var showShareSheet: Bool = false
     @State private var shareSheetText: String = ""
     @State private var showAlert = false
-    @State private var alertData: CustomAlert.Data = .init(title: "Congratulations!",
-                                                           message: "You have received a free ZOOMOOV ride as a sign-up gift",
-                                                           buttonTitle: "Yay!",
+    @State private var alertData: CustomAlert.Data = .init(title: "referral_alert_success_title",
+                                                           message: "referral_alert_success_message",
+                                                           buttonTitle: "referral_alert_success_cta",
                                                            showConfetti: true,
                                                            style: .defaultStyle(width: 260,
                                                                                 mainButtonColor: Color.primary.brand,
@@ -185,13 +185,7 @@ struct HomeView: View {
                     do {
                         let referralCode = try await viewModel.getReferralCode().referralCode
                         
-                        shareSheetText = """
-Join me on Green and get a free ZOOMOOV ride when downloading the Green Your Day app for the first time! Terms and conditions apply. Download the app and use my referral code.
-
-Referral code : \(referralCode)
-
-https://green.onelink.me/\(referralCode)
-"""
+                        shareSheetText = "referral_share_sheet_text".i18n(with: referralCode, referralCode)
                         
                         await MainActor.run {
                             showShareSheet = true
@@ -372,7 +366,7 @@ struct PackagesCarousel: View {
                 if model.packages.count > 2 {
                     CustomNavLink(destination: SeeAllView(sectionID: model.sectionID, title: model.title)) {
                         HStack(spacing: 4) {
-                            Text("See all")
+                            Text("cta_see_all")
                                 .font(.custom("Poppins-Regular", size: 14))
                                 .foregroundStyle(Color.text.black60)
                             Image("chevron-right")

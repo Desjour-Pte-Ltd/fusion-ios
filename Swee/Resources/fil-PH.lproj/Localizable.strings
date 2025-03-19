@@ -1,0 +1,476 @@
+"add_to_cart_cta" = "Idagdag sa cart";
+
+"alerts_empty_description" = "Ang iyong mga abiso ay magpapakita habang ginagamit mo ang app. Abangan ito!";
+
+"alerts_empty_title" = "Walang Alerto Pa";
+
+"alerts_mark_all_as_read_cta" = "Tandaan lahat bilang nabasa";
+
+/* Alerts */
+"alerts_title" = "Alerto";
+
+"all_activities_cta" = "Lahat ng aktibidad";
+
+"app_name" = "Green";
+
+"app_onboarding_edu_description_1" = "Magbayad ng mas mababa at makakuha ng higit pa kapag bumibili ng ZOOMOOV products gamit ang Green App";
+
+"app_onboarding_edu_description_2" = "Madaling subaybayan ang iyong mga pagbili at balanse, lahat sa iisang lugar";
+
+"app_onboarding_edu_description_3" = "Makakuha ng isang libreng ride kapag nag-refer ng kaibigan upang i-download ang Green App (T&amp;Cs na naaangkop)";
+
+"app_onboarding_edu_title_1" = "Mas murang mga rides";
+
+"app_onboarding_edu_title_2" = "Subaybayan ang Playtime";
+
+"app_onboarding_edu_title_3" = "Mag-refer para sa rewards";
+
+"bottom_nav_active_session_label" = "Sa Progreso";
+
+"bottom_nav_active_session_total_package_left" = "Kabuuang package na natitira:";
+
+"bottom_nav_active_session_total_package_passed" = "%@ natapos";
+
+"bottom_nav_alerts" = "Mga Alerto";
+
+/* Logged in (Main) */
+"bottom_nav_home" = "Home";
+
+"bottom_nav_profile" = "Profile";
+
+"bottom_nav_wallet" = "Mga Binili";
+
+"checkout_empty_cta" = "Mag-explore ng mga package";
+
+"checkout_empty_message" = "Ang iyong cart ay kasalukuyang walang laman. Magdagdag ng package upang makita ang mga item dito";
+
+"checkout_empty_title" = "Walang laman ang iyong cart";
+
+"checkout_failed_cta" = "Subukan muli ang pagbabayad";
+
+"checkout_failed_message" = "Hindi namin matutuloy ang transaksyon, subukan muli.";
+
+"checkout_failed_title" = "Nabigong transaksyon";
+
+"checkout_item_unit_price" = "1 unit - %@";
+
+"checkout_items_counts" = "%@ Mga Item";
+
+"checkout_order_coupon_code_hint" = "Ilagay ang code ng coupon";
+
+"checkout_order_summary_price_before_fees" = "Kabuuang halaga";
+
+"checkout_order_summary_title" = "Buod ng Order";
+
+"checkout_order_summary_total_price" = "Kabuuan";
+
+"checkout_proceed_cta" = "Magpatuloy sa pagbabayad";
+
+"checkout_success_cta" = "Tingnan ang aking mga binili";
+
+"checkout_success_message" = "Naidagdag na ang mga item sa iyong mga binili";
+
+"checkout_success_title" = "Matagumpay ang pagbabayad";
+
+/* Checkout */
+"checkout_title" = "Pag-checkout";
+
+/* Profile */
+"complete_profile_description" = "Punan ang ilang nawawalang hakbang upang makakuha ng mga exciting na gantimpala";
+
+"complete_profile_title" = "Kompletuhin ang iyong profile";
+
+"completed_profile_description" = "Matagumpay mong nakumpleto ang iyong profile";
+
+"completed_profile_title" = "Maligayang Pagbati!";
+
+"cta_apply" = "I-apply";
+
+"cta_retry" = "Subukan muli";
+
+/* CTA Buttons */
+"cta_complete" = "Kumpletuhin";
+
+"cta_done" = "Tapos na";
+
+/* App Onboarding */
+"cta_get_started" = "Magsimula";
+
+"cta_help" = "Tulong";
+
+"cta_next" = "Susunod";
+
+"cta_okay" = "Okay";
+
+"cta_prev" = "Bumalik";
+
+"cta_refresh" = "I-refresh";
+
+"cta_save" = "I-save";
+
+"cta_see_all" = "Tingnan lahat";
+
+/* Components */
+"cta_share" = "Ibahagi";
+
+"cta_skip" = "Laktawan";
+
+"cta_confirm" = "Kumpirmahin";
+
+"error_cta" = "Subukang muli";
+
+/* Error State */
+"error_generic" = "May nangyaring problema";
+
+"error_generic_description" = "Pasensya na, hindi namin makita ang page na hinahanap mo";
+
+"error_generic_home" = "Hindi namin ma-load ang content, pakisubukan mag-reload ng page";
+
+"error_home_cta" = "Mag-reload";
+
+"error_network" = "Walang internet";
+
+"error_network_description" = "Hindi makakonekta sa internet, pakisuri ang iyong network settings";
+
+"hide" = "itago";
+
+"merchant_nearby_locations_title" = "Malapit na lokasyon";
+
+/* Merchant Details */
+"merchant_packages_title" = "Package para sa iyo";
+
+"merchant_store_locations_title" = "%@ lokasyon";
+
+/* My Activity */
+"my_activity_empty_cta" = "Mag-umpisang mag-explore";
+
+"my_activity_empty_cta_reset_filters" = "I-reset ang mga filter";
+
+"my_activity_empty_purchases_description" = "Wala ka pang mga pagbili";
+
+"my_activity_empty_redemptions_description" = "Walang mga redemption na ipapakita para sa napiling petsa";
+
+"my_activity_empty_description" = "Wala ka pang mga pagbili o redemption";
+
+"my_activity_empty_purchases_description_filter" = "Walang mga pagbili na ipapakita para sa napiling petsa";
+
+"my_activity_empty_redemptions_description_filter" = "Walang mga redemption na ipapakita para sa napiling petsa";
+
+"my_activity_empty_title" = "Wala pang laman dito";
+
+"my_activity_filter_anytime" = "Kahit kailan";
+
+"my_activity_filter_by_date" = "Ayon sa petsa";
+
+"my_activity_filter_past_30_days" = "Nakaraang buwan";
+
+"my_activity_filter_past_6_months" = "Nakaraang 6 na buwan";
+
+"my_activity_filter_past_90_days" = "Nakaraang 90 araw";
+
+"my_activity_filter_past_year" = "Nakaraang taon";
+
+"my_activity_filter_this_week" = "Ngayong linggo";
+
+"my_activity_filter_title" = "Filter";
+
+"my_activity_mode_of_purchase_counter" = "Sa counter";
+
+"my_activity_mode_of_purchase_online" = "Online";
+
+"my_activity_number_of_items" = "%@ mga item";
+
+"my_activity_tab_end_divider" = "TAPOS NA ANG AKTIBIDAD";
+
+"my_activity_tab_purchased" = "Binili";
+
+"my_activity_tab_redeemed" = "Na-redeem";
+
+"my_activity_title" = "Aking Aktibidad";
+
+/* My Wallet */
+"my_purchase_empty_cta" = "Mag-explore ng mga package";
+
+"my_purchase_empty_message" = "Magbrowse ng mga package at itabi ang iyong mga coupon sa iyong wallet dito";
+
+"my_purchase_empty_title" = "Walang nahanap na coupon";
+
+"my_purchase_title" = "Mga Pagbili";
+
+/* Notifications */
+"notification_permission_dialog_context_1" = "Limitadong oras na promosyon";
+
+"notification_permission_dialog_context_2" = "Petsa ng pag-expire ng mga coupons";
+
+"notification_permission_dialog_context_3" = "Kapag handa nang kunin ang iyong anak mula sa establisyimento";
+
+"notification_permission_dialog_context_title" = "Kung papayagan mo ng access sa notifications, makakatanggap ka ng mga alerto sa";
+
+"notification_permission_dialog_cta_allow" = "Bigyan ng access sa mga notifications";
+
+"notification_permission_dialog_cta_later" = "Hindi ngayon";
+
+"notification_permission_dialog_description" = "Tiyaking maayos ang karanasan sa pamamagitan ng pagpapahintulot sa mga notifications - ito ang pinakamadaling paraan upang subaybayan ang iyong mga coupons";
+
+/* Permission Request: Notification */
+"notification_permission_dialog_title" = "Manatiling updated";
+
+"product_details_by_merchant_stores_title" = "Tingnan ang lahat ng %s lokasyon";
+
+/* Product Details */
+"product_details_by_merchant_title" = "Ni %@";
+
+"profile_add_child_name" = "Pangalan ng anak";
+
+"profile_add_child_name_hint" = "Magdagdag ng pangalan";
+
+"profile_add_child_title" = "Magdagdag ng detalye ng anak";
+
+"profile_add_another_child" = "Magdagdag ng isa pang anak";
+
+"profile_add_child_title_not_empty" = "Mga anak";
+
+"profile_add_photo_cta" = "Magdagdag ng Photo";
+
+"profile_add_photo_album" = "Album ng Mga Larawan";
+
+"profile_add_photo_camera" = "Kamera";
+
+"profile_child_age" = "Edad";
+
+"profile_child_count" = "Anak %@";
+
+"profile_delete_confirm_cancel_cta" = "Panatilihin ang data";
+
+"profile_delete_confirm_message" = "Lahat ng iyong data ay tatanggalin kasama ang iyong mga pagbili";
+
+"profile_delete_confirm_proceed_cta" = "Tanggalin";
+
+"profile_delete_confirm_title" = "Delete?";
+
+"profile_delete_cta" = "Tanggalin ang profile";
+
+"profile_edit_basic_info_cta" = "I-edit ang pangunahing impormasyon";
+
+"profile_help_center" = "Sentro ng Tulong";
+
+"profile_info_add_cta" = "Magdagdag";
+
+"profile_info_edit_cta" = "I-edit";
+
+"profile_info_name_title" = "Pangalan";
+
+"profile_info_phone_number" = "Telepono";
+
+"profile_info_title" = "Profile";
+
+"profile_info_verification_title" = "Beripikasyon";
+
+"profile_info_your_name" = "Iyong pangalan";
+
+"profile_logout_confirm_cancel_cta" = "Manatili";
+
+"profile_logout_confirm_message" = "Gusto mo bang mag-logout sa app? Kakailanganin mong mag-sign in muli";
+
+"profile_logout_confirm_proceed_cta" = "Mag-logout";
+
+"profile_logout_confirm_title" = "Mag-logout?";
+
+"profile_logout_cta" = "Mag-logout";
+
+"profile_payment_digital_payment" = "Digital Payment";
+
+"profile_payment_online_banking" = "Online Banking";
+
+/* Profile: Payment Options */
+"profile_payment_option" = "Opsyon ng Pagbabayad";
+
+"profile_payment_option_card" = "Credit / Debit Card";
+
+"profile_rate_our_app" = "I-rate ang aming app";
+
+"profile_settings_child" = "Anak";
+
+"profile_settings_child_empty_cta" = "Walang impormasyon na naidagdag";
+
+"profile_settings_date_of_birth" = "Petsa ng kapanganakan";
+
+"profile_settings_date_of_birth_empty_cta" = "Magdagdag ng petsa";
+
+"profile_settings_date_of_birth_hint" = "DD/MM/YYYY";
+
+"profile_settings_email_id" = "Email ID";
+
+"profile_settings_email_id_empty_cta" = "Magdagdag ng email ID";
+
+"profile_settings_email_id_hint" = "Ilagay ang email ID";
+
+"profile_settings_email_invalid" = "Suriin ang format ng iyong email";
+
+"profile_settings_gender" = "Kasarian";
+
+"profile_settings_gender_empty_cta" = "Magdagdag ng kasarian";
+
+"profile_settings_language" = "Wika";
+
+"profile_settings_location" = "Lokasyon";
+
+"profile_settings_payment" = "Pagbabayad";
+
+"profile_settings_payment_empty_cta" = "Magdagdag ng pagbabayad";
+
+"purchased_total_time" = "Kabuuang Oras";
+
+"purchased_valid_until" = "Valid hanggang";
+
+"redemption_add_child_empty_state_cta" = "Magdagdag ng anak";
+
+"redemption_add_child_empty_state_description" = "Magdagdag ng detalye ng anak upang magpatuloy sa paggamit ng mga coupon";
+
+"redemption_add_child_empty_state_title" = "Walang nahanap na anak";
+
+"redemption_child_remaining_time" = "Inilaan na oras: %@ %@";
+
+"redemption_coupon_set_qty" = "%@ bilang";
+
+"redemption_coupon_set_qty_note_description" = "%@ hindi pwedeng i-refund, o anumang bagay na dapat malaman ng magulang ay lalamanin sa espasyo na ito.";
+
+"redemption_end_timer_cta" = "Wakasan ang session";
+
+"redemption_hint" = "*Pumili ng anak upang magsimula ng session";
+
+"redemption_scan_qr_cta" = "Susunod na QR";
+
+"redemption_scan_qr_cta_retry" = "I-scan ulit";
+
+"redemption_scan_qr_error_description" = "May problema sa koneksyon, subukan ulit na i-scan.";
+
+"redemption_scan_qr_error_message" = "May error sa pag-scan";
+
+/* Redemption */
+"redemption_scan_qr_error_title" = "I-scan ang QR";
+
+"redemption_scan_qr_to_end_session_description" = "Ipakita ang QR code na ito sa counter, ang aming staff ay mag-scan upang wakasan ang iyong session";
+
+"redemption_scan_qr_to_end_session_success_message" = "Nagtapos ang session!";
+
+"redemption_scan_qr_to_end_session_success_description" = "Natitirang oras: %@ oras";
+
+"redemption_scan_qr_to_end_session_title" = "Check-out";
+
+"redemption_scan_qr_to_redeem_coupon_description" = "Ipakita ang QR code na ito sa counter upang i-redeem ang iyong binili mula sa aming staff";
+
+"redemption_scan_qr_to_redeem_coupon_success_message" = "%@ %@ na-redeem ng matagumpay!";
+
+"redemption_scan_qr_to_redeem_coupon_title" = "I-scan ang QR upang i-redeem";
+
+"redemption_scan_qr_to_start_session_description" = "Ipakita ang QR code na ito sa counter, ang aming staff ay mag-scan upang itala ang iyong presensya";
+
+"redemption_scan_qr_to_start_session_success_message" = "Nagsimula ang session!";
+
+"redemption_scan_qr_to_start_session_title" = "Check-in";
+
+"redemption_scan_to_end_session" = "Wakasan ang session";
+
+"redemption_scan_to_start_session" = "Simulan ang session";
+
+"redemption_select_child_cta" = "Pumili ng anak";
+
+"redemption_time_allotted" = "Oras na itinakda: %@ oras";
+
+"redemption_time_remaining" = "Natitirang oras: %@ oras";
+
+"redemption_set_qty_cta" = "I-redeem ngayon";
+
+/* Redemption: QR */
+"redemption_set_qty_note_title" = "Paalaala:";
+
+"redemption_start_timer_cta" = "Simulan ang timer";
+
+/* Redemption: Time-base */
+"redemption_validity" = "Valid hanggang";
+
+"see_more" = "tingnan pa";
+
+"see_less" = "tingnan ang kaunti";
+
+"select" = "Piliin";
+
+"tnc" = "Mga Tuntunin at Kundisyon";
+
+"user_onboarding_full_name_input_description" = "Pakilagay ang iyong pangalan upang mapersonalisa ang iyong karanasan";
+
+"user_onboarding_full_name_input_hint" = "Ilagay ang iyong buong pangalan";
+
+"user_onboarding_full_name_input_subtitle" = "Pangalan";
+
+/* User Onboarding, Full Name Input */
+"user_onboarding_full_name_input_title" = "Malapit na!";
+
+"user_onboarding_phone_input_cta" = "I-verify";
+
+"user_onboarding_phone_input_description" = "Ang pag-log in gamit ang hindi nakarehistrong numero ay awtomatikong magbubukas ng bagong Green account.";
+
+"user_onboarding_phone_input_hint" = "Numero ng telepono";
+
+"user_onboarding_phone_input_subtitle" = "Ang iyong telepono";
+
+"user_onboarding_referral_code_input_hint" = "Ilagay ang referral code";
+
+"user_onboarding_referral_code_input_subtitle" = "Referral Code";
+
+"user_onboarding_referral_error" = "Maling referral code";
+
+/* User Onboarding, Phone Input */
+"user_onboarding_phone_input_title" = "Ilagay ang iyong telepono";
+
+"user_onboarding_social_login_cta" = "Google";
+
+"user_onboarding_social_login_divider_message" = "O magpatuloy gamit ang";
+
+"user_onboarding_tnc" = "Sa pagpapatuloy, tinatanggap mo ang Green App <br/><u><a href=\"https://www.greenyourday.app/privacy-policy\">Mga Tuntunin at Kundisyon</a></u>";
+
+"ios_user_onboarding_tnc_1" = "Sa pagpapatuloy, tinatanggap mo ang";
+
+"ios_user_onboarding_tnc_2" = "Mga Termino at Kondisyon ng Green App";
+
+"user_onboarding_verification_cta_from_phone_login" = "Mag-login";
+
+"user_onboarding_verification_cta_from_social_login" = "I-verify";
+
+"user_onboarding_verification_description" = "Nagpadala kami ng SMS na may OTP sa iyong telepono %@-%@";
+
+"user_onboarding_verification_menu_item_resend_otp" = "Muling ipadala ang OTP";
+
+"user_onboarding_verification_menu_item_resend_otp_again" = "Muling ipadala ang OTP";
+
+"user_onboarding_verification_menu_item_resend_otp_timer" = "sa 00:%02d";
+
+"user_onboarding_verification_otp_error_invalid" = "Mali ang code. Mangyaring subukang muli";
+
+"user_onboarding_verification_otp_error_limit_exceeded" = "Naabot ang maximum limit. Mangyaring maghintay ng ilang minuto at subukang muli";
+
+"user_onboarding_social_login_failed_title" = "Nabigong mag-login gamit ang social login";
+
+"user_onboarding_social_login_failed_message" = "Mangyaring subukang muli";
+
+"user_onboarding_verification_otp_phone_taken" = "Ang numerong ito ay nakarehistro na sa ibang account";
+
+"user_onboarding_verification_subtitle" = "Ilagay ang OTP";
+
+/* User Onboarding, OTP */
+"user_onboarding_verification_title" = "Ilagay ang iyong OTP";
+
+/* API errors */
+"api_error_reauthentication" = "Nabigong mag-reauthenticate";
+
+"api_error_loading_content_failed" = "Hindi ma-load ang nilalaman";
+
+/* Referral */
+"referral_alert_success_title" = "Maligayang Pagbati!";
+
+"referral_alert_success_message" = "Nakatanggap ka ng libreng ZOOMOOV ride bilang regalo sa pagrehistro.";
+
+"referral_alert_success_cta" = "Yay!";
+
+"referral_share_sheet_text" = "Sumali sa akin sa Green at makakuha ng libreng ZOOMOOV ride kapag nag-download ng Green Your Day app sa unang pagkakataon! Nalalapat ang mga tuntunin at kondisyon. I-download ang app at gamitin ang aking referral code.\n\nReferral code: %@\n\nhttps://green.onelink.me/%@";

@@ -1,0 +1,16 @@
+phraseapp:
+  access_token: f51b83e6f882f23f0d1fbd889b34730ad4981e33b21db6ded8d492d356d57e32
+  project_id: 48a73cde48ea57918dcf1414bf513822
+  push:
+    sources:
+    - file: ./Swee/Resources/en.lproj/Localizable.strings
+      params:
+        file_format: strings
+        locale_id: en-US
+  pull:
+    targets:
+    - file: ./Swee/Resources/en.lproj/Localizable.strings
+      params:
+        file_format: strings
+        locale_id: en-US
+        format_options: { convert_placeholder: true }

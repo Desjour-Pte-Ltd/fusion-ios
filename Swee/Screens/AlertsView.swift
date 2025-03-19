@@ -135,13 +135,13 @@ struct AlertsView: View {
         VStack(spacing: 0) {
             Spacer()
             Image("wallet-empty")
-            Text("No Alerts Yet")
+            Text("alerts_empty_title")
                 .font(.custom("Poppins-SemiBold", size: 24))
                 .padding(.horizontal, 16)
                 .foregroundStyle(Color.text.black100)
                 .multilineTextAlignment(.center)
                 .padding(.top, 24)
-            Text("Your notifications will show up as you use the app. Watch this space!")
+            Text("alerts_empty_description")
                 .font(.custom("Poppins-Regular", size: 14))
                 .padding(.horizontal, 44)
                 .foregroundStyle(Color.text.black60)
@@ -194,7 +194,7 @@ struct AlertsView: View {
             .customNavigationBackButtonHidden(true)
             .customNavLeadingItem {
                 HStack(alignment: .center, spacing: 4) {
-                    Text("Alerts")
+                    Text("alerts_title")
                         .font(.custom("Poppins-SemiBold", size: 20))
                     if viewModel.numberOfUnreadAlerts > 0 {
                         Text("(\(viewModel.numberOfUnreadAlerts))")
@@ -208,7 +208,7 @@ struct AlertsView: View {
                     try? await viewModel.markAllAsRead()
                     try? await viewModel.fetch()
                 } label: {
-                    Text("Mark all as read")
+                    Text("alerts_mark_all_as_read_cta")
                         .font(.custom("Poppins-Medium", size: 14))
                 }
                 .tint(Color.primary.brand)

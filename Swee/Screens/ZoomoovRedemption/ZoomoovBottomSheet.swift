@@ -85,10 +85,10 @@ struct ZoomoovBottomSheet: View {
                 }
             case .redemptionQueue(let redemption):
                 RedemptionScanView(model: .init(header: "\(model.type.capitalized) \(successfulScans + 1)/\(model.qtyToRedeem)",
-                                                title: "Scan QR to redeem",
+                                                title: "redemption_scan_qr_to_redeem_coupon_title",
                                                 qr: redemption.qrCodeImage,
-                                                description: "Show this QR code at the counter to redeem your purchase",
-                                                actionTitle: "Next QR",
+                                                description: "redemption_scan_qr_to_redeem_coupon_description",
+                                                actionTitle: "redemption_scan_qr_cta",
                                                 showCurrentTime: true),
                                    tint: Color.secondary.brand) {
                     do {
@@ -102,9 +102,9 @@ struct ZoomoovBottomSheet: View {
                 }
             case .completed:
                 RedemptionCompletedView(model: .init(header: "\(model.type.capitalized) \(successfulScans)/\(model.qtyToRedeem)",
-                                                     title: "\(model.qtyToRedeem) \(model.type) redeemed successfully!",
+                                                     title: "redemption_scan_qr_to_redeem_coupon_success_message".i18n(with: model.qtyToRedeem.toString, model.type),
                                                      description: "",
-                                                     actionTitle: "Done"),
+                                                     actionTitle: "cta_done"),
                                         tint: Color.secondary.brand) {
                     onComplete()
                     step = .setup

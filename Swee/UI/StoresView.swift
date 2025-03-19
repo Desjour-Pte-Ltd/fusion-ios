@@ -6,7 +6,7 @@ struct StoresView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Text("\(stores.count) Locations")
+            Text("merchant_store_locations_title".i18n(with: stores.count.toString))
                 .font(.custom("Poppins-SemiBold", size: 24))
                 .foregroundStyle(Color.text.black100)
                 .padding(.bottom, 24)

@@ -24,20 +24,20 @@ struct CompleteProfileView: View {
         NavigationView {
             VStack {
                 Spacer()
-                Text("Almost there!")
+                Text("user_onboarding_full_name_input_title")
                     .font(.custom("Poppins-SemiBold", size: 24))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.bottom, 8)
-                Text("Please provide your name so we can personalise your experience")
+                Text("user_onboarding_full_name_input_description")
                     .font(.custom("Poppins-Regular", size: 14))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundStyle(Color.text.black60)
                     .padding(.bottom, 32)
                 VStack {
-                    Text("Full name")
+                    Text("user_onboarding_full_name_input_subtitle")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.custom("Poppins-Medium", size: 16))
-                    TextField("Enter your full name", text: $fullName) {
+                    TextField("user_onboarding_full_name_input_hint", text: $fullName) {
                         UIApplication.shared.endEditing()
                     }
                     .padding([.top, .bottom], 17)
@@ -52,14 +52,14 @@ struct CompleteProfileView: View {
                         .stroke(nameFieldActive ? Color.primary.brand : Color(hex: "#E7EAEB"),
                                 lineWidth: nameFieldActive ? 2 : 1))
                     if errorMessage != nil {
-                        Text(errorMessage)
+                        Text(errorMessage?.i18n ?? "")
                             .font(.custom("Poppins-Regular", size: 12))
                             .foregroundStyle(.red)
                     }
-                    Text("Referral Code")
+                    Text("user_onboarding_referral_code_input_subtitle")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.custom("Poppins-Medium", size: 16))
-                    TextField("Enter the referral code", text: $referralCode) {
+                    TextField("user_onboarding_referral_code_input_hint", text: $referralCode) {
                         UIApplication.shared.endEditing()
                     }
                     .padding([.top, .bottom], 17)
@@ -91,14 +91,14 @@ struct CompleteProfileView: View {
                         print("complete profile error =====", error)
                         if let apiError = error as? APIError {
                             if case .incorrectBody = apiError {
-                                referralErrorMessage = "Invalid referral code"
+                                referralErrorMessage = "user_onboarding_referral_error"
                             } else {
-                                errorMessage = "Something went wrong. Please try again"
+                                errorMessage = "error_generic"
                             }
                         }
                     }
                 } label: {
-                    Text("Complete")
+                    Text("cta_complete")
                         .frame(maxWidth: .infinity)
                         .font(.custom("Roboto-Bold", size: 16))
                 }

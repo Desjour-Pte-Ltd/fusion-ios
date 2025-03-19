@@ -7,6 +7,16 @@ struct ChildCard: View {
     var isSelected: Bool
     var onButtonTap: (Child) -> Void
     
+    var buttonCTAText: String {
+        guard isSelected else {
+            return "redemption_select_child_cta"
+        }
+        
+        return sessionOngoing ?
+        "redemption_time_remaining".i18n(with: alottedTime.toString()) :
+        "redemption_time_allotted".i18n(with: alottedTime.toString())
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text(child.name)
@@ -17,7 +27,7 @@ struct ChildCard: View {
             } label: {
                 HStack {
                     Spacer()
-                    Text(isSelected ? "Time \(sessionOngoing ? "remaining" : "alotted") : \(alottedTime.toString()) Hr" : "Select child")
+                    Text(buttonCTAText.i18n)
                         .font(.custom("Poppins-SemiBold", size: 16))
                         .foregroundStyle(isSelected ? Color.primary.dark : Color.text.black100)
                     Spacer()

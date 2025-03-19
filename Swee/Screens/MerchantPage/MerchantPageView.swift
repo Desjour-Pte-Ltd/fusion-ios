@@ -64,7 +64,7 @@ struct MerchantPageView: View {
                                         .font(.custom("Poppins-Bold", size: 24))
                                         .foregroundStyle(.white)
                                     if !viewModel.stores.isEmpty {
-                                        Text("\(viewModel.stores.count) locations"
+                                        Text("merchant_store_locations_title".i18n(with: viewModel.stores.count.toString)
                                             .underline(font: .custom("Poppins-SemiBold", size: 14),
                                                        color: .white))
                                         .onTapGesture {
@@ -104,7 +104,7 @@ struct MerchantPageView: View {
                                         Button(action: {
                                             isExpanded.toggle()
                                         }) {
-                                            Text(isExpanded ? "see less".underline(font: .custom("Roboto-Medium", size: 16), color: Color.primary.brand) : "see more".underline(font: .custom("Roboto-Medium", size: 16), color: Color.primary.brand))
+                                            Text(isExpanded ? "see_less".i18n.underline(font: .custom("Roboto-Medium", size: 16), color: Color.primary.brand) : "see_more".i18n.underline(font: .custom("Roboto-Medium", size: 16), color: Color.primary.brand))
                                                 .padding(.leading, 8.0)
                                                 .shadow(color: Color.background.pale, radius: 4, x: -8)
                                         }
@@ -124,7 +124,7 @@ struct MerchantPageView: View {
                         //                                                     bgColors: [Color(hex:"#3900B1"), Color(hex:"#9936CE"), Color(hex:"#FDC093")],
                         //                                                     timerColors: [Color(hex: "#FFC107"), Color(hex: "#FFC107", opacity: 0)]))
                         //                        }
-                        Text("Packages just for you")
+                        Text("merchant_packages_title")
                             .font(.custom("Poppins-Bold", size: 20))
                         if viewModel.showError {
                             ContentErrorView {
@@ -143,7 +143,7 @@ struct MerchantPageView: View {
                                 }
                             }
                         }
-                        Text("Nearby location")
+                        Text("merchant_nearby_locations_title")
                             .font(.custom("Poppins-Bold", size: 20))
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHGrid(rows: [.init()], content: {
@@ -223,7 +223,7 @@ struct DealBanner: View {
                         .foregroundColor(Color.background.white.opacity(0.75))
                     HStack(alignment: .bottom) {
                         HStack(spacing: 4) {
-                            Text("Add to Cart")
+                            Text("add_to_cart_cta")
                                 .font(.custom("Poppins-Medium", size: 14))
                                 .foregroundStyle(Color.background.white)
                             Image("cart")

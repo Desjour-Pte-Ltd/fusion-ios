@@ -23,11 +23,11 @@ struct MyWalletView: View {
             Image("wallet-empty")
                 .padding(.vertical, 32)
             VStack {
-                Text("No coupons found")
+                Text("my_purchase_empty_title")
                     .font(.custom("Poppins-SemiBold", size: 18))
                     .foregroundStyle(Color.text.black80)
                     .padding(.bottom, 8)
-                Text("Browse packages and save your coupons in your wallet here")
+                Text("my_purchase_empty_message")
                     .font(.custom("Poppins-Medium", size: 14))
                     .multilineTextAlignment(.center)
                     .foregroundStyle(Color.text.black60)
@@ -36,7 +36,7 @@ struct MyWalletView: View {
                     currentTab.wrappedValue = .home
                 } label: {
                     HStack {
-                        Text("Explore package")
+                        Text("my_purchase_empty_cta")
                             .font(.custom("Poppins-Bold", size: 16))
                             .foregroundStyle(Color.primary.brand)
                     }
@@ -56,13 +56,13 @@ struct MyWalletView: View {
                 CustomNavLink(isActive: $goToActivityView, destination: ActivityView())
                 ScrollView {
                     HStack {
-                        Text("Purchases")
+                        Text("my_purchase_title")
                             .font(.custom("Poppins-SemiBold", size: 18))
                         Spacer()
                         CustomNavLink(destination: ActivityView()) {
                             HStack {
                                 Image("activity")
-                                Text("All activity")
+                                Text("all_activities_cta")
                                     .font(.custom("Poppins-Medium", size: 14))
                             }
                         }

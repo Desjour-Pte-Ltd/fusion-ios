@@ -22,6 +22,14 @@ extension String {
         let mutableName = self
         return mutableName.replacingOccurrences(of: "(s)", with: "")
     }
+    
+    func i18n(with arguments: any CVarArg...) -> String {
+        return String(format: NSLocalizedString(self, comment: ""), arguments)
+    }
+    
+    var i18n: String {
+        return i18n(with: "")
+    }
 }
 
 extension Optional where Wrapped == String {

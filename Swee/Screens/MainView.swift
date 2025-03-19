@@ -27,13 +27,13 @@ enum Tabs: Int, CaseIterable, Identifiable {
     var title: String{
         switch self {
         case .home:
-            return "Home"
+            return "bottom_nav_home"
         case .myWallet:
-            return "Purchases"
+            return "bottom_nav_wallet"
         case .alerts:
-            return "Alerts"
+            return "bottom_nav_alerts"
         case .profile:
-            return "Profile"
+            return "bottom_nav_profile"
         }
     }
     
@@ -69,7 +69,7 @@ struct MainView: View {
                 .renderingMode(.template)
                 .foregroundStyle(isActive ? Color.primary.brand : Color.text.black60)
                 .frame(width: 24, height: 24)
-            Text(title)
+            Text(title.i18n)
                 .font(isActive ? .custom("Poppins-Medium", size: 12) : .custom("Poppins-SemiBold", size: 12))
                 .foregroundStyle(isActive ? Color.primary.brand : Color.text.black60)
         }
@@ -85,7 +85,7 @@ struct MainView: View {
                     Text(activeSession.session?.merchantName)
                         .font(.custom("Poppins-SemiBold", size: 18))
                         .foregroundStyle(LinearGradient(colors: Color.gradient.primary, startPoint: .topLeading, endPoint: .bottomTrailing))
-                    Text("In progress")
+                    Text("bottom_nav_active_session_label")
                         .font(.custom("Poppins-SemiBold", size: 12))
                         .foregroundStyle(Color.white)
                         .padding(.vertical, 2)

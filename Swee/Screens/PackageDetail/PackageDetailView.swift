@@ -20,7 +20,7 @@ struct PackageDetailView: View {
                     await viewModel.addToCart()
                 } label: {
                     HStack {
-                        Text("Add to cart")
+                        Text("add_to_cart_cta")
                             .font(.custom("Poppins-Medium", size: 18))
                         Image("cart-thick")
                             .resizable()
@@ -88,12 +88,12 @@ struct PackageDetailView: View {
 //                                    .tint(Color.text.black80)
 //                            }
                         }
-                        Text("By \(package.merchant)")
+                        Text("product_details_by_merchant_title".i18n(with: package.merchant))
                             .font(.custom("Poppins-SemiBold", size: 14))
                             .foregroundStyle(Color.text.black80)
                         if viewModel.stores.count > 0 {
                             HStack(spacing: 4) {
-                                Text("See all \(viewModel.stores.count) locations")
+                                Text("product_details_by_merchant_stores_title".i18n(with: viewModel.stores.count.toString))
                                     .font(.custom("Poppins-Regular", size: 12))
                                     .foregroundStyle(Color.text.black60)
                                 Image("chevron-right")
@@ -149,7 +149,7 @@ struct PackageDetailView: View {
                     if let tos = package.tos {
                         ZStack {
                             VStack(alignment: .leading) {
-                                Text("Terms & Conditions")
+                                Text("tnc")
                                     .font(.custom("Poppins-Bold", size: 18))
                                     .foregroundStyle(Color.text.black100)
                                 VStack {
@@ -162,7 +162,7 @@ struct PackageDetailView: View {
                                                 Button(action: {
                                                     isExpanded.toggle()
                                                 }) {
-                                                    Text(isExpanded ? "see less".underline(font: .custom("Roboto-Medium", size: 16), color: Color.primary.brand) : "see more".underline(font: .custom("Roboto-Medium", size: 16), color: Color.primary.brand))
+                                                    Text(isExpanded ? "see_less".i18n.underline(font: .custom("Roboto-Medium", size: 16), color: Color.primary.brand) : "see_more".i18n.underline(font: .custom("Roboto-Medium", size: 16), color: Color.primary.brand))
                                                         .padding(.leading, 8.0)
                                                         .background(Color.background.pale)
                                                         .shadow(color: Color.background.pale, radius: 4, x: -8)

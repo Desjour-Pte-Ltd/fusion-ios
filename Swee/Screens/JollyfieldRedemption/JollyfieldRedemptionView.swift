@@ -14,10 +14,10 @@ struct JollyfieldRedemptionView: View {
     var emptyUI: some View {
         VStack {
             Image("family")
-            Text("No children found")
+            Text("redemption_add_child_empty_state_title")
                 .font(.custom("Poppins-SemiBold", size: 18))
                 .foregroundStyle(Color.text.black80)
-            Text("Add children details to continue using the coupons")
+            Text("redemption_add_child_empty_state_description")
                 .font(.custom("Poppins-Medium", size: 14))
                 .padding(.horizontal, 28)
                 .foregroundStyle(Color.text.black60)
@@ -26,7 +26,7 @@ struct JollyfieldRedemptionView: View {
                 viewModel.children = children
             }) {
                 HStack {
-                    Text("Add child")
+                    Text("redemption_add_child_empty_state_cta")
                         .font(.custom("Roboto-Bold", size: 16))
                     Image("plus")
                 }
@@ -105,7 +105,7 @@ struct JollyfieldRedemptionView: View {
                         .font(.custom("Roboto-Bold", size: 32))
                         .foregroundStyle(.white)
                         .shadow(color: .black.opacity(0.25), radius: 2, x: 1, y: 2)
-                    Text("Total Time")
+                    Text("purchased_total_time")
                         .font(.custom("Poppins-SemiBold", size: 16))
                         .foregroundStyle(.white.opacity(0.6))
                         .shadow(color: .black.opacity(0.25), radius: 2, x: 1, y: 2)
@@ -122,10 +122,10 @@ struct JollyfieldRedemptionView: View {
                 )
                 HStack(spacing: 0) {
                     if let validUntilDate = viewModel.validUntilDate {
-                        Text("Valid until ")
+                        Text("redemption_validity")
                             .foregroundStyle(Color.text.black60)
                             .font(.custom("Poppins-Medium", size: 12))
-                        Text("\(validUntilDate.formatted(date: .abbreviated, time: .omitted))")
+                        Text(" \(validUntilDate.formatted(date: .abbreviated, time: .omitted))")
                             .foregroundStyle(Color.text.black100)
                             .font(.custom("Poppins-Medium", size: 12))
                     }
@@ -153,7 +153,7 @@ struct JollyfieldRedemptionView: View {
                                 }
                             }
                         }
-                        Text("*Select child to start the session")
+                        Text("redemption_hint")
                             .font(.custom("Poppins-Regular", size: 12))
                             .foregroundStyle(Color.text.black60)
                             .hidden(!viewModel.selectedChildren.isEmpty)
@@ -189,7 +189,7 @@ struct JollyfieldRedemptionView: View {
                             } label: {
                                 HStack {
                                     Spacer()
-                                    Text("End session")
+                                    Text("redemption_end_timer_cta")
                                         .font(.custom("Roboto-Bold", size: 16))
                                     Spacer()
                                 }
@@ -212,7 +212,7 @@ struct JollyfieldRedemptionView: View {
                                 hidden = false
                             } label: {
                                 HStack {
-                                    Text("Start timer")
+                                    Text("redemption_start_timer_cta")
                                         .font(.custom("Roboto-Bold", size: 16))
                                     Image("timer")
                                 }
@@ -263,7 +263,7 @@ struct JollyfieldRedemptionView: View {
                     openURL(URL(string: Strings.helpLink)!)
                 } label: {
                     HStack(spacing: 4) {
-                        Text("Help")
+                        Text("cta_help")
                             .font(.custom("Poppins-Medium", size: 16))
                         Image(systemName: "questionmark.circle")
                             .font(.callout.weight(.medium))
@@ -274,7 +274,7 @@ struct JollyfieldRedemptionView: View {
                 CustomNavLink(destination: AddChildView(children: viewModel.children) { children in
                     viewModel.children = children
                 }) {
-                    Text("Add child")
+                    Text("redemption_add_child_empty_state_cta")
                         .font(.custom("Poppins-Medium", size: 16))
                         .foregroundStyle(Color.primary.brand)
                 }
@@ -346,19 +346,20 @@ struct JollyfieldBottomSheet: View {
             if session != nil {
                 switch step {
                 case .qrStart:
-                    RedemptionScanView(model: .init(header: "Start session", title: "Check - in", qr: session?.qrCodeImage, description: "Show this QR code at the counter, our staff will scan this QR to mark your presence", actionTitle: "Refresh", showCurrentTime: true)) {
+                    RedemptionScanView(model: .init(header: "redemption_scan_to_start_session", title: "redemption_scan_qr_to_start_session_title", qr: session?.qrCodeImage, description: "redemption_scan_qr_to_start_session_description", actionTitle: "cta_refresh", showCurrentTime: true)) {
                         try await checkIfSession(is: .inProgress, goTo: .sessionStarted)
                     }
                 case .sessionStarted:
-                    RedemptionCompletedView(model: .init(header: "", title: "Session started!", description: "", actionTitle: "Okay")) {
+                    RedemptionCompletedView(model: .init(header: "", title: "redemption_scan_qr_to_start_session_success_message", description: "", actionTitle: "cta_okay")) {
                         onComplete()
                     }
                 case .qrEnd:
-                    RedemptionScanView(model: .init(header: "End Session", title: "Check - out", qr: session?.qrCodeImage, description: "Show this QR code at the counter, our staff will scan this QR to end your session", actionTitle: "Refresh", showCurrentTime: true)) {
+                    RedemptionScanView(model: .init(header: "redemption_scan_to_end_session", title: "redemption_scan_qr_to_end_session_title", qr: session?.qrCodeImage, description: "redemption_scan_qr_to_end_session_description", actionTitle: "cta_refresh", showCurrentTime: true)) {
                         try await checkIfSession(is: .completed, goTo: .sessionEnded)
                     }
                 case .sessionEnded:
-                    RedemptionCompletedView(model: .init(header: "", title: "Session ended!", description: "Remaining time left 0:15 hr", actionTitle: "Okay")) {
+                    let remainingTime = session?.remainingTime ?? ""
+                    RedemptionCompletedView(model: .init(header: "", title: "redemption_scan_qr_to_end_session_success_message", description: "redemption_scan_qr_to_end_session_success_description".i18n(with: remainingTime), actionTitle: "cta_okay")) {
                         onComplete()
                         step = .qrStart
                     }

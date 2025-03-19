@@ -12,18 +12,18 @@ struct OnboardingView: View {
     @State private var page = 0
     @State private var pages: [Page] = [
         .init(image: .init("onboarding-img-1", bundle: .main),
-              title: "Cheaper rides",
-              description: "Pay less and get more when buying ZOOMOOV products through Green App"),
+              title: "app_onboarding_edu_title_1",
+              description: "app_onboarding_edu_description_1"),
         .init(image: .init("onboarding-img-2", bundle: .main),
-              title: "Track Playtime",
-              description: "Easily monitor your purchases and balance, all in one place"),
+              title: "app_onboarding_edu_title_2",
+              description: "app_onboarding_edu_description_2"),
         .init(image: .init("onboarding-img-3", bundle: .main),
-              title: "Refer to get rewarded",
-              description: "Get one free ride when referring a friend to download Green App (T&C’s apply)"),
+              title: "app_onboarding_edu_title_3",
+              description: "app_onboarding_edu_description_3"),
     ]
     
     private var nextTextView: some View {
-        return Text(page + 1 == colors.count ? "Get started" : "Next")
+        return Text(page + 1 == colors.count ? "cta_get_started" : "cta_next")
             .frame(maxWidth: .infinity)
             .font(.custom("Poppins-Bold", size: 16))
             .foregroundStyle(
@@ -48,7 +48,7 @@ struct OnboardingView: View {
                     })
                     Spacer()
                     NavigationLink(destination: AuthView()) {
-                        Text("Skip")
+                        Text("cta_skip")
                             .font(.custom("Poppins-SemiBold", size: 18))
                             .foregroundStyle(Color.text.black100)
                     }
@@ -61,11 +61,11 @@ struct OnboardingView: View {
                             pages[index].image
                                 .resizable()
                                 .frame(maxWidth: 375, maxHeight: 375)
-                            Text(pages[index].title)
+                            Text(pages[index].title.i18n)
                                 .font(.custom("Poppins-SemiBold", size: 24))
                                 .foregroundStyle(Color.text.black100)
                                 .padding(.bottom, 2)
-                            Text(pages[index].description)
+                            Text(pages[index].description.i18n)
                                 .multilineTextAlignment(.center)
                                 .font(.custom("Poppins-SemiBold", size: 14))
                                 .foregroundStyle(Color.text.black40)
@@ -84,7 +84,7 @@ struct OnboardingView: View {
                             page -= 1
                         }
                     }, label: {
-                        Text("Prev")
+                        Text("cta_prev")
                             .font(.custom("Poppins-Bold", size: 16))
                             .foregroundStyle(Color.text.black60)
                     })

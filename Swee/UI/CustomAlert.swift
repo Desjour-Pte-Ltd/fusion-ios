@@ -51,15 +51,33 @@ struct CustomAlert: View {
                         close()
                     }
                     .transition(.opacity)
-                ZStack(alignment: .top) {
-                    VStack {
-                        Text(data.title)
-                            .font(dataStyle.titleFont)
-                            .foregroundStyle(Color.text.black100)
-                            .padding()
-                        
-                        Text(data.message)
-                            .font(dataStyle.messageFont)
+                VStack {
+                    Text(data.title.i18n)
+                        .font(dataStyle.titleFont)
+                        .foregroundStyle(Color.text.black100)
+                        .padding()
+                    
+                    Text(data.message.i18n)
+                        .font(dataStyle.messageFont)
+                        .foregroundStyle(Color.text.black60)
+                        .multilineTextAlignment(.center)
+                    
+                    AsyncButton(progressWidth: .infinity) {
+                        try? await data.action.closure()
+                        close()
+                    } label: {
+                        Text(data.buttonTitle.i18n)
+                            .font(.custom("Poppins-Bold", size: 16))
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                    }
+                    .padding()
+                    .buttonStyle(PrimaryButton(backgroundColor: .error))
+                    Button {
+                        close()
+                    } label: {
+                        Text(data.cancelTitle?.i18n)
+                            .font(.custom("Poppins-SemiBold", size: 16))
                             .foregroundStyle(Color.text.black60)
                             .multilineTextAlignment(.center)
                         

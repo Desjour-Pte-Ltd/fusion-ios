@@ -61,7 +61,7 @@ struct AddChildView: View {
                             Button {
                                 viewModel.children.append(.init(name: ""))
                             } label: {
-                                Text("Add another child")
+                                Text("profile_add_another_child")
                                     .font(.custom("Roboto-Bold", size: 16))
                                     .foregroundStyle(LinearGradient(colors: Color.gradient.primary, startPoint: .topLeading, endPoint: .bottomTrailing))
                                     .frame(maxWidth: .infinity)
@@ -84,14 +84,14 @@ struct AddChildView: View {
             }
             tabIsShown.wrappedValue = false
         }
-        .customNavigationTitle("Add child")
+        .customNavigationTitle("profile_add_child_title")
         .customNavTrailingItem {
             AsyncButton(progressTint: Color.primary.brand) {
                 let children = await viewModel.save(children: viewModel.children)
                 onSave(children)
                 dismiss()
             } label: {
-                Text("Save")
+                Text("cta_save")
                     .font(.custom("Poppins-Medium", size: 16))
             }
             .disabled(!allDataFilled)
@@ -116,7 +116,7 @@ struct ChildDetailsCard: View {
                     .padding(.top, 8)
             }
             HStack {
-                Text("Child \(index + 1)")
+                Text("profile_child_count".i18n(with: (index + 1).toString))
                     .font(.custom("Poppins-Medium", size: 12))
                     .foregroundStyle(Color.text.black40)
                 Spacer()
@@ -150,7 +150,7 @@ struct ChildDetailsCard: View {
             }
             HStack {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Name of the child")
+                    Text("profile_add_child_name")
                         .font(.custom("Poppins-Medium", size: 14))
                         .foregroundStyle(Color.text.black40)
                     Text(child.name)
@@ -159,7 +159,7 @@ struct ChildDetailsCard: View {
                 }
                 Spacer()
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Age")
+                    Text("profile_child_age")
                         .font(.custom("Poppins-Medium", size: 14))
                         .foregroundStyle(Color.text.black40)
                     Text("\(child.dob?.yearsBetween() ?? 0)")
@@ -223,7 +223,7 @@ struct EditChildDetailsCard: View {
                 Rectangle()
                     .fill(Color.text.black10)
                     .frame(height: 1)
-                Text("Child \(index + 1)")
+                Text("profile_child_count".i18n(with: (index + 1).toString))
                     .font(.custom("Poppins-Medium", size: 12))
                     .foregroundStyle(Color.text.black40)
                 Rectangle()
@@ -231,9 +231,9 @@ struct EditChildDetailsCard: View {
                     .frame(height: 1)
             }
             VStack(alignment: .leading) {
-                Text("Name of the child")
+                Text("profile_add_child_name")
                     .font(.custom("Poppins-Regular", size: 14))
-                TextField("", text: $name, prompt: Text("Add name")
+                TextField("", text: $name, prompt: Text("profile_add_child_name_hint")
                     .font(.custom("Poppins-SemiBold", size: 18))
                 )
                 .font(.custom("Poppins-Medium", size: 18))
@@ -249,10 +249,10 @@ struct EditChildDetailsCard: View {
                     .fill(Color.text.black10)
                     .frame(height: 1)
                 VStack(alignment: .leading) {
-                    Text("Date of birth")
+                    Text("profile_settings_date_of_birth")
                         .font(.custom("Poppins-Regular", size: 14))
                     HStack {
-                        Text(child.dob != nil ? "\(child.dob!.formatted(date: .numeric, time: .omitted))" : "DD/MM/YYYY")
+                        Text(child.dob != nil ? "\(child.dob!.formatted(date: .numeric, time: .omitted))" : "profile_settings_date_of_birth_hint")
                             .font(.custom("Poppins-Medium", size: child.dob != nil ? 16 : 14))
                             .foregroundStyle(child.dob != nil ? Color.text.black80 : Color.text.black60)
                             .overlay {

@@ -30,7 +30,7 @@ struct CustomNavBarView: View {
             .frame(maxWidth: .infinity, maxHeight: 20)
             #endif
             ZStack {
-                Text(title)
+                Text(title.i18n)
                     .font(.custom("Poppins-Bold", size: 18))
                     .foregroundStyle(.black)
                 HStack {

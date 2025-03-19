@@ -6,7 +6,6 @@ struct EditDOBView: View {
     @Environment(\.tabIsShown) private var tabIsShown
     @State var dob: Date?
     @State private var editedDOB: Date = .now
-    @State private var showError = false
     
     private var latestDOB: Date {
         let currentDate = Date()
@@ -17,11 +16,11 @@ struct EditDOBView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Date of birth")
+            Text("profile_settings_date_of_birth")
                 .font(.custom("Poppins-Medium", size: 16))
                 .foregroundStyle(Color.text.black80)
             HStack {
-                Text(dob != nil ? "\(dob!.formatted(date: .numeric, time: .omitted))" : "DD/MM/YYYY")
+                Text(dob != nil ? "\(dob!.formatted(date: .numeric, time: .omitted))" : "profile_settings_date_of_birth_hint")
                     .font(.custom("Poppins-Medium", size: dob != nil ? 16 : 14))
                     .foregroundStyle(dob != nil ? Color.text.black80 : Color.text.black60)
                     .overlay {
@@ -47,11 +46,6 @@ struct EditDOBView: View {
             .onChange(of: editedDOB, perform: { newValue in
                 dob = editedDOB
             })
-            if showError {
-                Text("Check your email format")
-                    .font(.custom("Poppins-Regular", size: 12))
-                    .foregroundStyle(.red)
-            }
             Spacer()
             AsyncButton(progressWidth: .infinity) {
                 do {
@@ -69,7 +63,7 @@ struct EditDOBView: View {
             .buttonStyle(PrimaryButton())
         }
         .padding()
-        .customNavigationTitle("Date of birth")
+        .customNavigationTitle("profile_settings_date_of_birth")
         .onAppear(perform: {
             tabIsShown.wrappedValue = false
         })
