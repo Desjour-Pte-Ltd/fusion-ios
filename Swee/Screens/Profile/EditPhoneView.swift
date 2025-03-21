@@ -14,7 +14,7 @@ struct EditPhoneView: View {
         return phone != "" && isPhoneFocused
     }
     private var codeFieldActive: Bool {
-        return phone.count == 8
+        return country.wrappedValue.isPhoneValid("\(country.wrappedValue.phoneCode)\(phone)")
     }
     
     var body: some View {

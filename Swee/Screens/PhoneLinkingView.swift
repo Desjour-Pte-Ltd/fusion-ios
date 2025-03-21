@@ -22,7 +22,7 @@ struct PhoneLinkingView: View {
         return phone != "" && isPhoneFocused
     }
     private var codeFieldActive: Bool {
-        return phone.count == 8
+        return country.wrappedValue.isPhoneValid("\(country.wrappedValue.phoneCode)\(phone)")
     }
     
     private var tosText: (String) -> AttributedString =  { text in

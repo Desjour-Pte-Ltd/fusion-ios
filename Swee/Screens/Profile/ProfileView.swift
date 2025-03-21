@@ -33,6 +33,7 @@ struct ProfileView: View {
     
     @EnvironmentObject private var api: API
     @EnvironmentObject private var appRootManager: AppRootManager
+    @Environment(\.country) private var country
     @Environment(\.tabIsShown) private var tabIsShown
     @Environment(\.fcmToken) private var fcmToken
     @Environment(\.openURL) var openURL
@@ -65,24 +66,24 @@ struct ProfileView: View {
             "profile_settings_email_id_empty_cta"
         }
     }
-    @State private var country: Country = .Singapore
+    
     @State private var goToChildren: Bool = false
     @State private var goToEmail: Bool = false
     @State private var goToDOB: Bool = false
     @State private var goToGender: Bool = false
     
     private func isLocationSelected(_ location: Country) -> Bool {
-        self.country == location
+        self.country.wrappedValue == location
     }
     
     func setupSections() {
         sections = [
             [
-                .init(title: "profile_settings_location", description: .text(country.name), leadingIcon: Image("location"), action: .menu(
+                .init(title: "profile_settings_location", description: .text(country.wrappedValue.name), leadingIcon: Image("location"), action: .menu(
                     Menu {
                         ForEach(Country.allCases, id: \.self) { location in
                             Button {
-                                self.country = location
+                                self.country.wrappedValue = location
                                 setupSections()
                             } label: {
                                 Label("\(location.flagEmoji) \(location.name)", systemImage: "")

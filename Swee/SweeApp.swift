@@ -36,6 +36,14 @@ enum Country: CaseIterable, Identifiable {
         }
     }
     
+    var phoneRegex: String {
+        switch self {
+        case .Singapore: return Strings.singaporePhoneRegex
+        case .Indonesia: return Strings.indonesiaPhoneRegex
+        case .Philippines: return Strings.philippinesPhoneRegex
+        }
+    }
+    
     var id: Country { self }
 }
 

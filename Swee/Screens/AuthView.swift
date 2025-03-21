@@ -23,7 +23,7 @@ struct AuthView: View {
         return phone != "" && isPhoneFocused
     }
     private var codeFieldActive: Bool {
-        return phone.count == 8
+        return country.wrappedValue.isPhoneValid("\(country.wrappedValue.phoneCode)\(phone)")
     }
     
     private var tosText: (String) -> AttributedString =  { text in
@@ -288,6 +288,15 @@ struct AuthView: View {
             }
         }
         .animation(.default, value: loading)
+    }
+}
+
+extension Country {
+    func isPhoneValid(_ phone: String) -> Bool {
+        let pattern = phoneRegex
+        let predicate = NSPredicate(format: "SELF MATCHES %@", pattern)
+
+        return predicate.evaluate(with: phone)
     }
 }
 
