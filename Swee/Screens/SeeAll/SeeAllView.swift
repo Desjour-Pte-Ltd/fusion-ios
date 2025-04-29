@@ -48,6 +48,7 @@ struct SeeAllView: View {
                 try? await viewModel.fetch(with: sectionID)
             }
             tabIsShown.wrappedValue = false
+            Analytics.capture(.seeAllProductsScreen(title))
         })
     }
 }
