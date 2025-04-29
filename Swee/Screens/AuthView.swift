@@ -52,7 +52,8 @@ struct AuthView: View {
         if let err = error {
             params["error"] = err.localizedDescription
         }
-        Analytics.logEvent("AUTH_ERROR", parameters: params)
+        // @todo add with Mixpanel
+//        Analytics.logEvent("AUTH_ERROR", parameters: params)
     }
     
     var body: some View {
