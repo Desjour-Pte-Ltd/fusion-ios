@@ -9,14 +9,19 @@ struct ProfileView: View {
             case text(String)
             case request(Request)
         }
+        enum TapAction {
+            typealias Action = () -> Void
+            case action(Action)
+            case menu(Menu<AnyView, AnyView>)
+        }
         let title: String
         let description: Description?
         let leadingIcon: Image?
         let trailingIcon: Image?
-        let action: () -> Void
         let tint: Color?
-
-        init(title: String, description: Description? = nil, leadingIcon: Image? = nil, trailingIcon: Image = Image("forward"), tint: Color? = nil, action: @escaping () -> Void) {
+        let action: TapAction
+        
+        init(title: String, description: Description? = nil, leadingIcon: Image? = nil, trailingIcon: Image = Image("forward"), tint: Color? = nil, action: TapAction) {
             self.title = title
             self.description = description
             self.leadingIcon = leadingIcon
@@ -28,11 +33,12 @@ struct ProfileView: View {
     
     @EnvironmentObject private var api: API
     @EnvironmentObject private var appRootManager: AppRootManager
+    @Environment(\.country) private var country
     @Environment(\.tabIsShown) private var tabIsShown
     @Environment(\.fcmToken) private var fcmToken
     @Environment(\.openURL) var openURL
     @EnvironmentObject private var activeSession: ActiveSession
-
+    
     
     @State private var profileProgress: Double = 0.6
     @State private var sections: [[RowData]] = []
@@ -44,6 +50,7 @@ struct ProfileView: View {
                                                            buttonTitle: "",
                                                            cancelTitle: "",
                                                            action: .init(closure: {}))
+
     private var currentLanguageName: String {
         let languageCode = Locale.current.languageCode ?? "en"
         let languageName = Locale.current.localizedString(forLanguageCode: languageCode) ?? "Unknown"
@@ -65,45 +72,74 @@ struct ProfileView: View {
     @State private var goToDOB: Bool = false
     @State private var goToGender: Bool = false
     
+    private func isLocationSelected(_ location: Country) -> Bool {
+        self.country.wrappedValue == location
+    }
+    
     func setupSections() {
         sections = [
             [
-                .init(title: "profile_settings_language", description: .text(currentLanguageName), leadingIcon: Image("globe")) {
+                .init(title: "profile_settings_location", description: .text(country.wrappedValue.name), leadingIcon: Image("location"), action: .menu(
+                    Menu {
+                        ForEach(Country.allCases, id: \.self) { location in
+                            AsyncButton {
+                                country.wrappedValue = location
+                                setupSections()
+                                do {
+                                    let _ = try await api.update(country: location)
+                                } catch {
+                                    // fallback to previous location if it fails
+                                    country.wrappedValue = api.user?.country ?? location
+                                    setupSections()
+                                }
+                            } label: {
+                                Label("\(location.flagEmoji) \(location.name)", systemImage: "")
+                            }
+                        }
+                        .anyView
+                    } label: {
+                        Label("testing", systemImage: "ellipsis.circle")
+                            .blendMode(.destinationOver)
+                            .frame(width: UIScreen.main.bounds.width, height: 50)
+                            .anyView
+                    }
+                )),
+                .init(title: "profile_settings_language", description: .text(currentLanguageName), leadingIcon: Image("globe"), action: .action {
                     if let url = URL(string: UIApplication.openSettingsURLString) {
                         UIApplication.shared.open(url)
                     }
-                },
-                .init(title: "profile_settings_email_id", description: .text(emailDescription), leadingIcon: Image("mail")) {
+                }),
+                .init(title: "profile_settings_email_id", description: .text(emailDescription), leadingIcon: Image("mail"), action: .action {
                     goToEmail = true
-                },
-                .init(title: "profile_settings_date_of_birth", description: .text(api.user?.birthDayString ?? "profile_settings_date_of_birth_empty_cta"), leadingIcon: Image("calendar")) {
+                }),
+                .init(title: "profile_settings_date_of_birth", description: .text(api.user?.birthDayString ?? "profile_settings_date_of_birth_empty_cta"), leadingIcon: Image("calendar"), action: .action {
                     goToDOB = true
-                },
-                .init(title: "profile_settings_gender", description: .text(api.user?.gender.toString ?? "profile_settings_gender_empty_cta"), leadingIcon: Image("gender")) {
+                }),
+                .init(title: "profile_settings_gender", description: .text(api.user?.gender.toString ?? "profile_settings_gender_empty_cta"), leadingIcon: Image("gender"), action: .action {
                     goToGender = true
-                },
+                }),
             ],
             [
                 .init(title: "profile_add_child_title_not_empty", description: .request({
                     let children = try await api.children()
                     return children.isEmpty ? "profile_settings_child_empty_cta" : children.map { $0.name }.joined(separator: ", ")
-                }), leadingIcon: Image("person-add")) {
+                }), leadingIcon: Image("person-add"), action: .action {
                     goToChildren = true
-                },
+                }),
             ],
             [
-                .init(title: "profile_help_center", leadingIcon: Image("help")) {
+                .init(title: "profile_help_center", leadingIcon: Image("help"), action: .action {
                     openURL(URL(string: Strings.helpLink)!)
-                },
-                .init(title: "tnc", leadingIcon: Image("receipt")) {
+                }),
+                .init(title: "tnc", leadingIcon: Image("receipt"), action: .action {
                     openURL(URL(string: Strings.tosLink)!)
-                },
-                .init(title: "profile_rate_our_app", leadingIcon: Image("raiting")) {
+                }),
+                .init(title: "profile_rate_our_app", leadingIcon: Image("raiting"), action: .action {
                     openURL(URL(string: Strings.rateAppLink)!)
-                },
+                }),
             ],
             [
-                .init(title: "profile_logout_cta", trailingIcon: Image("logout")) {
+                .init(title: "profile_logout_cta", trailingIcon: Image("logout"), action: .action {
                     showAlert = true
                     alertData = .init(title: "profile_logout_confirm_title",
                                       message: "profile_logout_confirm_message",
@@ -113,10 +149,10 @@ struct ProfileView: View {
                         await api.signOut()
                         appRootManager.currentRoot = .authentication
                     }))
-                },
+                }),
             ],
             [
-                .init(title: "profile_delete_cta", trailingIcon: Image("delete"), tint: .red) {
+                .init(title: "profile_delete_cta", trailingIcon: Image("delete"), tint: .red, action: .action {
                     showAlert = true
                     alertData = .init(title: "profile_delete_confirm_title",
                                       message: "profile_delete_confirm_message",
@@ -130,7 +166,7 @@ struct ProfileView: View {
                             print("Error deleting user: \(error)")
                         }
                     }))
-                }
+                })
             ]
             
         ]
@@ -138,10 +174,10 @@ struct ProfileView: View {
         if let token = fcmToken.wrappedValue {
             sections.append(
                 [
-                    .init(title: "Copy push token", trailingIcon: Image("forward")) {
+                    .init(title: "Copy push token", trailingIcon: Image("forward"), action: .action {
                         UIPasteboard.general.setValue(token,
                                                       forPasteboardType: UTType.plainText.identifier)
-                    },
+                    }),
                 ]
             )
         }
@@ -335,9 +371,16 @@ struct ProfileView: View {
                 }
                 .padding()
             }
+            .overlay {
+                if case .menu(let menu) = row.action {
+                    menu
+                }
+            }
             .contentShape(Rectangle())
             .onTapGesture {
-                row.action()
+                if case .action(let action) = row.action {
+                    action()
+                }
             }
         }
     }
@@ -366,30 +409,30 @@ struct CompleteProfileBanner: View {
                     .foregroundStyle(.white.opacity(0.55))
             }
             Spacer()
-//            if profileProgress == 1 {
-//                Text("Close")
-//                    .font(.custom("Poppins-Medium", size: 14))
-//                    .foregroundStyle(.white)
-//                    .padding(.vertical, 4)
-//                    .padding(.horizontal, 12)
-//                    .background {
-//                        Capsule()
-//                            .fill(.white.opacity(0.1))
-//                            .clipShape(RoundedRectangle(cornerRadius: 8))
-//                    }
-//                    .onTapGesture {
-//                        onClose()
-//                    }
-//            } else {
-//                Image("arrow-right")
-//                    .padding(4)
-//                    .background {
-//                        Circle()
-//                            .fill(.white.opacity(0.1))
-//                            .clipShape(RoundedRectangle(cornerRadius: 8))
-//                    }
-//                    .foregroundStyle(.white)
-//            }
+            //            if profileProgress == 1 {
+            //                Text("Close")
+            //                    .font(.custom("Poppins-Medium", size: 14))
+            //                    .foregroundStyle(.white)
+            //                    .padding(.vertical, 4)
+            //                    .padding(.horizontal, 12)
+            //                    .background {
+            //                        Capsule()
+            //                            .fill(.white.opacity(0.1))
+            //                            .clipShape(RoundedRectangle(cornerRadius: 8))
+            //                    }
+            //                    .onTapGesture {
+            //                        onClose()
+            //                    }
+            //            } else {
+            //                Image("arrow-right")
+            //                    .padding(4)
+            //                    .background {
+            //                        Circle()
+            //                            .fill(.white.opacity(0.1))
+            //                            .clipShape(RoundedRectangle(cornerRadius: 8))
+            //                    }
+            //                    .foregroundStyle(.white)
+            //            }
         }
         .frame(maxWidth: .infinity)
         .padding(16)

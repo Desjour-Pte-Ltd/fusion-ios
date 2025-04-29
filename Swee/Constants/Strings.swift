@@ -20,6 +20,9 @@ struct Strings {
     static let stripeMerchantId = "merchant.com.zoomoov.green"
 #endif
     static let stripeMerchantName = "Green"
+    static let singaporePhoneRegex = "^(?:\\+65)?[3689]\\d{7}$"
+    static let indonesiaPhoneRegex = "^(?:\\+62)?8\\d{8,11}$"
+    static let philippinesPhoneRegex = "^(?:\\+63)?9\\d{9}$"
 }
 
 struct Keys {

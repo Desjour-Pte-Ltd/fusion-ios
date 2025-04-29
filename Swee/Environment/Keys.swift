@@ -4,6 +4,10 @@ private struct CurrentTabKey: EnvironmentKey {
     static let defaultValue: Binding<Tabs> = .constant(.home)
 }
 
+private struct CurrentCountryKey: EnvironmentKey {
+    static let defaultValue: Binding<Country> = .constant(.Singapore)
+}
+
 struct BottomSheetData: Equatable {
     var view: EquatableViewContainer
     var hidden: Binding<Bool> = .constant(true)
@@ -71,6 +75,11 @@ extension EnvironmentValues {
     var deeplink: Binding<String?> {
         get { self[DeeplinkKey.self] }
         set { self[DeeplinkKey.self] = newValue }
+    }
+    
+    var country: Binding<Country> {
+        get { self[CurrentCountryKey.self] }
+        set { self[CurrentCountryKey.self] = newValue }
     }
     
     var fcmToken: Binding<String?> {

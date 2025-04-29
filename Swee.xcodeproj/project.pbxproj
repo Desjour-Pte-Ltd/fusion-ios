@@ -32,6 +32,8 @@
 		AF1A26D22D4B1FA3003949BC /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1A26D02D4B1FA3003949BC /* ShareSheet.swift */; };
 		AF1A26DF2D4F2303003949BC /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AF1A26DE2D4F2303003949BC /* ConfettiSwiftUI */; };
 		AF1A26E12D4F2310003949BC /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AF1A26E02D4F2310003949BC /* ConfettiSwiftUI */; };
+		AF1B6A712D78453300F1F355 /* SelectCountryMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1B6A702D78453300F1F355 /* SelectCountryMenu.swift */; };
+		AF1B6A722D78453300F1F355 /* SelectCountryMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1B6A702D78453300F1F355 /* SelectCountryMenu.swift */; };
 		AF1C31F42CB946A8001DD7EE /* AddChildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C31F32CB946A8001DD7EE /* AddChildViewModel.swift */; };
 		AF1FAC472C79B0E100654FB7 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1FAC462C79B0E100654FB7 /* AuthView.swift */; };
 		AF1FAC492C79B12A00654FB7 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1FAC482C79B12A00654FB7 /* View.swift */; };
@@ -134,6 +136,8 @@
 		AF82A4632C819B8500E0DD4C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF82A4622C819B8500E0DD4C /* String.swift */; };
 		AF82A4652C8432C700E0DD4C /* ObservableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF82A4642C8432C700E0DD4C /* ObservableScrollView.swift */; };
 		AF82A4672C84418200E0DD4C /* PackageDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF82A4662C84418200E0DD4C /* PackageDetailView.swift */; };
+		AF838BF02DC09A05008826AC /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF838BEF2DC09A05008826AC /* Country.swift */; };
+		AF838BF12DC09A05008826AC /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF838BEF2DC09A05008826AC /* Country.swift */; };
 		AF8423C42CB7C7400087497A /* ChildCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8423C32CB7C7400087497A /* ChildCard.swift */; };
 		AF8423C62CB8D4160087497A /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8423C52CB8D4160087497A /* Session.swift */; };
 		AF8B1E182C8729B600B44D75 /* ZoomoovRedemptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8B1E172C8729B600B44D75 /* ZoomoovRedemptionView.swift */; };
@@ -370,6 +374,7 @@
 		AF170B0E2C71C02B00544970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF1A26CD2D4A3AA8003949BC /* UserReferralCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReferralCodeModel.swift; sourceTree = "<group>"; };
 		AF1A26D02D4B1FA3003949BC /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		AF1B6A702D78453300F1F355 /* SelectCountryMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCountryMenu.swift; sourceTree = "<group>"; };
 		AF1C31F32CB946A8001DD7EE /* AddChildViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChildViewModel.swift; sourceTree = "<group>"; };
 		AF1FAC462C79B0E100654FB7 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		AF1FAC482C79B12A00654FB7 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -462,6 +467,7 @@
 		AF82A4622C819B8500E0DD4C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		AF82A4642C8432C700E0DD4C /* ObservableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableScrollView.swift; sourceTree = "<group>"; };
 		AF82A4662C84418200E0DD4C /* PackageDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageDetailView.swift; sourceTree = "<group>"; };
+		AF838BEF2DC09A05008826AC /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		AF8423C32CB7C7400087497A /* ChildCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCard.swift; sourceTree = "<group>"; };
 		AF8423C52CB8D4160087497A /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		AF8B1E172C8729B600B44D75 /* ZoomoovRedemptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomoovRedemptionView.swift; sourceTree = "<group>"; };
@@ -799,6 +805,7 @@
 				AF8423C52CB8D4160087497A /* Session.swift */,
 				AFD6F0802CB4D3F0004424E5 /* RedemptionDetail.swift */,
 				AF69BC032CB5393000E87E2B /* Child.swift */,
+				AF838BEF2DC09A05008826AC /* Country.swift */,
 				AF2F85D52C9C4616004B0B31 /* Raw */,
 			);
 			path = Models;
@@ -903,6 +910,7 @@
 				AF3022CE2CA66CC6006DBCAD /* StateView.swift */,
 				AF9D1B662CE615AC00234963 /* NotificationUpsell.swift */,
 				AF82A4642C8432C700E0DD4C /* ObservableScrollView.swift */,
+				AF1B6A702D78453300F1F355 /* SelectCountryMenu.swift */,
 				AF67C9AF2CB50C0F00A46B11 /* Redemptions */,
 				AF501F2B2C94736C00637042 /* AsyncButton.swift */,
 				AF2F85E32C9C5337004B0B31 /* MerchantCard.swift */,
@@ -1244,6 +1252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF0558352CAAC2DA00ABEBA3 /* EditOtpView.swift in Sources */,
+				AF838BF12DC09A05008826AC /* Country.swift in Sources */,
 				AF8FB97A2CC37A1D00B3B21C /* PhoneLinkingView.swift in Sources */,
 				AF501F2A2C945F9C00637042 /* Strings.swift in Sources */,
 				AFCEC5C22C7C111200D157BE /* CompleteProfileView.swift in Sources */,
@@ -1307,6 +1316,7 @@
 				AF13C85B2CAFCAE200496B0C /* Purchase.swift in Sources */,
 				AFCEC5BC2C7AD00F00D157BE /* OtpView.swift in Sources */,
 				AF1FAC472C79B0E100654FB7 /* AuthView.swift in Sources */,
+				AF1B6A712D78453300F1F355 /* SelectCountryMenu.swift in Sources */,
 				AF8FB9762CBF7B8000B3B21C /* ActiveSession.swift in Sources */,
 				AF3022D12CA9850D006DBCAD /* ContentErrorView.swift in Sources */,
 				AF501F382C9813D300637042 /* MockHomeSectionURLProtocol.swift in Sources */,
@@ -1372,6 +1382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFB830562D0057FE00DB94C2 /* EditOtpView.swift in Sources */,
+				AF838BF02DC09A05008826AC /* Country.swift in Sources */,
 				AFB830572D0057FE00DB94C2 /* PhoneLinkingView.swift in Sources */,
 				AFB830582D0057FE00DB94C2 /* Strings.swift in Sources */,
 				AFB830592D0057FE00DB94C2 /* CompleteProfileView.swift in Sources */,
@@ -1435,6 +1446,7 @@
 				AFB8308F2D0057FE00DB94C2 /* Purchase.swift in Sources */,
 				AFB830902D0057FE00DB94C2 /* OtpView.swift in Sources */,
 				AFB830912D0057FE00DB94C2 /* AuthView.swift in Sources */,
+				AF1B6A722D78453300F1F355 /* SelectCountryMenu.swift in Sources */,
 				AFB830922D0057FE00DB94C2 /* ActiveSession.swift in Sources */,
 				AFB830932D0057FE00DB94C2 /* ContentErrorView.swift in Sources */,
 				AFB830942D0057FE00DB94C2 /* MockHomeSectionURLProtocol.swift in Sources */,
@@ -1733,7 +1745,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Swee/Swee-Beta.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 9M2L2N97YU;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1751,7 +1763,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.desjour.fusion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1773,7 +1785,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Swee/Swee-Beta.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 9M2L2N97YU;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1791,7 +1803,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.desjour.fusion;
 				PRODUCT_NAME = "$(TARGET_NAME)";

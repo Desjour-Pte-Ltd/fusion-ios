@@ -41,6 +41,7 @@ struct SweeApp: App {
     @State private var delayedRoute: Route?
     @State var fcmToken: String?
     @State var deeplink: String?
+    @State var location: Country = .Singapore
     
     func handleURL(_ url: URL) {
         let stripeHandled = StripeAPI.handleURLCallback(with: url)
@@ -143,6 +144,7 @@ struct SweeApp: App {
             .environment(\.route, $route)
             .environment(\.deeplink, $deeplink)
             .environment(\.fcmToken, $fcmToken)
+            .environment(\.country, $location)
             .environmentObject(appRootManager)
             .environmentObject(api)
             .environmentObject(cart)

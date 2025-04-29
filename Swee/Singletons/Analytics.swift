@@ -14,12 +14,7 @@ protocol Trackable {
 
 enum Analytics {
     struct Home: Trackable {
-        enum Region: String {
-            case Singapore = "SG"
-            case Indonesia = "ID"
-            case Philippines = "PH"
-        }
-        let region: Region
+        let region: Country
         
         var properties: [String: String] {
             return ["region": region.rawValue]
@@ -89,7 +84,7 @@ enum Analytics {
         case .profileScreen:
             return [screenNameKey: "Profile"]
         case .seeAllProductsScreen(let name):
-            return [screenNameKey: "See All Products"]
+            return [screenNameKey: "See All Products"] + ["see_all_title": name]
         case .alertsScreen:
             return [screenNameKey: "Alerts"]
         }

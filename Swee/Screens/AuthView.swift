@@ -4,11 +4,14 @@ import FirebaseAuth
 
 struct AuthView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.country) private var country
     @EnvironmentObject private var api: API
     @EnvironmentObject private var appRootManager: AppRootManager
     
     @State private var phone: String = ""
-    @State private var code: String = "🇸🇬 +65"
+    private var code: String {
+        return "\(country.wrappedValue.flagEmoji) \(country.wrappedValue.phoneCode)"
+    }
     @FocusState var isPhoneFocused: Bool
     @State private var goToOTP: Bool = false
     @State private var goToLinkPhone: Bool = false
@@ -20,7 +23,7 @@ struct AuthView: View {
         return phone != "" && isPhoneFocused
     }
     private var codeFieldActive: Bool {
-        return phone.count == 8
+        return country.wrappedValue.isPhoneValid("\(country.wrappedValue.phoneCode)\(phone)")
     }
     
     private var tosText: (String) -> AttributedString =  { text in
@@ -60,7 +63,8 @@ struct AuthView: View {
             NavigationView {
                 VStack {
                     NavigationLink(isActive: $goToOTP) {
-                        OtpView(countryCode:"+65", phoneNumber: phone, verificationID: verificationID)
+                        OtpView(phoneNumber: phone,
+                                verificationID: verificationID)
                     } label: { }
                     NavigationLink(isActive: $goToLinkPhone) {
                         PhoneLinkingView()
@@ -81,18 +85,19 @@ struct AuthView: View {
                             .font(.custom("Poppins-Medium", size: 16))
                             .foregroundStyle(errorMessage != nil ? .red : Color.text.black100)
                         HStack {
-                            TextField("", text: $code) {
-                                UIApplication.shared.endEditing()
-                            }
+                            Text(code)
                             .padding([.top, .bottom], 17)
                             .padding([.leading, .trailing], 10)
                             .frame(width: 82)
-                            .disabled(true)
-                            .focused($isPhoneFocused)
                             .font(.custom("Poppins-Regular", size: 14))
                             .overlay(RoundedRectangle(cornerRadius: 12)
                                 .stroke(codeFieldActive ? Color.text.black100 : Color(hex: "#E7EAEB"),
                                         lineWidth: 1))
+                            .overlay {
+                                selectCountryMenu(size: .init(width: 82, height: 50)) { country in
+                                    self.country.wrappedValue = country
+                                }
+                            }
                             TextField("profile_info_phone_number", text: $phone) {
                                 UIApplication.shared.endEditing()
                             }
@@ -131,7 +136,7 @@ struct AuthView: View {
                     Spacer()
                     AsyncButton(progressWidth: .infinity) {
                         try? await Authentication().logout()
-                        let result = await Authentication().verify(phone: "+65" + phone)
+                        let result = await Authentication().verify(phone: country.wrappedValue.phoneCode + phone)
                         switch result {
                         case .success(let verificationId):
                             UserDefaults.standard.set(verificationId, forKey: Keys.authVerificationID)
@@ -283,6 +288,15 @@ struct AuthView: View {
             }
         }
         .animation(.default, value: loading)
+    }
+}
+
+extension Country {
+    func isPhoneValid(_ phone: String) -> Bool {
+        let pattern = phoneRegex
+        let predicate = NSPredicate(format: "SELF MATCHES %@", pattern)
+
+        return predicate.evaluate(with: phone)
     }
 }
 

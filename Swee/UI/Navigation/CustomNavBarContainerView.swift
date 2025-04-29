@@ -45,6 +45,10 @@ extension View {
     var equatable: EquatableViewContainer {
         EquatableViewContainer(view: AnyView(self))
     }
+    
+    var anyView: AnyView {
+        AnyView(self)
+    }
 }
 
 #Preview {
