@@ -82,9 +82,16 @@ struct ProfileView: View {
                 .init(title: "profile_settings_location", description: .text(country.wrappedValue.name), leadingIcon: Image("location"), action: .menu(
                     Menu {
                         ForEach(Country.allCases, id: \.self) { location in
-                            Button {
-                                self.country.wrappedValue = location
+                            AsyncButton {
+                                country.wrappedValue = location
                                 setupSections()
+                                do {
+                                    let _ = try await api.update(country: location)
+                                } catch {
+                                    // fallback to previous location if it fails
+                                    country.wrappedValue = api.user?.country ?? location
+                                    setupSections()
+                                }
                             } label: {
                                 Label("\(location.flagEmoji) \(location.name)", systemImage: "")
                             }

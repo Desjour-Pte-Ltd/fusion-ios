@@ -136,6 +136,8 @@
 		AF82A4632C819B8500E0DD4C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF82A4622C819B8500E0DD4C /* String.swift */; };
 		AF82A4652C8432C700E0DD4C /* ObservableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF82A4642C8432C700E0DD4C /* ObservableScrollView.swift */; };
 		AF82A4672C84418200E0DD4C /* PackageDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF82A4662C84418200E0DD4C /* PackageDetailView.swift */; };
+		AF838BF02DC09A05008826AC /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF838BEF2DC09A05008826AC /* Country.swift */; };
+		AF838BF12DC09A05008826AC /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF838BEF2DC09A05008826AC /* Country.swift */; };
 		AF8423C42CB7C7400087497A /* ChildCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8423C32CB7C7400087497A /* ChildCard.swift */; };
 		AF8423C62CB8D4160087497A /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8423C52CB8D4160087497A /* Session.swift */; };
 		AF8B1E182C8729B600B44D75 /* ZoomoovRedemptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8B1E172C8729B600B44D75 /* ZoomoovRedemptionView.swift */; };
@@ -465,6 +467,7 @@
 		AF82A4622C819B8500E0DD4C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		AF82A4642C8432C700E0DD4C /* ObservableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableScrollView.swift; sourceTree = "<group>"; };
 		AF82A4662C84418200E0DD4C /* PackageDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageDetailView.swift; sourceTree = "<group>"; };
+		AF838BEF2DC09A05008826AC /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		AF8423C32CB7C7400087497A /* ChildCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCard.swift; sourceTree = "<group>"; };
 		AF8423C52CB8D4160087497A /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		AF8B1E172C8729B600B44D75 /* ZoomoovRedemptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomoovRedemptionView.swift; sourceTree = "<group>"; };
@@ -802,6 +805,7 @@
 				AF8423C52CB8D4160087497A /* Session.swift */,
 				AFD6F0802CB4D3F0004424E5 /* RedemptionDetail.swift */,
 				AF69BC032CB5393000E87E2B /* Child.swift */,
+				AF838BEF2DC09A05008826AC /* Country.swift */,
 				AF2F85D52C9C4616004B0B31 /* Raw */,
 			);
 			path = Models;
@@ -1248,6 +1252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF0558352CAAC2DA00ABEBA3 /* EditOtpView.swift in Sources */,
+				AF838BF12DC09A05008826AC /* Country.swift in Sources */,
 				AF8FB97A2CC37A1D00B3B21C /* PhoneLinkingView.swift in Sources */,
 				AF501F2A2C945F9C00637042 /* Strings.swift in Sources */,
 				AFCEC5C22C7C111200D157BE /* CompleteProfileView.swift in Sources */,
@@ -1377,6 +1382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFB830562D0057FE00DB94C2 /* EditOtpView.swift in Sources */,
+				AF838BF02DC09A05008826AC /* Country.swift in Sources */,
 				AFB830572D0057FE00DB94C2 /* PhoneLinkingView.swift in Sources */,
 				AFB830582D0057FE00DB94C2 /* Strings.swift in Sources */,
 				AFB830592D0057FE00DB94C2 /* CompleteProfileView.swift in Sources */,

@@ -133,13 +133,15 @@ class API: ObservableObject {
                 email: String? = nil,
                 preferredLanguage: String? = nil,
                 gender: User.Gender? = nil,
-                dob: Date? = nil) async throws -> User {
+                dob: Date? = nil,
+                country: Country? = nil) async throws -> User {
         struct UserUpdate: Encodable {
             let name: String?
             let email: String?
             let preferredLanguage: String?
             let gender: User.Gender?
             let dob: String?
+            let country: Country?
             
             enum CodingKeys: String, CodingKey {
                 case name
@@ -147,6 +149,7 @@ class API: ObservableObject {
                 case preferredLanguage = "preferred_language"
                 case gender
                 case dob = "date_of_birth"
+                case country = "country_code"
             }
         }
         
@@ -162,7 +165,8 @@ class API: ObservableObject {
                                     email: email,
                                     preferredLanguage: preferredLanguage,
                                     gender: gender,
-                                    dob: dobString)
+                                    dob: dobString,
+                                    country: country)
         
         let jsonData = try JSONEncoder().encode(userUpdate)
 

@@ -31,6 +31,7 @@ struct User: Identifiable, Codable {
     var uploadingImage: UIImage? = nil
     let profileCompleteness: Int?
     var freshReferral: Bool = false
+    var country: Country?
     @DecodableDayDate var dob: Date?
     
     var birthDayString: String? {
@@ -50,6 +51,7 @@ struct User: Identifiable, Codable {
         case email
         case photoURL = "photo_url"
         case dob = "date_of_birth"
+        case country = "country_code"
         case profileCompleteness = "profile_completeness"
     }
 }
