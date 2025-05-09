@@ -212,6 +212,7 @@ class Cart: ObservableObject {
             }
             return order.toLocal()
         } catch {
+            print("checkout error", error)
             throw error
         }
         

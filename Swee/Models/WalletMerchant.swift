@@ -11,6 +11,12 @@ struct WalletMerchant: Equatable {
 }
 
 extension WalletMerchant {
+    var productsType: ProductType {
+        products.first?.type ?? .coupon
+    }
+}
+
+extension WalletMerchant {
     static var empty: Self {
         .init(id: .init(uuidString: "28910AFE-DB24-41D1-B0E1-6064D9C23083")!,
               name: "",

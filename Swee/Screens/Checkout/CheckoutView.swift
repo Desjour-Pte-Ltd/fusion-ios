@@ -41,8 +41,11 @@ struct CheckoutView: View {
     @Environment(\.tabIsShown) private var tabIsShown
     @Environment(\.currentTab) private var selectedTab
     @Environment(\.navView) private var navView
+    @Environment(\.country) private var country
     @EnvironmentObject private var cart: Cart
     @StateObject private var viewModel = CheckoutViewModel()
+    @State private var showSafari = false
+    @State private var paymentLink: PaymentLink?
     
     //    @State private var text: String = ""
     @State private var showPaymentSheet = false
@@ -200,7 +203,7 @@ struct CheckoutView: View {
             BottomButtonContainer {
                 if let paymentSheet = viewModel.paymentSheet {
                     AsyncButton(progressWidth: .infinity) {
-                        try? await viewModel.prepareForPayment()
+                        try? await viewModel.prepareForPayment(in: country.wrappedValue)
                         showPaymentSheet = true
                     } label: {
                         HStack {
@@ -214,6 +217,23 @@ struct CheckoutView: View {
                         isPresented: $showPaymentSheet,
                         paymentSheet: paymentSheet,
                         onCompletion: viewModel.onPaymentCompletion)
+                    .disabled(cart.inProgress)
+                    .buttonStyle(PrimaryButton())
+                } else if let paymentLink {
+                    AsyncButton(progressWidth: .infinity) {
+                        try? await viewModel.prepareForPayment(in: country.wrappedValue)
+                        showSafari = true
+                    } label: {
+                        HStack {
+                            Text("checkout_proceed_cta".i18n)
+                                .font(.custom("Roboto-Bold", size: 16))
+                        }
+                        .foregroundStyle(Color.background.white)
+                        .frame(maxWidth: .infinity)
+                    }
+                    .sheet(isPresented: $showSafari) {
+                        SafariView(url: URL(string: paymentLink.invoiceURL)!)
+                    }
                     .disabled(cart.inProgress)
                     .buttonStyle(PrimaryButton())
                 } else {
@@ -273,7 +293,7 @@ struct CheckoutView: View {
                   title: "checkout_failed_title",
                   description: "checkout_failed_message",
                   buttonTitle: "checkout_failed_cta") {
-            try? await viewModel.prepareForPayment()
+            try? await viewModel.prepareForPayment(in: country.wrappedValue)
         }
     }
     
@@ -306,10 +326,13 @@ struct CheckoutView: View {
         }
         .onAppear(perform: {
             viewModel.cart = cart
+            viewModel.onFetchedPaymentLink = { link in
+                paymentLink = link
+            }
             //            viewModel.preparePaymentSheet()
             Task {
                 try? await viewModel.fetch()
-                try? await viewModel.prepareForPayment()
+                try? await viewModel.prepareForPayment(in: country.wrappedValue)
             }
             tabIsShown.wrappedValue = false
             Analytics.capture(.cartScreen)

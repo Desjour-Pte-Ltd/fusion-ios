@@ -21,6 +21,7 @@ struct OrderModel: Codable {
     let priceCents: Int
     let totalPriceCents: Int
     let paymentIntent: PaymentIntent?
+    let paymentLink: PaymentLink?
     let items: [OrderItem]?
     let fees: [FeeModel]?
     @DecodableDate var createdAt: Date
@@ -32,6 +33,7 @@ struct OrderModel: Codable {
         case cartID = "cart_id"
         case status
         case paymentIntent = "payment_intent"
+        case paymentLink = "payment_link"
         case type = "order_type"
         case currencyCode = "currency_code"
         case priceCents = "price_cents"

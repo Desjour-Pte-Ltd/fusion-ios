@@ -94,7 +94,7 @@ struct MyWalletView: View {
                         LazyVStack(spacing: 16) {
                             ForEach(viewModel.merchants, id: \.id) { merchant in
                                 let view = MerchantPurchasesCard(merchant: merchant)
-                                if merchant.name.lowercased() == "zoomoov" {
+                                if merchant.productsType == .coupon {
                                     CustomNavLink(destination: ZoomoovRedemptionView(merchant: merchant)) {
                                         view
                                     }
