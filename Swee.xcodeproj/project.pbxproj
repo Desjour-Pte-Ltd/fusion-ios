@@ -350,6 +350,10 @@
 		AFDF67F92C7F4EA900489D0C /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDF67F82C7F4EA900489D0C /* BottomSheet.swift */; };
 		AFDF67FB2C7F576C00489D0C /* ObservableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDF67FA2C7F576B00489D0C /* ObservableWrapper.swift */; };
 		AFDF67FD2C7F5A6C00489D0C /* SeeAllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDF67FC2C7F5A6C00489D0C /* SeeAllView.swift */; };
+		AFEB9FB52DD45661004026B0 /* PackagesCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEB9FB42DD45661004026B0 /* PackagesCarousel.swift */; };
+		AFEB9FB62DD45661004026B0 /* PackagesCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEB9FB42DD45661004026B0 /* PackagesCarousel.swift */; };
+		AFEB9FB82DD45740004026B0 /* BannersCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEB9FB72DD45740004026B0 /* BannersCarousel.swift */; };
+		AFEB9FB92DD45740004026B0 /* BannersCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEB9FB72DD45740004026B0 /* BannersCarousel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -523,6 +527,8 @@
 		AFDF67F82C7F4EA900489D0C /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		AFDF67FA2C7F576B00489D0C /* ObservableWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableWrapper.swift; sourceTree = "<group>"; };
 		AFDF67FC2C7F5A6C00489D0C /* SeeAllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllView.swift; sourceTree = "<group>"; };
+		AFEB9FB42DD45661004026B0 /* PackagesCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesCarousel.swift; sourceTree = "<group>"; };
+		AFEB9FB72DD45740004026B0 /* BannersCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannersCarousel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -917,8 +923,10 @@
 				AF3022CE2CA66CC6006DBCAD /* StateView.swift */,
 				AF9D1B662CE615AC00234963 /* NotificationUpsell.swift */,
 				AF82A4642C8432C700E0DD4C /* ObservableScrollView.swift */,
+				AFEB9FB72DD45740004026B0 /* BannersCarousel.swift */,
 				AFCB93502DCE20A7006A7607 /* SafariView.swift */,
 				AF1B6A702D78453300F1F355 /* SelectCountryMenu.swift */,
+				AFEB9FB42DD45661004026B0 /* PackagesCarousel.swift */,
 				AF67C9AF2CB50C0F00A46B11 /* Redemptions */,
 				AF501F2B2C94736C00637042 /* AsyncButton.swift */,
 				AF2F85E32C9C5337004B0B31 /* MerchantCard.swift */,
@@ -1355,6 +1363,7 @@
 				AF2F85D22C9C1760004B0B31 /* MerchantPageViewModel.swift in Sources */,
 				AF69BC022CB5391100E87E2B /* JollyfieldRedemptionViewModel.swift in Sources */,
 				AF2F85D42C9C24C6004B0B31 /* MockMerchantStoresURLProtocol.swift in Sources */,
+				AFEB9FB52DD45661004026B0 /* PackagesCarousel.swift in Sources */,
 				AF8423C42CB7C7400087497A /* ChildCard.swift in Sources */,
 				AFDD17342C9DBFEC00DC8DB8 /* SeeAllViewModel.swift in Sources */,
 				AFCEC5C42C7C260B00D157BE /* HomeView.swift in Sources */,
@@ -1372,6 +1381,7 @@
 				AF80222C2C72F39E001274FA /* OnboardingView.swift in Sources */,
 				AF8FB9782CC2103900B3B21C /* CustomAlert.swift in Sources */,
 				AF501F272C945D7C00637042 /* API.swift in Sources */,
+				AFEB9FB92DD45740004026B0 /* BannersCarousel.swift in Sources */,
 				AF2F85E02C9C52CC004B0B31 /* PackageCard.swift in Sources */,
 				AF0558372CABA1F000ABEBA3 /* WalletMerchantModel.swift in Sources */,
 				AF9D1B672CE615AC00234963 /* NotificationUpsell.swift in Sources */,
@@ -1487,6 +1497,7 @@
 				AFB830AB2D0057FE00DB94C2 /* MerchantPageViewModel.swift in Sources */,
 				AFB830AC2D0057FE00DB94C2 /* JollyfieldRedemptionViewModel.swift in Sources */,
 				AFB830AD2D0057FE00DB94C2 /* MockMerchantStoresURLProtocol.swift in Sources */,
+				AFEB9FB62DD45661004026B0 /* PackagesCarousel.swift in Sources */,
 				AFB830AE2D0057FE00DB94C2 /* ChildCard.swift in Sources */,
 				AFB830AF2D0057FE00DB94C2 /* SeeAllViewModel.swift in Sources */,
 				AFB830B02D0057FE00DB94C2 /* HomeView.swift in Sources */,
@@ -1504,6 +1515,7 @@
 				AFB830BC2D0057FE00DB94C2 /* OnboardingView.swift in Sources */,
 				AFB830BD2D0057FE00DB94C2 /* CustomAlert.swift in Sources */,
 				AFB830BE2D0057FE00DB94C2 /* API.swift in Sources */,
+				AFEB9FB82DD45740004026B0 /* BannersCarousel.swift in Sources */,
 				AFB830BF2D0057FE00DB94C2 /* PackageCard.swift in Sources */,
 				AFB830C02D0057FE00DB94C2 /* WalletMerchantModel.swift in Sources */,
 				AFB830C12D0057FE00DB94C2 /* NotificationUpsell.swift in Sources */,
