@@ -143,6 +143,9 @@ struct MainView: View {
             selectedTab = .myWallet
         case .referral:
             selectedTab = .home
+        case .paymentFailed, .paymentSuccess:
+            // handled in CheckoutView
+            return
         case .activeSession:
             selectedTab = .myWallet
             if activeSession.sessionIsActive {

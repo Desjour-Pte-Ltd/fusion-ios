@@ -15,10 +15,9 @@ class CheckoutViewModel: ObservableObject {
     private var loadedData = false
     private var showError = false
     private var cancellables = Set<AnyCancellable>()
-    @Published private(set) var state: State = .loaded
+    @Published var state: State = .loaded
     @Published var paymentSheet: PaymentSheet?
     @Published var paymentResult: PaymentSheetResult?
-    @Environment(\.openURL) private var openURL
     @Published var readyForCheckout: Bool = false
     
     var onFetchedPaymentLink: ((PaymentLink) -> Void)?

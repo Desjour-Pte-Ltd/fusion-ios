@@ -42,14 +42,12 @@ struct CheckoutView: View {
     @Environment(\.currentTab) private var selectedTab
     @Environment(\.navView) private var navView
     @Environment(\.country) private var country
+    @Environment(\.route) private var route
     @EnvironmentObject private var cart: Cart
     @StateObject private var viewModel = CheckoutViewModel()
     @State private var showSafari = false
     @State private var paymentLink: PaymentLink?
-    
-    //    @State private var text: String = ""
     @State private var showPaymentSheet = false
-    //    @State private var showPaymentSuccess: Bool = false
     
     var mainUI: some View {
         VStack(spacing: 0) {
@@ -337,6 +335,23 @@ struct CheckoutView: View {
             tabIsShown.wrappedValue = false
             Analytics.capture(.cartScreen)
         })
+        .onChange(of: route) { newValue in
+            guard let route = newValue.wrappedValue else {
+                return
+            }
+            
+            if route == .paymentSuccess {
+                viewModel.state = .paymentSucceeded
+                showSafari = false
+                self.route.wrappedValue = nil
+            }
+            
+            if route == .paymentFailed {
+                viewModel.state = .paymentFailed
+                showSafari = false
+                self.route.wrappedValue = nil
+            }
+        }
     }
 }
 

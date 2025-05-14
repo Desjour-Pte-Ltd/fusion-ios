@@ -163,9 +163,6 @@ struct HomeView: View {
             guard let route = route.wrappedValue else {
                 return
             }
-            defer {
-                self.route.wrappedValue = nil
-            }
             switch route {
             case .package(let id):
                 Task {
@@ -179,9 +176,11 @@ struct HomeView: View {
                         // fail silently
                     }
                 }
+                self.route.wrappedValue = nil
             case .merchant(let merchantId):
                 deepLinkMerchantId = merchantId
                 goToMerchant = true
+                self.route.wrappedValue = nil
             case .referral:
                 Task {
                     do {
@@ -196,6 +195,7 @@ struct HomeView: View {
                         // fail silently
                     }
                 }
+                self.route.wrappedValue = nil
             default:
                 return
             }
