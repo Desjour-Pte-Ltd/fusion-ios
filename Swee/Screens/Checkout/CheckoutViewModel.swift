@@ -110,7 +110,7 @@ class CheckoutViewModel: ObservableObject {
                 return
             }
             
-            if country == .Singapore || country == .Philippines {
+            if country == .Singapore {
                 guard let paymentIntent = order.paymentIntent else {
                     throw LocalError(message: "Missing payment intent data")
                 }
@@ -134,7 +134,7 @@ class CheckoutViewModel: ObservableObject {
                 }
             }
             
-            if country == .Indonesia {
+            if country == .Indonesia || country == .Philippines {
                 guard let paymentLink = order.paymentLink, let paymentURL = URL(string: paymentLink.invoiceURL) else {
                     throw LocalError(message: "Missing payment link data")
                 }
