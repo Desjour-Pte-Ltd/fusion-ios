@@ -132,7 +132,7 @@ struct ProfileView: View {
                     openURL(URL(string: Strings.helpLink)!)
                 }),
                 .init(title: "tnc", leadingIcon: Image("receipt"), action: .action {
-                    openURL(URL(string: Strings.tosLink)!)
+                    openURL(URL(string: country.wrappedValue.tosLink)!)
                 }),
                 .init(title: "profile_rate_our_app", leadingIcon: Image("raiting"), action: .action {
                     openURL(URL(string: Strings.rateAppLink)!)
