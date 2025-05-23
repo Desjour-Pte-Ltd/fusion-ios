@@ -5,6 +5,7 @@ import MarkdownUI
 struct PackageDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.tabIsShown) private var tabIsShown
+    @Environment(\.country) private var country
     @EnvironmentObject private var api: API
     @EnvironmentObject private var cart: Cart
     @State private var isExpanded: Bool = false
@@ -108,10 +109,10 @@ struct PackageDetailView: View {
                         .frame(height: 1)
                         .foregroundStyle(.black.opacity(0.15))
                     HStack {
-                        Text(package.priceString)
+                        Text(package.priceString(in: country.wrappedValue))
                             .font(.custom("Poppins-Bold", size: 20))
                             .foregroundStyle(Color.text.black100)
-                        if let originalPrice = package.originalPriceString {
+                        if let originalPrice = package.originalPriceString(in: country.wrappedValue) {
                             Text(originalPrice.strikethroughText(color: Color.text.black60))
                                 .font(.custom("Poppins-SemiBold", size: 14))
                                 .foregroundStyle(Color.text.black60)

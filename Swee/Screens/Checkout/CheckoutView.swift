@@ -4,12 +4,12 @@ import StripePaymentSheet
 import StripePaymentsUI
 
 extension CartItem {
-    func priceString(currencyCode: String) -> String {
-        return "\(currencyCode) \(String(format: "%.2f", Double(totalPriceCents / 100)))"
+    func priceString(currencyCode: String, in country: Country) -> String {
+        return Double(totalPriceCents / 100).toPrice(currencyCode: currencyCode, localeIdentifier: country.localeIdentifier)
     }
     
-    func pricePerItemString(currencyCode: String) -> String {
-        return "\(currencyCode) \(String(format: "%.2f", Double(pricePerItem / 100)))"
+    func pricePerItemString(currencyCode: String, in country: Country) -> String {
+        return Double(pricePerItem / 100).toPrice(currencyCode: currencyCode, localeIdentifier: country.localeIdentifier)
     }
 }
 
@@ -82,19 +82,19 @@ struct CheckoutView: View {
                                 Text(element.packageDetails?.productSummary)
                                     .foregroundStyle(Color.text.black80)
                                     .font(.custom("Poppins-Medium", size: 12))
-                                Text("checkout_item_unit_price".i18n(with: element.pricePerItemString(currencyCode: cart.currencyCode)))
+                                Text("checkout_item_unit_price".i18n(with: element.pricePerItemString(currencyCode: cart.currencyCode, in: country.wrappedValue)))
                                     .foregroundStyle(Color.text.black80)
                                     .font(.custom("Poppins-Medium", size: 12))
                                 Spacer()
                                 HStack {
                                     if cart.inProgress && cart.refreshingPackageID == element.packageId {
-                                        Text(element.priceString(currencyCode: cart.currencyCode))
+                                        Text(element.priceString(currencyCode: cart.currencyCode, in: country.wrappedValue))
                                             .foregroundStyle(Color.text.black100)
                                             .font(.custom("Poppins-SemiBold", size: 14))
                                             .blinking()
                                         //                                            .skeleton(with: cart.inProgress, size: CGSize(width: CGFloat.infinity, height: 20), shape: .rounded(.radius(4, style: .circular)))
                                     } else {
-                                        Text(element.priceString(currencyCode: cart.currencyCode))
+                                        Text(element.priceString(currencyCode: cart.currencyCode, in: country.wrappedValue))
                                             .foregroundStyle(Color.text.black100)
                                             .font(.custom("Poppins-SemiBold", size: 14))
                                     }
@@ -169,13 +169,20 @@ struct CheckoutView: View {
                     //                        )
                     //                    }
                     //                    .padding(.bottom, 24)
-                    SummaryRow(title: "checkout_order_summary_price_before_fees", price: viewModel.cartTotal, currency: cart.currencyCode, blinking: cart.inProgress)
+                    SummaryRow(title: "checkout_order_summary_price_before_fees",
+                               price: viewModel.cartTotal.toPrice(currencyCode: cart.currencyCode,
+                                                                  localeIdentifier: country.wrappedValue.localeIdentifier,
+                                                                  dropCurrency: true),
+                               currency: cart.currencyCode,
+                               blinking: cart.inProgress)
                         .padding(.bottom, 4)
                     if let fees = cart.fees {
                         ForEach(fees.indices, id: \.self) { index in
                             let fee = fees[index]
                             SummaryRow(title: "\(fee.name) \(fee.rateMilli / 1000)%",
-                                       price: Double(fee.amountCents / 100),
+                                       price: Double(fee.amountCents / 100).toPrice(currencyCode: cart.currencyCode,
+                                                                                    localeIdentifier: country.wrappedValue.localeIdentifier,
+                                                                                    dropCurrency: true),
                                        currency: cart.currencyCode,
                                        blinking: cart.inProgress)
                             .padding(.bottom, 19)
@@ -186,7 +193,9 @@ struct CheckoutView: View {
                         .frame(height: 1)
                         .padding(.bottom, 8)
                     SummaryRow(title: "checkout_order_summary_total_price",
-                               price: viewModel.finalTotal,
+                               price: viewModel.finalTotal.toPrice(currencyCode: cart.currencyCode,
+                                                                   localeIdentifier: country.wrappedValue.localeIdentifier,
+                                                                   dropCurrency: true),
                                allBold: true,
                                currency: cart.currencyCode,
                                blinking: cart.inProgress)
@@ -373,7 +382,7 @@ struct BottomButtonContainer<Content: View>: View {
 
 struct SummaryRow: View {
     var title: String
-    var price: Double
+    var price: String
     var allBold: Bool = false
     var currency: String
     var blinking: Bool = false
@@ -388,7 +397,7 @@ struct SummaryRow: View {
                 HStack {
                     Text("\(currency) ")
                         .font(.custom("Poppins-SemiBold", size: 16))
-                    + Text("\(price, specifier: "%.2f")")
+                    + Text(price)
                         .font(.custom(allBold ? "Poppins-Bold" : "Poppins-Regular", size: 16))
                 }
                 .blinking()
@@ -396,7 +405,7 @@ struct SummaryRow: View {
                 HStack {
                     Text("\(currency) ")
                         .font(.custom("Poppins-SemiBold", size: 16))
-                    + Text("\(price, specifier: "%.2f")")
+                    + Text(price)
                         .font(.custom(allBold ? "Poppins-Bold" : "Poppins-Regular", size: 16))
                 }
             }

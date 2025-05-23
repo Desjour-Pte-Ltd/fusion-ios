@@ -4,6 +4,7 @@ import SDWebImageSwiftUI
 struct PackageCard: View {
     @State var package: Package
     @State private var imageLoaded = false
+    @Environment(\.country) var country
         
     var body: some View {
         CustomNavLink(destination: PackageDetailView(package: package)) {
@@ -39,12 +40,12 @@ struct PackageCard: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .lineLimit(1)
                 HStack {
-                    if let originalPrice = package.originalPriceString {
+                    if let originalPrice = package.originalPriceString(in: country.wrappedValue) {
                         Text(originalPrice.strikethroughText())
                             .font(.custom("Poppins-Medium", size: 10))
                             .foregroundStyle(Color.text.black40)
                     }
-                    Text(package.priceString)
+                    Text(package.priceString(in: country.wrappedValue))
                         .font(.custom("Poppins-SemiBold", size: 12))
                     Spacer()
                 }
