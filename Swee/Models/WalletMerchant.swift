@@ -7,13 +7,8 @@ struct WalletMerchant: Equatable {
     let bgColors: [Color]
     let purchaseSummary: String
     let products: [PurchaseProduct]
+    let productsType: ProductType?
     var activeSession: Session?
-}
-
-extension WalletMerchant {
-    var productsType: ProductType {
-        products.first?.type ?? .coupon
-    }
 }
 
 extension WalletMerchant {
@@ -24,6 +19,7 @@ extension WalletMerchant {
               bgColors: [],
               purchaseSummary: "",
               products: [],
+              productsType: nil,
               activeSession: nil)
     }
 }
@@ -38,6 +34,7 @@ extension WalletMerchantModel: RawModelConvertable {
                      bgColors: colors.map { Color(hex: $0) },
                      purchaseSummary: purchaseSummary,
                      products: products.map { $0.toLocal() },
+                     productsType: productType,
                      activeSession: activeSession?.toLocal())
     }
 }
