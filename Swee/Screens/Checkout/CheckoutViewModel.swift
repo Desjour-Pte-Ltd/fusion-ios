@@ -48,7 +48,8 @@ class CheckoutViewModel: ObservableObject {
     }
     
     func fetch() async throws {
-        self.cart.$packages.sink { items in
+        self.cart.$packages
+            .sink { items in
             Task {
                 await MainActor.run { [weak self] in
                     self?.state = items.isEmpty ? .empty : .loaded

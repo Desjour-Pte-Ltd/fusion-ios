@@ -319,6 +319,8 @@
 		AFB830F72D0057FE00DB94C2 /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF8022372C785E95001274FA /* Poppins-BoldItalic.ttf */; };
 		AFB831002D005BCA00DB94C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF170B092C71C02B00544970 /* Assets.xcassets */; };
 		AFB831012D005BE300DB94C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF170B092C71C02B00544970 /* Assets.xcassets */; };
+		AFC8BDF02E0E64C50014C633 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AFC8BDEF2E0E64C50014C633 /* Alamofire */; };
+		AFC8BDF22E0E64E20014C633 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AFC8BDF12E0E64E20014C633 /* Alamofire */; };
 		AFCB93512DCE20A7006A7607 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCB93502DCE20A7006A7607 /* SafariView.swift */; };
 		AFCB93522DCE20A7006A7607 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCB93502DCE20A7006A7607 /* SafariView.swift */; };
 		AFCEC5BA2C7ACEB000D157BE /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCEC5B92C7ACEB000D157BE /* UIApplication.swift */; };
@@ -545,6 +547,7 @@
 				AF4939922DC08F3100385435 /* Mixpanel in Frameworks */,
 				AF1A26DF2D4F2303003949BC /* ConfettiSwiftUI in Frameworks */,
 				AF662A332CC5F1AF00613E45 /* SkeletonUI in Frameworks */,
+				AFC8BDF02E0E64C50014C633 /* Alamofire in Frameworks */,
 				AF3733982CC8A35D00AE6A45 /* StripeApplePay in Frameworks */,
 				AF662A402CC5F44400613E45 /* FirebaseCrashlytics in Frameworks */,
 				AF662A3E2CC5F44400613E45 /* FirebaseAuth in Frameworks */,
@@ -558,6 +561,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFC8BDF22E0E64E20014C633 /* Alamofire in Frameworks */,
 				AFB830CB2D0057FE00DB94C2 /* SwiftUIIntrospect in Frameworks */,
 				AFB830CC2D0057FE00DB94C2 /* GoogleSignIn in Frameworks */,
 				AF4939942DC08F3D00385435 /* Mixpanel in Frameworks */,
@@ -1033,6 +1037,7 @@
 				AFD6F5C42D36757F0015B536 /* FirebaseAnalytics */,
 				AF1A26DE2D4F2303003949BC /* ConfettiSwiftUI */,
 				AF4939912DC08F3100385435 /* Mixpanel */,
+				AFC8BDEF2E0E64C50014C633 /* Alamofire */,
 			);
 			productName = Swee;
 			productReference = AF170AFD2C71C02900544970 /* Swee.app */;
@@ -1067,6 +1072,7 @@
 				AFCFB0392D09C14C00A92B50 /* FirebaseAnalytics */,
 				AF1A26E02D4F2310003949BC /* ConfettiSwiftUI */,
 				AF4939932DC08F3D00385435 /* Mixpanel */,
+				AFC8BDF12E0E64E20014C633 /* Alamofire */,
 			);
 			productName = Swee;
 			productReference = AFB830FB2D0057FE00DB94C2 /* Swee-Beta.app */;
@@ -1108,6 +1114,7 @@
 				AF3813F02CC601180028FD02 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */,
 				AF1A26DD2D4F2302003949BC /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 				AF4939902DC08F3100385435 /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
+				AFC8BDEE2E0E64C50014C633 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = AF170AFE2C71C02900544970 /* Products */;
 			projectDirPath = "";
@@ -1995,6 +2002,14 @@
 				minimumVersion = 23.31.1;
 			};
 		};
+		AFC8BDEE2E0E64C50014C633 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
 		AFDD173C2CA1438200DC8DB8 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
@@ -2128,6 +2143,16 @@
 		AFB830542D0057FE00DB94C2 /* FirebaseMessaging */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FirebaseMessaging;
+		};
+		AFC8BDEF2E0E64C50014C633 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AFC8BDEE2E0E64C50014C633 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		AFC8BDF12E0E64E20014C633 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AFC8BDEE2E0E64C50014C633 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		AFCFB0372D09BDCA00A92B50 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

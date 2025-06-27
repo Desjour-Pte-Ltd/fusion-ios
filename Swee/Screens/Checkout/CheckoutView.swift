@@ -31,8 +31,12 @@ struct BlinkViewModifier: ViewModifier {
 }
 
 extension View {
-    func blinking(duration: Double = 0.75) -> some View {
-        modifier(BlinkViewModifier(duration: duration))
+    func blinking(when shouldBlink: Bool = true, duration: Double = 0.75) -> some View {
+        if shouldBlink {
+            return AnyView(self.modifier(BlinkViewModifier(duration: duration)))
+        } else {
+            return AnyView(self)
+        }
     }
 }
 
@@ -48,6 +52,7 @@ struct CheckoutView: View {
     @State private var showSafari = false
     @State private var paymentLink: PaymentLink?
     @State private var showPaymentSheet = false
+    @State private var coupon: String = ""
     
     var mainUI: some View {
         VStack(spacing: 0) {
@@ -142,47 +147,64 @@ struct CheckoutView: View {
                 .padding(.horizontal, 16)
                 .padding(.bottom, 16)
                 VStack(alignment: .leading) {
-                    Text("checkout_order_summary_title".i18n)
-                        .font(.custom("Poppins-Bold", size: 16))
-                        .padding(.bottom, 16)
-                    //                    HStack {
-                    //                        TextField("Enter coupon code", text: $text)
-                    //                            .padding(.horizontal, 16)
-                    //                            .padding(.vertical, 12)
-                    //                            .overlay(RoundedRectangle(cornerRadius: 4)
-                    //                                .stroke(.black.opacity(0.15),
-                    //                                        lineWidth: 1)
-                    //                            )
-                    //                        Button {
-                    //
-                    //                        } label: {
-                    //                            Text("Apply")
-                    //                                .font(.custom("Roboto-Bold", size: 16))
-                    //                                .foregroundStyle(Color.text.black80)
-                    //                        }
-                    //                        .padding(.vertical, 12)
-                    //                        .padding(.horizontal, 32)
-                    //                        .clipShape(Capsule())
-                    //                        .overlay(RoundedRectangle(cornerRadius: 24)
-                    //                            .stroke(Color.text.black20,
-                    //                                    lineWidth: 1)
-                    //                        )
-                    //                    }
-                    //                    .padding(.bottom, 24)
+                    VStack(alignment: .leading) {
+                        Text("checkout_order_summary_title".i18n)
+                            .font(.custom("Poppins-Bold", size: 16))
+                            .padding(.bottom, 16)
+                        HStack {
+                            TextField("checkout_order_coupon_code_hint".i18n, text: $coupon)
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 12)
+                                .overlay(RoundedRectangle(cornerRadius: 4)
+                                    .stroke(.black
+                                        .opacity(coupon.count > 0 ? 1 : 0.15),
+                                            lineWidth: 1)
+                                )
+                            AsyncButton(progressTint: .black) {
+                                cart.apply(promoCode: coupon)
+                                try? await viewModel.fetch()
+                            } label: {
+                                Text("cta_apply".i18n)
+                                    .font(.custom("Roboto-Bold", size: 16))
+                                    .foregroundStyle(Color.text.black80)
+                            }
+                            .padding(.vertical, 12)
+                            .padding(.horizontal, 32)
+                            .disabled(coupon.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                            .clipShape(Capsule())
+                            .overlay(RoundedRectangle(cornerRadius: 24)
+                                .stroke(Color.text.black20,
+                                        lineWidth: 1)
+                            )
+                        }
+                        if let promotion = cart.promotion {
+                            if promotion.isValid  {
+                                HStack(spacing: 4) {
+                                    Image("checkmark-circle")
+                                        .resizable()
+                                        .frame(width: 16, height: 16)
+                                    Text("checkout_order_coupon_valid".i18n)
+                                        .font(.custom("Poppins-Regular", size: 12))
+                                }
+                                .foregroundStyle(Color.secondary.dark)
+                            } else {
+                                Text("checkout_order_coupon_invalid".i18n)
+                                    .font(.custom("Poppins-Regular", size: 12))
+                                    .foregroundStyle(.red)
+                            }
+                        }
+                    }
+                    .padding(.bottom, 24)
                     SummaryRow(title: "checkout_order_summary_price_before_fees",
-                               price: viewModel.cartTotal.toPrice(currencyCode: cart.currencyCode,
-                                                                  localeIdentifier: country.wrappedValue.localeIdentifier,
-                                                                  dropCurrency: true),
+                               amount: viewModel.cartTotal,
                                currency: cart.currencyCode,
                                blinking: cart.inProgress)
                         .padding(.bottom, 4)
                     if let fees = cart.fees {
                         ForEach(fees.indices, id: \.self) { index in
                             let fee = fees[index]
-                            SummaryRow(title: "\(fee.name) \(fee.rateMilli / 1000)%",
-                                       price: Double(fee.amountCents / 100).toPrice(currencyCode: cart.currencyCode,
-                                                                                    localeIdentifier: country.wrappedValue.localeIdentifier,
-                                                                                    dropCurrency: true),
+                            SummaryRow(title: fee.rateMilli != nil ? "\(fee.name) \(fee.rateMilli! / 1000)%%" : fee.name,
+                                       amount: Double(fee.amountCents / 100),
                                        currency: cart.currencyCode,
                                        blinking: cart.inProgress)
                             .padding(.bottom, 19)
@@ -193,9 +215,7 @@ struct CheckoutView: View {
                         .frame(height: 1)
                         .padding(.bottom, 8)
                     SummaryRow(title: "checkout_order_summary_total_price",
-                               price: viewModel.finalTotal.toPrice(currencyCode: cart.currencyCode,
-                                                                   localeIdentifier: country.wrappedValue.localeIdentifier,
-                                                                   dropCurrency: true),
+                               amount: viewModel.finalTotal,
                                allBold: true,
                                currency: cart.currencyCode,
                                blinking: cart.inProgress)
@@ -336,6 +356,7 @@ struct CheckoutView: View {
             viewModel.onFetchedPaymentLink = { link in
                 paymentLink = link
             }
+            coupon = cart.promoCode ?? ""
             //            viewModel.preparePaymentSheet()
             Task {
                 try? await viewModel.fetch()
@@ -382,10 +403,21 @@ struct BottomButtonContainer<Content: View>: View {
 
 struct SummaryRow: View {
     var title: String
-    var price: String
+    var amount: Double
     var allBold: Bool = false
     var currency: String
     var blinking: Bool = false
+    @Environment(\.country) private var country
+    
+    var currencyText: String {
+        return amount < 0 ? "-\(currency) " : "\(currency) "
+    }
+    
+    var price: String {
+        abs(amount).toPrice(currencyCode: currency,
+                       localeIdentifier: country.wrappedValue.localeIdentifier,
+                       dropCurrency: true)
+    }
     
     var body: some View {
         HStack {
@@ -393,22 +425,14 @@ struct SummaryRow: View {
                 .font(allBold ? .custom("Poppins-SemiBold", size: 18) : .custom("Poppins-Medium", size: 16))
                 .foregroundStyle(allBold ? Color.text.black100 : Color.text.black60)
             Spacer()
-            if blinking {
-                HStack {
-                    Text("\(currency) ")
-                        .font(.custom("Poppins-SemiBold", size: 16))
-                    + Text(price)
-                        .font(.custom(allBold ? "Poppins-Bold" : "Poppins-Regular", size: 16))
-                }
-                .blinking()
-            } else {
-                HStack {
-                    Text("\(currency) ")
-                        .font(.custom("Poppins-SemiBold", size: 16))
-                    + Text(price)
-                        .font(.custom(allBold ? "Poppins-Bold" : "Poppins-Regular", size: 16))
-                }
+            HStack {
+                Text(currencyText)
+                    .font(.custom("Poppins-SemiBold", size: 16))
+                + Text(price)
+                    .font(.custom(allBold ? "Poppins-Bold" : "Poppins-Regular", size: 16))
             }
+            .foregroundStyle(amount < 0 ? Color.secondary.dark : Color.text.black100)
+            .blinking(when: blinking)
         }
     }
 }

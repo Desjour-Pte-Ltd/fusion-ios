@@ -1,6 +1,7 @@
 import Foundation
 import CoreLocation
 import SwiftUI
+import Alamofire
 
 class API: ObservableObject {
     @Published var user: User?
@@ -241,9 +242,12 @@ class API: ObservableObject {
         try await request(with: "/packages/\(id.uuidString.lowercased())/stores")
     }
     
-    func latestCart() async throws -> CartModel {
-        try await request(with: "/carts/latest") { data, response in
-            
+    func latestCart(promoCode: String? = nil) async throws -> CartModel {
+        var url = "/carts/latest"
+        if let promoCode = promoCode, !promoCode.trimmingCharacters(in: .whitespaces).isEmpty {
+             url = url + "?promoCode=\(promoCode)"
+        }
+        return try await request(with: url) { data, response in
             guard response.statusCode == 200 else {
                 throw APIError.wrongCode
             }
@@ -529,65 +533,92 @@ extension API {
         guard let token = UserDefaults.standard.string(forKey: Keys.authToken) else {
             throw APIError.tokenNotFound
         }
-        
+
         guard let url = URL(string: Strings.baseURL + urlString) else {
             throw APIError.invalidURL
         }
-        
-        var request = URLRequest(url: url)
+
+        // Map `Method` enum to Alamofire's `HTTPMethod` and `parameters`
+        let httpMethod: HTTPMethod
+        var bodyData: Data?
+
         switch method {
         case .GET:
-            request.httpMethod = "GET"
+            httpMethod = .get
         case .POST(let jsonData):
-            request.httpMethod = "POST"
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpBody = jsonData
+            httpMethod = .post
+            bodyData = jsonData
         case .PUT(let jsonData):
-            request.httpMethod = "PUT"
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpBody = jsonData
+            httpMethod = .put
+            bodyData = jsonData
         case .PATCH(let jsonData):
-            request.httpMethod = "PATCH"
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpBody = jsonData
+            httpMethod = .patch
+            bodyData = jsonData
         case .DELETE:
-            request.httpMethod = "DELETE"
+            httpMethod = .delete
         }
-        
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
-        let config = URLSessionConfiguration.default
+
+        var headers: HTTPHeaders = [
+            "Authorization": "Bearer \(token)"
+        ]
+        if bodyData != nil {
+            headers.add(name: "Content-Type", value: "application/json")
+        }
+
+        // Configure Session with mockProtocol if needed
+        let configuration = URLSessionConfiguration.default
         if let mock = mockProtocol {
-            config.protocolClasses = [mock]
+            configuration.protocolClasses = [mock]
         }
-        let session = URLSession(configuration: config)
+
+        let session = Alamofire.Session(configuration: configuration)
+
+        var urlRequest = URLRequest(url: url)
+        urlRequest.method = httpMethod
+        urlRequest.headers = headers
+        if let body = bodyData {
+            urlRequest.httpBody = body
+            urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        }
+
+        let dataRequest = session.upload(bodyData ?? Data(), with: urlRequest)
         
-        let (data, response) = try await session.data(for: request)
+        // NOTE: use to debug the request object
+        dataRequest.cURLDescription(calling: { (curl) in
+            print(curl)
+        })
         
-        guard let httpResponse = response as? HTTPURLResponse else {
+        let response = await dataRequest
+            .serializingData()
+            .response
+
+        guard let httpResponse = response.response else {
             throw APIError.invalidResponse
         }
-        
-        if reauthenticate {
-            if httpResponse.statusCode == 403 {
-                print("reauthenticating....")
-                do {
-                    let token = try await Authentication().reauthenticate()
-                    print("new token ====", token)
-                    UserDefaults.standard.set(token, forKey: Keys.authToken)
-                    return try await performRequest(with: urlString, method: method, mockProtocol: mockProtocol)
-                } catch {
-                    print("reauthentication failed")
-                    await signOut()
-                    await MainActor.run {
-                        sendToAuth = true
-                    }
+
+        if reauthenticate && httpResponse.statusCode == 403 {
+            print("reauthenticating....")
+            do {
+                let token = try await Authentication().reauthenticate()
+                print("new token ====", token)
+                UserDefaults.standard.set(token, forKey: Keys.authToken)
+                return try await performRequest(with: urlString, method: method, mockProtocol: mockProtocol)
+            } catch {
+                print("reauthentication failed")
+                await signOut()
+                await MainActor.run {
+                    sendToAuth = true
                 }
             }
         }
-        
-        return (data, httpResponse)
+
+        guard let responseData = response.data else {
+            throw APIError.invalidResponse
+        }
+
+        return (responseData, httpResponse)
     }
+
     
     fileprivate func request<T: Decodable, U: URLProtocol>(
         with url: String,
