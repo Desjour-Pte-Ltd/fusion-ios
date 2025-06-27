@@ -204,7 +204,7 @@ struct CheckoutView: View {
                         ForEach(fees.indices, id: \.self) { index in
                             let fee = fees[index]
                             SummaryRow(title: fee.rateMilli != nil ? "\(fee.name) \(fee.rateMilli! / 1000)%%" : fee.name,
-                                       amount: Double(fee.amountCents / 100),
+                                       amount: Double(fee.amountCents) / 100.00,
                                        currency: cart.currencyCode,
                                        blinking: cart.inProgress)
                             .padding(.bottom, 19)

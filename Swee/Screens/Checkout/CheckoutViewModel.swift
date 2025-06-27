@@ -40,11 +40,11 @@ class CheckoutViewModel: ObservableObject {
     }
     
     var cartTotal: Double {
-        return Double(cart.priceCents / 100)
+        return Double(cart.priceCents) / 100
     }
     
     var finalTotal: Double {
-        return Double(cart.totalPriceCents / 100)
+        return Double(cart.totalPriceCents) / 100
     }
     
     func fetch() async throws {
