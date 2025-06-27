@@ -311,10 +311,18 @@ class API: ObservableObject {
         }
     }
     
-    func createOrder(for cartid: UUID) async throws -> OrderModel {
+    func createOrder(for cartid: UUID, promoCode: String? = nil) async throws -> OrderModel {
         let url = "/orders"
         
-        let jsonData = try JSONEncoder().encode(["cart_id": cartid.uuidString.lowercased()])
+        var params: [String: String] = [
+            "cart_id": cartid.uuidString.lowercased(),
+        ]
+        
+        if let promoCode, !promoCode.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            params["promo_code"] = promoCode
+        }
+        
+        let jsonData = try JSONEncoder().encode(params)
         
         return try await request(with: url, method: .POST(jsonData)) { data, response in
             guard response.statusCode == 201 else {

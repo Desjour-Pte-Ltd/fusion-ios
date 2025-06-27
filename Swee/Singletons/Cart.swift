@@ -227,7 +227,8 @@ class Cart: ObservableObject {
     func checkout() async throws -> Order {
         do {
             // @todo handle all order states
-            let order = try await api.createOrder(for: id)
+            let order = try await api.createOrder(for: id,
+                                                  promoCode: (promotion?.isValid ?? false) ? promoCode : nil)
             if order.status == .completed {
                 print("successful order ====", order)
                 await MainActor.run {

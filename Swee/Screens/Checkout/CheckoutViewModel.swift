@@ -136,7 +136,7 @@ class CheckoutViewModel: ObservableObject {
             }
             
             if country == .Indonesia || country == .Philippines {
-                guard let paymentLink = order.paymentLink, let paymentURL = URL(string: paymentLink.invoiceURL) else {
+                guard let paymentLink = order.paymentLink, let _ = URL(string: paymentLink.invoiceURL) else {
                     throw LocalError(message: "Missing payment link data")
                 }
                 
