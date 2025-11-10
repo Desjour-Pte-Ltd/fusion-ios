@@ -7,7 +7,7 @@ struct OrderDetailModel: Codable {
     let quantity: Int
     let orderType: OrderType
     let currencyCode: String
-    let totalPriceCents: Int
+    let totalPriceCents: Double
     let status: OrderStatus
     @DecodableDate var createdAt: Date
     @DecodableDate var updatedAt: Date

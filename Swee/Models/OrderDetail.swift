@@ -8,7 +8,7 @@ struct OrderDetail: Hashable {
     let type: OrderType
     let status: OrderStatus
     let currencyCode: String
-    let totalPriceCents: Int
+    let totalPriceCents: Double
     let createdAt: Date
 }
 

@@ -47,6 +47,10 @@ class CheckoutViewModel: ObservableObject {
         return Double(cart.totalPriceCents) / 100
     }
     
+    var isInvalidPromo: Bool {
+        return !(cart.promotion?.isValid ?? true)
+    }
+    
     func fetch() async throws {
         self.cart.$packages
             .sink { items in

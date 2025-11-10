@@ -155,8 +155,14 @@ struct CheckoutView: View {
                             TextField("checkout_order_coupon_code_hint".i18n, text: $coupon)
                                 .padding(.horizontal, 16)
                                 .padding(.vertical, 12)
+                                .onChange(of: coupon, perform: { newValue in
+                                    if viewModel.isInvalidPromo {
+                                        cart.resetPromo()
+                                    }
+                                })
+                                .foregroundStyle(viewModel.isInvalidPromo ? Color.red : .black)
                                 .overlay(RoundedRectangle(cornerRadius: 4)
-                                    .stroke(.black
+                                    .stroke((viewModel.isInvalidPromo ? Color.red : .black)
                                         .opacity(coupon.count > 0 ? 1 : 0.15),
                                             lineWidth: 1)
                                 )

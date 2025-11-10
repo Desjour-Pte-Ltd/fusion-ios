@@ -126,6 +126,11 @@ class Cart: ObservableObject {
         }
     }
     
+    func resetPromo() {
+        promoCode = nil
+        promotion = nil
+    }
+    
     func reset() {
         packages = []
         inProgress = false
