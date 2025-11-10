@@ -55,6 +55,7 @@ enum Tabs: Int, CaseIterable, Identifiable {
 struct MainView: View {
     @EnvironmentObject private var api: API
     @Environment(\.route) private var route
+    @Environment(\.country) private var country
     @StateObject var activeSession = ActiveSession(refreshFrequencyInMin: 5)
     @State private var selectedTab: Tabs = .home
     @State private var tabIsShown = true
@@ -142,6 +143,9 @@ struct MainView: View {
             selectedTab = .myWallet
         case .referral:
             selectedTab = .home
+        case .paymentFailed, .paymentSuccess:
+            // handled in CheckoutView
+            return
         case .activeSession:
             selectedTab = .myWallet
             if activeSession.sessionIsActive {
@@ -196,6 +200,7 @@ struct MainView: View {
                 handle(route: route)
             })
             .onAppear(perform: {
+                country.wrappedValue = api.user?.country ?? .Singapore
                 //  NOTE: Uncomment to keep the images loading indefinately
 //                SDImageCachesManager.shared.caches = []
 //                SDWebImageManager.defaultImageCache = SDImageCachesManager.shared

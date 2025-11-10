@@ -27,6 +27,8 @@ enum Route: Hashable {
     case package(UUID)
     case merchant(UUID)
     case activeSession
+    case paymentSuccess
+    case paymentFailed
 }
 
 @main
@@ -70,6 +72,10 @@ struct SweeApp: App {
             case "merchant":
                 guard let uuidString, let uuid = UUID(uuidString: String(uuidString.uppercased())) else { return }
                 newRoute = .merchant(uuid)
+            case "payment-success":
+                newRoute = .paymentSuccess
+            case "payment-failed":
+                newRoute = .paymentFailed
             case "stripe-redirect":
                 return
             default:

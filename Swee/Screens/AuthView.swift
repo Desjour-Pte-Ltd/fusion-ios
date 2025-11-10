@@ -34,9 +34,9 @@ struct AuthView: View {
         return string
     }
     
-    private var tosLink: (String) -> AttributedString =  { text in
+    private func tosLink(_ text: String) -> AttributedString {
         var string = text.underline()
-        string.link = URL(string: Strings.tosLink)
+        string.link = URL(string: country.wrappedValue.tosLink)
         
         return string
     }

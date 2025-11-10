@@ -8,6 +8,7 @@ struct WalletMerchantModel: Codable {
     let purchaseSummary: String
     let products: [PurchaseProductModel]?
     let activeSession: SessionModel?
+    let productType: ProductType?
     
     private enum CodingKeys: String, CodingKey {
         case merchantID = "merchant_id"
@@ -17,6 +18,7 @@ struct WalletMerchantModel: Codable {
         case purchaseSummary = "purchase_summary"
         case products
         case activeSession = "active_session"
+        case productType = "product_type"
     }
 }
 

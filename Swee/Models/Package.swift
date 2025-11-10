@@ -15,16 +15,16 @@ struct Package {
 }
 
 extension Package {
-    var priceString: String {
-        return "\(currency) \(String(format: "%.2f", price))"
+    func priceString(in country: Country) -> String {
+        return price.toPrice(currencyCode: currency, localeIdentifier: country.localeIdentifier)
     }
     
-    var originalPriceString: String? {
+    func originalPriceString(in country: Country) -> String? {
         guard let originalPrice = originalPrice else {
             return nil
         }
         
-        return "\(currency) \(String(format: "%.2f", originalPrice))"
+        return originalPrice.toPrice(currencyCode: currency, localeIdentifier: country.localeIdentifier)
     }
     
     static var empty: Package {

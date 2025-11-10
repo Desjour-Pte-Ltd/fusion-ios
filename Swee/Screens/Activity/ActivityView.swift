@@ -36,7 +36,11 @@ struct ActivityView: View {
     @State private var filter: DateFilter = .Anytime
     
     var noData: Bool {
-        return viewModel.purchaseSections.isEmpty && 
+        guard filter == .Anytime else {
+            return false
+        }
+        
+        return viewModel.purchaseSections.isEmpty &&
         viewModel.redemptionSections.isEmpty &&
         viewModel.loadedData &&
         !viewModel.showError
@@ -398,6 +402,13 @@ struct ActivitySectionHeader: View {
 struct PurchaseRow: View {
     @State var purchase: OrderDetail
     @State var hideDivider: Bool = false
+    @Environment(\.country) private var country
+    
+    var price: String {
+        abs(purchase.totalPriceCents / 100.00).toPrice(currencyCode: purchase.currencyCode,
+                       localeIdentifier: country.wrappedValue.localeIdentifier,
+                       dropCurrency: true)
+    }
     
     var body: some View {
         VStack {
@@ -429,7 +440,7 @@ struct PurchaseRow: View {
                         .foregroundStyle(Color.text.black40)
                 }
                 Spacer()
-                Text("\(purchase.currencyCode) \(purchase.totalPriceCents / 100)")
+                Text("\(purchase.currencyCode) \(price)")
                     .font(.custom("Poppins-SemiBold", size: 18))
                     .foregroundStyle(Color.primary.brand)
             }

@@ -15,9 +15,12 @@ class CheckoutViewModel: ObservableObject {
     private var loadedData = false
     private var showError = false
     private var cancellables = Set<AnyCancellable>()
-    @Published private(set) var state: State = .loaded
+    @Published var state: State = .loaded
     @Published var paymentSheet: PaymentSheet?
     @Published var paymentResult: PaymentSheetResult?
+    @Published var readyForCheckout: Bool = false
+    
+    var onFetchedPaymentLink: ((PaymentLink) -> Void)?
     
     func onPaymentCompletion(result: PaymentSheetResult) {
         self.paymentResult = result
@@ -37,15 +40,20 @@ class CheckoutViewModel: ObservableObject {
     }
     
     var cartTotal: Double {
-        return Double(cart.priceCents / 100)
+        return Double(cart.priceCents) / 100
     }
     
     var finalTotal: Double {
-        return Double(cart.totalPriceCents / 100)
+        return Double(cart.totalPriceCents) / 100
+    }
+    
+    var isInvalidPromo: Bool {
+        return !(cart.promotion?.isValid ?? true)
     }
     
     func fetch() async throws {
-        self.cart.$packages.sink { items in
+        self.cart.$packages
+            .sink { items in
             Task {
                 await MainActor.run { [weak self] in
                     self?.state = items.isEmpty ? .empty : .loaded
@@ -93,7 +101,7 @@ class CheckoutViewModel: ObservableObject {
         }
     }
     
-    func prepareForPayment() async throws {
+    func prepareForPayment(in country: Country) async throws {
         if cart.packages.isEmpty {
             return
         }
@@ -107,25 +115,36 @@ class CheckoutViewModel: ObservableObject {
                 return
             }
             
-            guard let paymentIntent = order.paymentIntent else {
-                throw LocalError(message: "Missing payment intent data")
-            }
-            STPAPIClient.shared.publishableKey = Strings.stripePublishableKey
-            // MARK: Create a PaymentSheet instance
-            
-            await MainActor.run {
-                var configuration = PaymentSheet.Configuration()
-                configuration.returnURL = Strings.stripeReturnURL
-                configuration.applePay = .init(
-                    merchantId: Strings.stripeMerchantId,
-                    merchantCountryCode: "SG"
-                )
+            if country == .Singapore {
+                guard let paymentIntent = order.paymentIntent else {
+                    throw LocalError(message: "Missing payment intent data")
+                }
                 
-                configuration.merchantDisplayName = Strings.stripeMerchantName
-                configuration.customer = .init(id: paymentIntent.customerId, ephemeralKeySecret: paymentIntent.ephemeralKey)
-                configuration.appearance = paymentSheetAppearance()
-                self.paymentSheet = PaymentSheet(paymentIntentClientSecret: paymentIntent.clientSecret,
-                                                 configuration: configuration)
+                STPAPIClient.shared.publishableKey = Strings.stripePublishableKey
+                // MARK: Create a PaymentSheet instance
+                
+                await MainActor.run {
+                    var configuration = PaymentSheet.Configuration()
+                    configuration.returnURL = Strings.stripeReturnURL
+                    configuration.applePay = .init(
+                        merchantId: Strings.stripeMerchantId,
+                        merchantCountryCode: "SG"
+                    )
+                    
+                    configuration.merchantDisplayName = Strings.stripeMerchantName
+                    configuration.customer = .init(id: paymentIntent.customerId, ephemeralKeySecret: paymentIntent.ephemeralKey)
+                    configuration.appearance = paymentSheetAppearance()
+                    self.paymentSheet = PaymentSheet(paymentIntentClientSecret: paymentIntent.clientSecret,
+                                                     configuration: configuration)
+                }
+            }
+            
+            if country == .Indonesia || country == .Philippines {
+                guard let paymentLink = order.paymentLink, let _ = URL(string: paymentLink.invoiceURL) else {
+                    throw LocalError(message: "Missing payment link data")
+                }
+                
+                onFetchedPaymentLink?(paymentLink)
             }
         } catch {
             await MainActor.run {

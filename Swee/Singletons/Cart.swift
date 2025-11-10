@@ -23,6 +23,16 @@ struct CartItem: Codable, Identifiable {
     }
 }
 
+struct Promotion: Codable {
+    let isValid: Bool
+    let promoCode: String
+    
+    enum CodingKeys: String, CodingKey {
+        case isValid = "is_valid"
+        case promoCode = "promo_code"
+    }
+}
+
 struct CartModel: Codable {
     let id: UUID
     let items: [CartItem]
@@ -31,6 +41,7 @@ struct CartModel: Codable {
     let priceCents: Int64
     let totalPriceCents: Int64
     let fees: [FeeModel]?
+    let promotion: Promotion?
     @DecodableDate var createdAt: Date
     @DecodableDate var updatedAt: Date
     
@@ -44,13 +55,14 @@ struct CartModel: Codable {
         case fees
         case createdAt = "created_at"
         case updatedAt = "updated_at"
+        case promotion
     }
 }
 
 struct FeeModel: Codable {
     let name: String
     let amountCents: Int64
-    let rateMilli: Int64
+    let rateMilli: Int64?
     
     enum CodingKeys: String, CodingKey {
         case name
@@ -75,15 +87,22 @@ class Cart: ObservableObject {
     @Published private(set) var totalPriceCents: Int64 = 0
     @Published private(set) var fees: [FeeModel]? = []
     @Published private(set) var updatedAt: Date = .now
+    @Published private(set) var promoCode: String?
+    @Published private(set) var promotion: Promotion?
+    
     private var id: UUID = .init()
     var inProgress = false
     var stopRefresh = false
     var refreshingPackageID: UUID? = nil
     var debounceTimer: Timer?
     
+    func apply(promoCode: String?) {
+        self.promoCode = promoCode
+    }
+    
     func refresh() async throws {
         operationQueue.maxConcurrentOperationCount = 1
-        let cart = try await self.api.latestCart()
+        let cart = try await self.api.latestCart(promoCode: promoCode)
         await MainActor.run {
             if stopRefresh {
                 return
@@ -98,9 +117,18 @@ class Cart: ObservableObject {
             totalPriceCents = cart.totalPriceCents
             fees = cart.fees
             updatedAt = cart.updatedAt
+            promotion = cart.promotion
+            if let validCode = cart.promotion?.isValid, !validCode {
+                promoCode = nil
+            }
             inProgress = false
             refreshingPackageID = nil
         }
+    }
+    
+    func resetPromo() {
+        promoCode = nil
+        promotion = nil
     }
     
     func reset() {
@@ -109,7 +137,8 @@ class Cart: ObservableObject {
         priceCents = 0
         totalPriceCents = 0
         fees = []
-        
+        promoCode = nil
+        promotion = nil
     }
     
     func addPackage(_ id: UUID, quantity: Int = 1) async throws {
@@ -203,7 +232,8 @@ class Cart: ObservableObject {
     func checkout() async throws -> Order {
         do {
             // @todo handle all order states
-            let order = try await api.createOrder(for: id)
+            let order = try await api.createOrder(for: id,
+                                                  promoCode: (promotion?.isValid ?? false) ? promoCode : nil)
             if order.status == .completed {
                 print("successful order ====", order)
                 await MainActor.run {
@@ -212,6 +242,7 @@ class Cart: ObservableObject {
             }
             return order.toLocal()
         } catch {
+            print("checkout error", error)
             throw error
         }
         

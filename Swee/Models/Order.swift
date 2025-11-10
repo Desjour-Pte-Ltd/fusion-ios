@@ -5,6 +5,7 @@ struct Order: Hashable {
     let status: OrderStatus
     let type: OrderType
     let paymentIntent: PaymentIntent?
+    let paymentLink: PaymentLink?
     let currencyCode: String
     let totalPriceCents: Int
     let quantity: Int
@@ -25,6 +26,7 @@ extension OrderModel: RawModelConvertable {
                      status: status,
                      type: type,
                      paymentIntent: paymentIntent,
+                     paymentLink: paymentLink,
                      currencyCode: currencyCode,
                      totalPriceCents: totalPriceCents,
                      quantity: quantity,

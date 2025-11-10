@@ -38,5 +38,20 @@ enum Country: String, Codable, CaseIterable, Identifiable {
         }
     }
     
+    var localeIdentifier: String {
+        switch self {
+        case .Singapore: return "en_SG"
+        case .Indonesia: return "id_ID"
+        case .Philippines: return "en_PH"
+        }
+    }
+    
+    var tosLink: String {
+        switch self {
+        case .Singapore, .Philippines: return Strings.sgdTOSLink
+        case .Indonesia: return Strings.indTOSLink
+        }
+    }
+    
     var id: Country { self }
 }

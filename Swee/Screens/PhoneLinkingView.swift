@@ -33,9 +33,9 @@ struct PhoneLinkingView: View {
         return string
     }
     
-    private var tosLink: (String) -> AttributedString =  { text in
+    private func tosLink(_ text: String) -> AttributedString {
         var string = text.underline()
-        string.link = URL(string: "https://fusion-core-stg.s3.ap-southeast-1.amazonaws.com/terms_and_condition.pdf")
+        string.link = URL(string: country.wrappedValue.tosLink)
         
         return string
     }

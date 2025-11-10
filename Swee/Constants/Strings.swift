@@ -6,8 +6,8 @@ struct Strings {
     #else
     static let baseURL: String = "https://api.greenkidsapp.com/v1"
     #endif
-    
-    static let tosLink: String = "https://greenappkids.s3.ap-southeast-1.amazonaws.com/docs/terms_and_condition.pdf"
+    static let indTOSLink: String = "https://www.greenyourday.app/kebijakan-privasi"
+    static let sgdTOSLink: String = "https://greenappkids.s3.ap-southeast-1.amazonaws.com/docs/terms_and_condition.pdf"
     static let helpLink: String = "https://www.greenyourday.app/help"
     static let rateAppLink: String = "itms-apps://itunes.apple.com/app/id6738002000?action=write-review"
     

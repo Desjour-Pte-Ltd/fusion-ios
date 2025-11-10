@@ -94,6 +94,8 @@
 		AF501F362C980FCB00637042 /* HomeSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF501F352C980FCB00637042 /* HomeSectionModel.swift */; };
 		AF501F382C9813D300637042 /* MockHomeSectionURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF501F372C9813D300637042 /* MockHomeSectionURLProtocol.swift */; };
 		AF557FC82C79AAC700AD99A5 /* SweeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF557FC72C79AAC700AD99A5 /* SweeApp.swift */; };
+		AF62F49C2DCA5094005ECE17 /* PaymentLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF62F49B2DCA5094005ECE17 /* PaymentLink.swift */; };
+		AF62F49D2DCA5094005ECE17 /* PaymentLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF62F49B2DCA5094005ECE17 /* PaymentLink.swift */; };
 		AF662A332CC5F1AF00613E45 /* SkeletonUI in Frameworks */ = {isa = PBXBuildFile; productRef = AF662A322CC5F1AF00613E45 /* SkeletonUI */; };
 		AF662A362CC5F20C00613E45 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AF662A352CC5F20C00613E45 /* SDWebImageSwiftUI */; };
 		AF662A392CC5F28D00613E45 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = AF662A382CC5F28D00613E45 /* GoogleSignIn */; };
@@ -317,6 +319,10 @@
 		AFB830F72D0057FE00DB94C2 /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF8022372C785E95001274FA /* Poppins-BoldItalic.ttf */; };
 		AFB831002D005BCA00DB94C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF170B092C71C02B00544970 /* Assets.xcassets */; };
 		AFB831012D005BE300DB94C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF170B092C71C02B00544970 /* Assets.xcassets */; };
+		AFC8BDF02E0E64C50014C633 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AFC8BDEF2E0E64C50014C633 /* Alamofire */; };
+		AFC8BDF22E0E64E20014C633 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AFC8BDF12E0E64E20014C633 /* Alamofire */; };
+		AFCB93512DCE20A7006A7607 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCB93502DCE20A7006A7607 /* SafariView.swift */; };
+		AFCB93522DCE20A7006A7607 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCB93502DCE20A7006A7607 /* SafariView.swift */; };
 		AFCEC5BA2C7ACEB000D157BE /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCEC5B92C7ACEB000D157BE /* UIApplication.swift */; };
 		AFCEC5BC2C7AD00F00D157BE /* OtpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCEC5BB2C7AD00F00D157BE /* OtpView.swift */; };
 		AFCEC5C02C7C0E9100D157BE /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCEC5BF2C7C0E9100D157BE /* ButtonStyles.swift */; };
@@ -346,6 +352,10 @@
 		AFDF67F92C7F4EA900489D0C /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDF67F82C7F4EA900489D0C /* BottomSheet.swift */; };
 		AFDF67FB2C7F576C00489D0C /* ObservableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDF67FA2C7F576B00489D0C /* ObservableWrapper.swift */; };
 		AFDF67FD2C7F5A6C00489D0C /* SeeAllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDF67FC2C7F5A6C00489D0C /* SeeAllView.swift */; };
+		AFEB9FB52DD45661004026B0 /* PackagesCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEB9FB42DD45661004026B0 /* PackagesCarousel.swift */; };
+		AFEB9FB62DD45661004026B0 /* PackagesCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEB9FB42DD45661004026B0 /* PackagesCarousel.swift */; };
+		AFEB9FB82DD45740004026B0 /* BannersCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEB9FB72DD45740004026B0 /* BannersCarousel.swift */; };
+		AFEB9FB92DD45740004026B0 /* BannersCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEB9FB72DD45740004026B0 /* BannersCarousel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -431,6 +441,7 @@
 		AF501F352C980FCB00637042 /* HomeSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionModel.swift; sourceTree = "<group>"; };
 		AF501F372C9813D300637042 /* MockHomeSectionURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeSectionURLProtocol.swift; sourceTree = "<group>"; };
 		AF557FC72C79AAC700AD99A5 /* SweeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweeApp.swift; sourceTree = "<group>"; };
+		AF62F49B2DCA5094005ECE17 /* PaymentLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentLink.swift; sourceTree = "<group>"; };
 		AF67C9B02CB50C3000A46B11 /* RedemptionScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedemptionScanView.swift; sourceTree = "<group>"; };
 		AF67C9B22CB50C6200A46B11 /* RedemptionCompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedemptionCompletedView.swift; sourceTree = "<group>"; };
 		AF67C9B42CB50C8D00A46B11 /* RedemptionLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedemptionLoadingView.swift; sourceTree = "<group>"; };
@@ -492,6 +503,7 @@
 		AFA5CBF82CCA2DAA00660293 /* RedemptionErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedemptionErrorView.swift; sourceTree = "<group>"; };
 		AFB830FB2D0057FE00DB94C2 /* Swee-Beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swee-Beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFB830FC2D0057FE00DB94C2 /* Beta-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Beta-Info.plist"; path = "/Users/serghei/Projects/fusion-ios/Beta-Info.plist"; sourceTree = "<absolute>"; };
+		AFCB93502DCE20A7006A7607 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		AFCEC5B92C7ACEB000D157BE /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		AFCEC5BB2C7AD00F00D157BE /* OtpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpView.swift; sourceTree = "<group>"; };
 		AFCEC5BF2C7C0E9100D157BE /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
@@ -517,6 +529,8 @@
 		AFDF67F82C7F4EA900489D0C /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		AFDF67FA2C7F576B00489D0C /* ObservableWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableWrapper.swift; sourceTree = "<group>"; };
 		AFDF67FC2C7F5A6C00489D0C /* SeeAllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllView.swift; sourceTree = "<group>"; };
+		AFEB9FB42DD45661004026B0 /* PackagesCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesCarousel.swift; sourceTree = "<group>"; };
+		AFEB9FB72DD45740004026B0 /* BannersCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannersCarousel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -533,6 +547,7 @@
 				AF4939922DC08F3100385435 /* Mixpanel in Frameworks */,
 				AF1A26DF2D4F2303003949BC /* ConfettiSwiftUI in Frameworks */,
 				AF662A332CC5F1AF00613E45 /* SkeletonUI in Frameworks */,
+				AFC8BDF02E0E64C50014C633 /* Alamofire in Frameworks */,
 				AF3733982CC8A35D00AE6A45 /* StripeApplePay in Frameworks */,
 				AF662A402CC5F44400613E45 /* FirebaseCrashlytics in Frameworks */,
 				AF662A3E2CC5F44400613E45 /* FirebaseAuth in Frameworks */,
@@ -546,6 +561,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFC8BDF22E0E64E20014C633 /* Alamofire in Frameworks */,
 				AFB830CB2D0057FE00DB94C2 /* SwiftUIIntrospect in Frameworks */,
 				AFB830CC2D0057FE00DB94C2 /* GoogleSignIn in Frameworks */,
 				AF4939942DC08F3D00385435 /* Mixpanel in Frameworks */,
@@ -684,6 +700,7 @@
 				AF3022D22CAA4894006DBCAD /* OrderModel.swift */,
 				AF3733952CC766C500AE6A45 /* PaymentIntent.swift */,
 				AF6D42412CB4D0FB0050C2B8 /* OrderDetailModel.swift */,
+				AF62F49B2DCA5094005ECE17 /* PaymentLink.swift */,
 				AF3022D42CAA48C7006DBCAD /* OrderItemModel.swift */,
 				AF3022D62CAA48D7006DBCAD /* OrderItemSnapshotModel.swift */,
 				AF0558362CABA1F000ABEBA3 /* WalletMerchantModel.swift */,
@@ -910,7 +927,10 @@
 				AF3022CE2CA66CC6006DBCAD /* StateView.swift */,
 				AF9D1B662CE615AC00234963 /* NotificationUpsell.swift */,
 				AF82A4642C8432C700E0DD4C /* ObservableScrollView.swift */,
+				AFEB9FB72DD45740004026B0 /* BannersCarousel.swift */,
+				AFCB93502DCE20A7006A7607 /* SafariView.swift */,
 				AF1B6A702D78453300F1F355 /* SelectCountryMenu.swift */,
+				AFEB9FB42DD45661004026B0 /* PackagesCarousel.swift */,
 				AF67C9AF2CB50C0F00A46B11 /* Redemptions */,
 				AF501F2B2C94736C00637042 /* AsyncButton.swift */,
 				AF2F85E32C9C5337004B0B31 /* MerchantCard.swift */,
@@ -1017,6 +1037,7 @@
 				AFD6F5C42D36757F0015B536 /* FirebaseAnalytics */,
 				AF1A26DE2D4F2303003949BC /* ConfettiSwiftUI */,
 				AF4939912DC08F3100385435 /* Mixpanel */,
+				AFC8BDEF2E0E64C50014C633 /* Alamofire */,
 			);
 			productName = Swee;
 			productReference = AF170AFD2C71C02900544970 /* Swee.app */;
@@ -1051,6 +1072,7 @@
 				AFCFB0392D09C14C00A92B50 /* FirebaseAnalytics */,
 				AF1A26E02D4F2310003949BC /* ConfettiSwiftUI */,
 				AF4939932DC08F3D00385435 /* Mixpanel */,
+				AFC8BDF12E0E64E20014C633 /* Alamofire */,
 			);
 			productName = Swee;
 			productReference = AFB830FB2D0057FE00DB94C2 /* Swee-Beta.app */;
@@ -1092,6 +1114,7 @@
 				AF3813F02CC601180028FD02 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */,
 				AF1A26DD2D4F2302003949BC /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 				AF4939902DC08F3100385435 /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
+				AFC8BDEE2E0E64C50014C633 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = AF170AFE2C71C02900544970 /* Products */;
 			projectDirPath = "";
@@ -1255,6 +1278,7 @@
 				AF838BF12DC09A05008826AC /* Country.swift in Sources */,
 				AF8FB97A2CC37A1D00B3B21C /* PhoneLinkingView.swift in Sources */,
 				AF501F2A2C945F9C00637042 /* Strings.swift in Sources */,
+				AF62F49C2DCA5094005ECE17 /* PaymentLink.swift in Sources */,
 				AFCEC5C22C7C111200D157BE /* CompleteProfileView.swift in Sources */,
 				AF49398E2DC08F0600385435 /* Analytics.swift in Sources */,
 				AFDD173B2CA139D100DC8DB8 /* PackageDetailViewModel.swift in Sources */,
@@ -1294,6 +1318,7 @@
 				AF6D42442CB4D12C0050C2B8 /* OrderDetail.swift in Sources */,
 				AF13C8552CAF980300496B0C /* TicketView.swift in Sources */,
 				AFDB904A2C8EE077008931DB /* CustomNavBarContainerView.swift in Sources */,
+				AFCB93512DCE20A7006A7607 /* SafariView.swift in Sources */,
 				AF82A4672C84418200E0DD4C /* PackageDetailView.swift in Sources */,
 				AF82A4652C8432C700E0DD4C /* ObservableScrollView.swift in Sources */,
 				AF13C8592CAFCA9700496B0C /* Redemption.swift in Sources */,
@@ -1345,6 +1370,7 @@
 				AF2F85D22C9C1760004B0B31 /* MerchantPageViewModel.swift in Sources */,
 				AF69BC022CB5391100E87E2B /* JollyfieldRedemptionViewModel.swift in Sources */,
 				AF2F85D42C9C24C6004B0B31 /* MockMerchantStoresURLProtocol.swift in Sources */,
+				AFEB9FB52DD45661004026B0 /* PackagesCarousel.swift in Sources */,
 				AF8423C42CB7C7400087497A /* ChildCard.swift in Sources */,
 				AFDD17342C9DBFEC00DC8DB8 /* SeeAllViewModel.swift in Sources */,
 				AFCEC5C42C7C260B00D157BE /* HomeView.swift in Sources */,
@@ -1362,6 +1388,7 @@
 				AF80222C2C72F39E001274FA /* OnboardingView.swift in Sources */,
 				AF8FB9782CC2103900B3B21C /* CustomAlert.swift in Sources */,
 				AF501F272C945D7C00637042 /* API.swift in Sources */,
+				AFEB9FB92DD45740004026B0 /* BannersCarousel.swift in Sources */,
 				AF2F85E02C9C52CC004B0B31 /* PackageCard.swift in Sources */,
 				AF0558372CABA1F000ABEBA3 /* WalletMerchantModel.swift in Sources */,
 				AF9D1B672CE615AC00234963 /* NotificationUpsell.swift in Sources */,
@@ -1385,6 +1412,7 @@
 				AF838BF02DC09A05008826AC /* Country.swift in Sources */,
 				AFB830572D0057FE00DB94C2 /* PhoneLinkingView.swift in Sources */,
 				AFB830582D0057FE00DB94C2 /* Strings.swift in Sources */,
+				AF62F49D2DCA5094005ECE17 /* PaymentLink.swift in Sources */,
 				AFB830592D0057FE00DB94C2 /* CompleteProfileView.swift in Sources */,
 				AF49398F2DC08F0600385435 /* Analytics.swift in Sources */,
 				AFB8305A2D0057FE00DB94C2 /* PackageDetailViewModel.swift in Sources */,
@@ -1424,6 +1452,7 @@
 				AFB8307A2D0057FE00DB94C2 /* OrderDetail.swift in Sources */,
 				AFB8307B2D0057FE00DB94C2 /* TicketView.swift in Sources */,
 				AFB8307C2D0057FE00DB94C2 /* CustomNavBarContainerView.swift in Sources */,
+				AFCB93522DCE20A7006A7607 /* SafariView.swift in Sources */,
 				AFB8307D2D0057FE00DB94C2 /* PackageDetailView.swift in Sources */,
 				AFB8307E2D0057FE00DB94C2 /* ObservableScrollView.swift in Sources */,
 				AFB8307F2D0057FE00DB94C2 /* Redemption.swift in Sources */,
@@ -1475,6 +1504,7 @@
 				AFB830AB2D0057FE00DB94C2 /* MerchantPageViewModel.swift in Sources */,
 				AFB830AC2D0057FE00DB94C2 /* JollyfieldRedemptionViewModel.swift in Sources */,
 				AFB830AD2D0057FE00DB94C2 /* MockMerchantStoresURLProtocol.swift in Sources */,
+				AFEB9FB62DD45661004026B0 /* PackagesCarousel.swift in Sources */,
 				AFB830AE2D0057FE00DB94C2 /* ChildCard.swift in Sources */,
 				AFB830AF2D0057FE00DB94C2 /* SeeAllViewModel.swift in Sources */,
 				AFB830B02D0057FE00DB94C2 /* HomeView.swift in Sources */,
@@ -1492,6 +1522,7 @@
 				AFB830BC2D0057FE00DB94C2 /* OnboardingView.swift in Sources */,
 				AFB830BD2D0057FE00DB94C2 /* CustomAlert.swift in Sources */,
 				AFB830BE2D0057FE00DB94C2 /* API.swift in Sources */,
+				AFEB9FB82DD45740004026B0 /* BannersCarousel.swift in Sources */,
 				AFB830BF2D0057FE00DB94C2 /* PackageCard.swift in Sources */,
 				AFB830C02D0057FE00DB94C2 /* WalletMerchantModel.swift in Sources */,
 				AFB830C12D0057FE00DB94C2 /* NotificationUpsell.swift in Sources */,
@@ -1663,6 +1694,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Swee/Swee.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1684,10 +1716,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 2.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zoomoov.green;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1704,6 +1737,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Swee/Swee.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RS7P22YXAS;
@@ -1724,10 +1758,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 2.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zoomoov.green;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1745,7 +1780,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Swee/Swee-Beta.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9M2L2N97YU;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1763,7 +1798,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 2.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.desjour.fusion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1785,7 +1820,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Swee/Swee-Beta.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9M2L2N97YU;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1803,7 +1838,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 2.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.desjour.fusion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1971,6 +2006,14 @@
 				minimumVersion = 23.31.1;
 			};
 		};
+		AFC8BDEE2E0E64C50014C633 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
 		AFDD173C2CA1438200DC8DB8 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
@@ -2104,6 +2147,16 @@
 		AFB830542D0057FE00DB94C2 /* FirebaseMessaging */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FirebaseMessaging;
+		};
+		AFC8BDEF2E0E64C50014C633 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AFC8BDEE2E0E64C50014C633 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		AFC8BDF12E0E64E20014C633 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AFC8BDEE2E0E64C50014C633 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		AFCFB0372D09BDCA00A92B50 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

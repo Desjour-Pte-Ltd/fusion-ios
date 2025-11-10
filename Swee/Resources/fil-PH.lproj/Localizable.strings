@@ -40,6 +40,7 @@
 
 "bottom_nav_wallet" = "Mga Binili";
 
+/* Checkout */
 "checkout_empty_cta" = "Mag-explore ng mga package";
 
 "checkout_empty_message" = "Ang iyong cart ay kasalukuyang walang laman. Magdagdag ng package upang makita ang mga item dito";
@@ -58,6 +59,10 @@
 
 "checkout_order_coupon_code_hint" = "Ilagay ang code ng coupon";
 
+"checkout_order_coupon_invalid" = "Maling code";
+
+"checkout_order_coupon_valid" = "Tamang code";
+
 "checkout_order_summary_price_before_fees" = "Kabuuang halaga";
 
 "checkout_order_summary_title" = "Buod ng Order";
@@ -72,7 +77,6 @@
 
 "checkout_success_title" = "Matagumpay ang pagbabayad";
 
-/* Checkout */
 "checkout_title" = "Pag-checkout";
 
 /* Profile */
